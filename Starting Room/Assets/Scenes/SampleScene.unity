@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 313090092}
   - component: {fileID: 313090091}
   - component: {fileID: 313090090}
+  - component: {fileID: 313090094}
   - component: {fileID: 313090089}
   m_Layer: 0
   m_Name: red_key
@@ -237,13 +238,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313090088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.45769262, y: 0.75, z: -1.3232803}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 0.32, y: 0.29, z: 0.29}
   m_Children:
   - {fileID: 1572565086}
   m_Father: {fileID: 1860162961}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &313090094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313090088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc0a73bd1cef4e3e8ae3443aef86712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: {fileID: 313090088}
 --- !u!1 &375820201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7973462299809148075, guid: 89dd74c61103b7644ab2dd9d26606ea0, type: 3}
@@ -382,7 +396,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16702
+  m_Name: pb_Mesh16682
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -781,8 +795,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key_object: {fileID: 313090088}
-  action: 0
-  open: 0
+  trigger: 0
+  picked_up: 0
   instruction: {fileID: 1314880778}
 --- !u!65 &1572565088
 BoxCollider:
@@ -926,7 +940,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
