@@ -13,7 +13,7 @@ namespace keySystem
         public bool open = false;
 
 
-        void OnTriggerEnter(Collider collision) 
+        void OnTriggerEnter(Collider collision)
         {
             if (collision.transform.tag == "Player" && !open)
             {
@@ -30,7 +30,7 @@ namespace keySystem
 
         }
 
-        void OnTriggerExit(Collider other) 
+        void OnTriggerExit(Collider other)
         {
             if (key_inventory.has_key)
             {
@@ -40,10 +40,10 @@ namespace keySystem
             {
                 instruction_needs_key.SetActive(false);
             }
-            action = false;    
+            action = false;
         }
 
-        void Update() 
+        void Update()
         {
 
             if (Input.GetKeyDown(KeyCode.E))
