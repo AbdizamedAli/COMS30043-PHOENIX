@@ -15,7 +15,7 @@ namespace keySystem
 
         void OnTriggerEnter(Collider collision) 
         {
-            if (collision.transform.tag == "Player")
+            if (collision.transform.tag == "Player" && !open)
             {
                 if (key_inventory.has_key)
                 {
@@ -51,7 +51,7 @@ namespace keySystem
                 if (action && !open && key_inventory.has_key)
                 {
 
-                    animate_object.GetComponent<Animator>().Play("door open");
+                    animate_object.GetComponent<Animator>().Play("start_room_door_open");
                     action = false;
                     open = true;
                 }
