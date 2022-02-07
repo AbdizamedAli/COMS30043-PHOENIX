@@ -5,13 +5,13 @@
 
 
 #If add new folder with unity project make sure to add new section and specify path otherwise push will fail 
-/Starting Room/[Ll]ibrary/
-/Starting Room/[Tt]emp/
-/Starting Room/[Oo]bj/
-/Starting Room/[Bb]uild/
-/Starting Room/[Bb]uilds/
-/Starting Room/[Ll]ogs/
-/Starting Room/[Mm]emoryCaptures/
+/Outside/[Ll]ibrary/
+/Outside/[Tt]emp/
+/Outside/[Oo]bj/
+/Outside/[Bb]uild/
+/Outside/[Bb]uilds/
+/Outside/[Ll]ogs/
+/Outside/[Mm]emoryCaptures/
 
 # Add path for room 2 folder
 /Room2/[Ll]ibrary/
