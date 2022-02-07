@@ -11,6 +11,7 @@ namespace keySystem
         public bool picked_up = false;
         private keyitemController key_to_get;
         public GameObject instruction;
+        public dropCurrentKey swap;
 
         void Update()
         {
@@ -25,10 +26,20 @@ namespace keySystem
                     picked_up = true;
                     instruction.SetActive(false);
 
+                    if (swap.has_key)
+                    {
+                        swap.swapPosition(key_object.transform.position);
+                        swap.current_key = key_object;
+                    }
+                    else
+                    {
+                        swap.current_key = key_object;
+                        swap.has_key = true;
+                    }
+
                 }
             }
         }
-
 
         void OnTriggerEnter(Collider collision)
         {
@@ -43,11 +54,7 @@ namespace keySystem
         void OnTriggerExit(Collider other)
         {
             instruction.SetActive(false);
-
             trigger = false;
         }
-
-
-
     }
 }
