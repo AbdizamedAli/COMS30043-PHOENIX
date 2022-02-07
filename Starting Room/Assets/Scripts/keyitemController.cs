@@ -5,7 +5,6 @@ namespace keySystem
     public class keyitemController : MonoBehaviour
     {
         [SerializeField] public bool key = false;
-
         [SerializeField] private KeyInventory key_inventory = null;
 
         public Color key_colour;

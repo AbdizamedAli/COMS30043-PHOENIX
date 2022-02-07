@@ -11,7 +11,6 @@ namespace keySystem
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log(actual_key.transform.position);
             Vector3[] random_postions = generateRandomPositions();
             spawnKeys(random_postions);
         }
@@ -50,7 +49,6 @@ namespace keySystem
 
         private Vector3 generateRandomPostion()
         {
-            Debug.Log(actual_key.transform.position);
             System.Random range_calc = new System.Random();
             return new Vector3(Random.Range(actual_key.transform.position.x-4,
                 actual_key.transform.position.x + 4),
