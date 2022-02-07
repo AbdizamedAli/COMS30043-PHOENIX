@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 12f;
     public float gravity = -9.81f;
 
+    GameObject instruction;
+
     Vector3 velocity;
 
     // Start is called before the first frame update
@@ -21,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            CheckInstruction();
+        }
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -31,5 +38,20 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    public void showInstruction()
+    {
+        instruction.SetActive(true);
+    }
+
+    public void closeInstruction()
+    {
+        instruction.SetActive(false);
+    }
+
+    private void CheckInstruction()
+    {
+
     }
 }
