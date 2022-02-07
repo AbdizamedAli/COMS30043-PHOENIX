@@ -30,7 +30,6 @@ namespace keySystem
                     {
                         swap.swapPosition(key_object.transform.position);
                         swap.current_key = key_object;
-                        
                     }
                     else
                     {
@@ -41,7 +40,6 @@ namespace keySystem
                 }
             }
         }
-
 
         void OnTriggerEnter(Collider collision)
         {
@@ -56,11 +54,7 @@ namespace keySystem
         void OnTriggerExit(Collider other)
         {
             instruction.SetActive(false);
-
             trigger = false;
         }
-
-
-
     }
 }

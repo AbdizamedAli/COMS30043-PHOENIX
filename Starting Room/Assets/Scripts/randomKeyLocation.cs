@@ -23,8 +23,6 @@ namespace keySystem
             float new_z = generateRandomLocation(range_calc, z_min, z_max);
 
             setKeyPosition(new_x, key.transform.position.y, new_z);
-
-           
         }
 
         private float generateRandomLocation(System.Random random, float min, float max)
@@ -37,7 +35,6 @@ namespace keySystem
         private void setKeyPosition(float x, float y, float z)
         {
             key.transform.position = new Vector3(x, y, z);
-
             key.GetComponent<keyitemController>().actual_key_location = key.transform.position;
         }
     }

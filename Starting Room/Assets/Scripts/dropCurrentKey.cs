@@ -22,7 +22,6 @@ namespace keySystem
                 if (current_key.GetComponent<keyitemController>().key)
                 {
                     key_inv.has_key = false;
-                    
                 }
             }
         }
