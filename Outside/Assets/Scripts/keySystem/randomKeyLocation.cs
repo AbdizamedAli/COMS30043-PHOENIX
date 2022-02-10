@@ -12,11 +12,14 @@ namespace keySystem
         public void Start()
         {
             System.Random range_calc = new System.Random();
-            float x_min = key.transform.position.x - 4;
-            float x_max = key.transform.position.x + 4;
+            float x_pos = key.transform.position.x;
+            float z_pos = key.transform.position.z;
 
-            float z_min = key.transform.position.z - 4;
-            float z_max = key.transform.position.z + 4;
+            float x_min = x_pos - 4;
+            float x_max = x_pos + 4;
+
+            float z_min = z_pos - 4;
+            float z_max = z_pos + 4;
 
 
             float new_x = generateRandomLocation(range_calc, x_min, x_max);
