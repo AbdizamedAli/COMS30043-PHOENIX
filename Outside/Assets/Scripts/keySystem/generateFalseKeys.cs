@@ -7,6 +7,7 @@ namespace keySystem
     {
         public GameObject actual_key;
         private int false_keys = 10;
+        public GameObject center;
 
         // Start is called before the first frame update
         void Start()
@@ -50,11 +51,11 @@ namespace keySystem
         private Vector3 generateRandomPostion()
         {
             System.Random range_calc = new System.Random();
-            return new Vector3(Random.Range(actual_key.transform.position.x-4,
-                actual_key.transform.position.x + 4),
-                actual_key.transform.position.y,
-                Random.Range(actual_key.transform.position.z - 4,
-                actual_key.transform.position.z + 4));
+            return new Vector3(Random.Range(center.transform.position.x-4,
+                center.transform.position.x + 4),
+                center.transform.position.y,
+                Random.Range(center.transform.position.z - 4,
+                center.transform.position.z + 4));
 
         }
 

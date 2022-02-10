@@ -55,12 +55,6 @@ namespace keySystem
                     action = false;
                     open = true;
                 }
-                // else if (action && open)
-                // {
-                //     animate_object.GetComponent<Animator>().Play("door closed");
-                //     action = false;
-                //     open = false;
-                // }
             }
         }
     }
