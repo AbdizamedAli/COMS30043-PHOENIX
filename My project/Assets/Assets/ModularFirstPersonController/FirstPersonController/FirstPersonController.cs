@@ -8,7 +8,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Networking;
+using Photon.Pun;
+using Photon.Realtime;
 #if UNITY_EDITOR
     using UnityEditor;
     using System.Net;
@@ -17,7 +19,7 @@ using UnityEngine.UI;
 public class FirstPersonController : MonoBehaviour
 {
     private Rigidbody rb;
-
+    private PhotonView photonView;
     #region Camera Movement Variables
 
     public Camera playerCamera;
@@ -131,8 +133,10 @@ public class FirstPersonController : MonoBehaviour
 
     #endregion
 
+
     private void Awake()
     {
+        photonView = GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
 
         crosshairObject = GetComponentInChildren<Image>();
@@ -151,7 +155,11 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
-        if(lockCursor)
+        if (!photonView)
+        {
+            Destroy(playerCamera);
+        }
+        if (lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -202,10 +210,11 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
+
         #region Camera
 
         // Control camera movement
-        if(cameraCanMove)
+        if (cameraCanMove)
         {
             yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
 
