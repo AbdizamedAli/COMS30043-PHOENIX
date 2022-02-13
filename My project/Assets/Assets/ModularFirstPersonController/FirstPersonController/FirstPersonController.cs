@@ -19,7 +19,7 @@ using Photon.Realtime;
 public class FirstPersonController : MonoBehaviour
 {
     private Rigidbody rb;
-    private PhotonView photonView;
+
     #region Camera Movement Variables
 
     public Camera playerCamera;
@@ -136,7 +136,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void Awake()
     {
-        photonView = GetComponent<PhotonView>();
+       
         rb = GetComponent<Rigidbody>();
 
         crosshairObject = GetComponentInChildren<Image>();
@@ -155,10 +155,6 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
-        if (!photonView)
-        {
-            Destroy(playerCamera);
-        }
         if (lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
