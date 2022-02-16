@@ -14,13 +14,13 @@ public class InRoom : MonoBehaviourPunCallbacks
     Player[] allplayers;
 
     bool ready = false;
-
+    PhotonView photonView;
     public InputField contentInput;//聊天输入框
     public GameObject textPrefab;//文本预制体
     public Transform layoutContent;//父物体
     void Start()
     {
-
+        photonView = GetComponent<PhotonView>();
 
     }
     /// <summary>
@@ -205,20 +205,28 @@ public class InRoom : MonoBehaviourPunCallbacks
     //发送消息
     public void SendMessInfoBtn()
     {
-
         string info = PhotonNetwork.LocalPlayer.NickName + " :" + contentInput.text;
-
-        GameObject textobj = Instantiate(textPrefab, layoutContent);
-        textobj.GetComponentInChildren<Text>().text = info;
-
+        photonView.RPC("SendMess", RpcTarget.All, info);
     }
 
+    [PunRPC]
+    void SendMess(string mess)
+    {
+        GameObject textobj = Instantiate(textPrefab, layoutContent);
+        textobj.GetComponentInChildren<Text>().text = mess;
+    }
 
     //开始游戏
     public void StartGameButton()
     {
 
-        PhotonNetwork.LoadLevel("1");
+        photonView.RPC("LoadGameScene", RpcTarget.All);
     }
 
+
+    [PunRPC]
+    void LoadGameScene()
+    {
+        PhotonNetwork.LoadLevel(1);
+    }
 }
