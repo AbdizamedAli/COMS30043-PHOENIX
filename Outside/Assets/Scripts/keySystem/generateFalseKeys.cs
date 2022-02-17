@@ -16,7 +16,6 @@ namespace keySystem
             spawnKeys(random_postions);
         }
 
-
         private void spawnKeys(Vector3[] postions)
         {
             foreach (var item in postions)

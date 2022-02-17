@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/lobby.unity
     guid: b73ecc29f5196460a92a049b461807c1
   - enabled: 1
-    path: Assets/Scenes/1.unity
-    guid: ece4b62cc23bdc741968658de7209d8a
+    path: Assets/Scenes/PuzzleRoom01.unity
+    guid: d3b4d963ed0ad4ff8be85e2ce965ebc7
   m_configObjects: {}

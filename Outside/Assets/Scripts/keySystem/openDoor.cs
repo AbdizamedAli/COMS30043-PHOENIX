@@ -8,9 +8,10 @@ namespace keySystem
         public GameObject animate_object;
         public GameObject instruction_has_key;
         public GameObject instruction_needs_key;
-        [SerializeField]private KeyInventory key_inventory;
+        [SerializeField] private KeyInventory key_inventory = null;
         public bool action = false;
         public bool open = false;
+
 
         void OnTriggerEnter(Collider collision)
         {
