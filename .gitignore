@@ -4,7 +4,7 @@
 #
 
 
-#If add new folder with unity project make sure to add new section and specify path otherwise push will fail 
+#If add new folder with unity project make sure to add new section and specify path otherwise push will fail
 /Outside/[Ll]ibrary/
 /Outside/[Tt]emp/
 /Outside/[Oo]bj/
