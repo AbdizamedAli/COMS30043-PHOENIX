@@ -6,11 +6,11 @@ namespace keySystem
 {
     public class startRoomClue : MonoBehaviour
     {
-        public GameObject actual_key;
+        [SerializeField]private GameObject key;
         // Start is called before the first frame update
-        void Start()
+        void FixedUpdate()
         {
-            gameObject.GetComponent<Renderer>().material.color = actual_key.GetComponent<keyitemController>().key_colour;
+            gameObject.GetComponent<Renderer>().material.color = key.GetComponent<keyitemController>().key_colour;
         }
 
     }

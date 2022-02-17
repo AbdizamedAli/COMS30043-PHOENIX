@@ -10,7 +10,6 @@ namespace keySystem
         public bool has_key = false;
         public KeyInventory key_inv;
 
-
         public void swapPosition(Vector3 position)
         {
             if (has_key)
