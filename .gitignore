@@ -4,7 +4,7 @@
 #
 
 
-#If add new folder with unity project make sure to add new section and specify path otherwise push will fail 
+#If add new folder with unity project make sure to add new section and specify path otherwise push will fail
 /Outside/[Ll]ibrary/
 /Outside/[Tt]emp/
 /Outside/[Oo]bj/
@@ -12,15 +12,6 @@
 /Outside/[Bb]uilds/
 /Outside/[Ll]ogs/
 /Outside/[Mm]emoryCaptures/
-
-# Add path for room 2 folder
-/Room2/[Ll]ibrary/
-/Room2/[Tt]emp/
-/Room2/[Oo]bj/
-/Room2/[Bb]uild/
-/Room2/[Bb]uilds/
-/Room2/[Ll]ogs/
-/Room2/[Mm]emoryCaptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
