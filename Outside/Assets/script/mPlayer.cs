@@ -16,6 +16,7 @@ public class mPlayer : MonoBehaviourPunCallbacks
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        transform.Translate(new Vector3(h, 0, v) * 10 * Time.deltaTime);
+        float j = Input.GetAxis("Jump");
+        transform.Translate(new Vector3(h, j, v) * 10 * Time.deltaTime);
     }
 }

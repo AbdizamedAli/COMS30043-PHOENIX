@@ -8,23 +8,23 @@ using UnityEngine.UI;
 public class InRoom : MonoBehaviourPunCallbacks
 {
 
-    public GameObject playerInfoPrefab;//玩家按钮预制体
-    public Transform conlayout;//父物体
+    public GameObject playerInfoPrefab;//??????????????
+    public Transform conlayout;//??????
     List<GameObject> mplayers = new List<GameObject>();
     Player[] allplayers;
 
     bool ready = false;
     PhotonView photonView;
-    public InputField contentInput;//聊天输入框
-    public GameObject textPrefab;//文本预制体
-    public Transform layoutContent;//父物体
+    public InputField contentInput;//??????????
+    public GameObject textPrefab;//??????????
+    public Transform layoutContent;//??????
     void Start()
     {
         photonView = GetComponent<PhotonView>();
 
     }
     /// <summary>
-    /// 当加入房间时
+    /// ????????????
     /// </summary>
     public override void OnJoinedRoom()
     {
@@ -44,7 +44,7 @@ public class InRoom : MonoBehaviourPunCallbacks
     }
 
     /// <summary>
-    /// 当有玩家进入时，更新玩家列表
+    /// ????????????????????????????
     /// </summary>
     /// <param name="newPlayer"></param>
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -57,7 +57,7 @@ public class InRoom : MonoBehaviourPunCallbacks
         mplayers.Add(obj);
     }
     /// <summary>
-    /// 当有玩家离开时，更新玩家列表
+    /// ????????????????????????????
     /// </summary>
     /// <param name="otherPlayer"></param>
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -76,7 +76,7 @@ public class InRoom : MonoBehaviourPunCallbacks
         }
     }
     /// <summary>
-    /// 当离开房间时，如果房间内还有人，则设置其他人为房主
+    /// ??????????????????????????????????????????????????
     /// </summary>
     public override void OnLeftRoom()
     {
@@ -110,9 +110,9 @@ public class InRoom : MonoBehaviourPunCallbacks
     }
 
 
-    Dictionary<string, bool> IsPlayerReady = new Dictionary<string, bool>();//使用字典来进行数据广播，广播字典
+    Dictionary<string, bool> IsPlayerReady = new Dictionary<string, bool>();//????????????????????????????????
     /// <summary>
-    /// 准备按钮事件
+    /// ????????????
     /// </summary>
     public void SetReadyBtn()
     {
@@ -189,12 +189,12 @@ public class InRoom : MonoBehaviourPunCallbacks
         //        if(ready)
         //        {
 
-        //          item.GetComponentInChildren<Text>().text= xname + "(" + "已准备" + ")";
+        //          item.GetComponentInChildren<Text>().text= xname + "(" + "??????" + ")";
         //        }
         //        else
         //        {
 
-        //            item.GetComponentInChildren<Text>().text = xname + "(" + "未准备" + ")";
+        //            item.GetComponentInChildren<Text>().text = xname + "(" + "??????" + ")";
         //        }
         //        break;
         //    }
@@ -202,7 +202,7 @@ public class InRoom : MonoBehaviourPunCallbacks
     }
 
 
-    //发送消息
+    //????????
     public void SendMessInfoBtn()
     {
         string info = PhotonNetwork.LocalPlayer.NickName + " :" + contentInput.text;
@@ -216,7 +216,7 @@ public class InRoom : MonoBehaviourPunCallbacks
         textobj.GetComponentInChildren<Text>().text = mess;
     }
 
-    //开始游戏
+    //????????
     public void StartGameButton()
     {
 
@@ -227,6 +227,6 @@ public class InRoom : MonoBehaviourPunCallbacks
     [PunRPC]
     void LoadGameScene()
     {
-        PhotonNetwork.LoadLevel(1);
+        PhotonNetwork.LoadLevel("PuzzleRoom01");
     }
 }
