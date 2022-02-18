@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -12,11 +13,11 @@ namespace keySystem
         // Start is called before the first frame update
         void Start()
         {
-            Vector3[] random_postions = generateRandomPositions();
+            List<Vector3> random_postions = generateRandomPositions();
             spawnKeys(random_postions);
         }
 
-        private void spawnKeys(Vector3[] postions)
+        private void spawnKeys(List<Vector3> postions)
         {
             foreach (var item in postions)
             {
@@ -51,28 +52,48 @@ namespace keySystem
         private Vector3 generateRandomPostion()
         {
             System.Random range_calc = new System.Random();
-            return new Vector3(Random.Range(center.transform.position.x-4,
-                center.transform.position.x + 4),
+            return new Vector3(Random.Range(center.transform.position.x-1f,
+                center.transform.position.x + 1f),
                 center.transform.position.y,
-                Random.Range(center.transform.position.z - 4,
-                center.transform.position.z + 4));
+                Random.Range(center.transform.position.z - 1f,
+                center.transform.position.z + 1f));
 
         }
 
 
-        private Vector3[] generateRandomPositions()
+        private List<Vector3> generateRandomPositions()
         {
-            Vector3[] random_positions = new Vector3[false_keys];
+            List<Vector3> random_positions = new List<Vector3>();
 
             for (int i = 0; i < false_keys; i++)
             {
                 Vector3 random_postition = generateRandomPostion();
-                while (random_positions.Contains(random_postition) || random_postition.Equals(actual_key.GetComponent<keyitemController>().actual_key_location))
+                bool valid_position = false;
+
+
+                while (!valid_position || random_postition.Equals(actual_key.GetComponent<keyitemController>().actual_key_location) ||random_positions.Contains(random_postition))
                 {
                     random_postition = generateRandomPostion();
 
+                    valid_position = true;
+
+                    Collider[] colliders = Physics.OverlapBox(random_postition, transform.localScale , Quaternion.identity);
+
+                    foreach(Collider col in colliders)
+                    {
+                        if (col.tag == "key")
+                        {
+                            valid_position = false;
+                        }
+                    }
+
                 }
-                random_positions[i] = random_postition;
+                if (valid_position)
+                {
+                    random_positions.Add(random_postition);
+
+                }
+
 
             }
 
