@@ -7,6 +7,8 @@ TagManager:
   - InteractiveObject
   - Selectable
   - Rotatable
+  - ready
+  - key
   layers:
   - Default
   - TransparentFX
