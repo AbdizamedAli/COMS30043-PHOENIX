@@ -42,6 +42,23 @@ MonoBehaviour:
   - LoadGameScene
   - ReadyBtn
   - SendMess
+  - sendColour
+  - spawnKeys
+  - setKeyPosition
+  - setKeyColor
+  - playAnimation
+  - pickUp
+  - updateNewkey
+  - movePlayer
+  - randomPics
+  - newClues
+  - setWhatEverTheseAre
+  - thisOneMaybe
+  - setloc
+  - activateExit
+  - rotateObject
+  - blueExit
+  - removeScrewDriver
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
