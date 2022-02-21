@@ -1,32 +1,40 @@
 using System.Collections.Generic;
 using System.Linq;
+using Photon.Pun;
 using UnityEngine;
 
 namespace keySystem
 {
-    public class generateFalseKeys : MonoBehaviour
+    public class generateFalseKeys : MonoBehaviourPunCallbacks
     {
         public GameObject actual_key;
         private int false_keys = 10;
         public GameObject center;
 
         // Start is called before the first frame update
-        void Start()
-        {
-            List<Vector3> random_postions = generateRandomPositions();
-            spawnKeys(random_postions);
-        }
+        //void Start()
+        //{
+        //    if (PhotonNetwork.IsMasterClient)
+        //    {
+        //        List<Vector3> random_postions = generateRandomPositions();
+        //        foreach (var item in random_postions)
+        //        {
+        //        this.photonView.RPC("spawnKeys", RpcTarget.All, item);
+                    
 
-        private void spawnKeys(List<Vector3> postions)
-        {
-            foreach (var item in postions)
-            {
-                GameObject new_key = Instantiate(actual_key);
-                new_key.GetComponent<keyitemController>().key = false;
-                new_key.transform.position = item;
-                new_key.GetComponent<Renderer>().material.color = getRandomColour();
+        //        }
 
-            }
+        //    }
+        //}
+
+        [PunRPC]
+        public void spawnKeys(Vector3 postion)
+        {
+            GameObject new_key = Instantiate(actual_key);
+            new_key.GetComponent<PhotonView>().ViewID = PhotonNetwork.AllocateViewID(false);
+            new_key.GetComponent<keyitemController>().key = false;
+            new_key.transform.position = postion;
+            new_key.GetComponent<Renderer>().material.color = getRandomColour();
 
         }
 
@@ -61,7 +69,7 @@ namespace keySystem
         }
 
 
-        private List<Vector3> generateRandomPositions()
+        public List<Vector3> generateRandomPositions()
         {
             List<Vector3> random_positions = new List<Vector3>();
 

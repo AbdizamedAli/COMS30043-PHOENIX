@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 namespace keySystem
 {
-    public class openDoor : MonoBehaviour
+    public class openDoor : MonoBehaviourPunCallbacks
     {
         public GameObject animate_object;
-        public GameObject instruction_has_key;
-        public GameObject instruction_needs_key;
         [SerializeField] private KeyInventory key_inventory = null;
         public bool action = false;
         public bool open = false;
@@ -19,11 +18,16 @@ namespace keySystem
             {
                 if (key_inventory.has_key)
                 {
-                    instruction_has_key.SetActive(true);
+
+                        collision.GetComponent<Instructions>().has_key.SetActive(true);
+                    
                 }
                 else if (!key_inventory.has_key)
                 {
-                    instruction_needs_key.SetActive(true);
+              
+                        collision.GetComponent<Instructions>().need_key.SetActive(true);
+
+                    
                 }
                 action = true;
             }
@@ -34,13 +38,20 @@ namespace keySystem
         {
             if (key_inventory.has_key)
             {
-                instruction_has_key.SetActive(false);
+
+                    other.GetComponent<Instructions>().has_key.SetActive(false);
+
+                
             }
             else if (!key_inventory.has_key)
             {
-                instruction_needs_key.SetActive(false);
+
+                   other.GetComponent<Instructions>().need_key.SetActive(false);
+
+
+                
+                action = false;
             }
-            action = false;
         }
 
         void Update()
@@ -51,11 +62,17 @@ namespace keySystem
                 if (action && !open && key_inventory.has_key)
                 {
 
-                    animate_object.GetComponent<Animator>().Play("start_room_door_open");
+                    this.photonView.RPC("playAnimation", RpcTarget.All);
                     action = false;
                     open = true;
                 }
             }
+        }
+        [PunRPC]
+        private void playAnimation()
+        {
+            animate_object.GetComponent<Animator>().Play("start_room_door_open");
+
         }
     }
 }

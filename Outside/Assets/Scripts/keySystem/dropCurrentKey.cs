@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace keySystem
 {
-    public class dropCurrentKey : MonoBehaviour
+    public class dropCurrentKey : MonoBehaviourPunCallbacks
     {
         public GameObject current_key;
         public bool has_key = false;
         public KeyInventory key_inv;
 
 
-        public void swapPosition(Vector3 position)
+        public void swapPosition(Vector3 position, PhotonView pv)
+        {
+            pv.RPC("updateNewkey", RpcTarget.All, position);
+        }
+        [PunRPC]
+        private void updateNewkey(Vector3 position)
         {
             if (has_key)
             {
