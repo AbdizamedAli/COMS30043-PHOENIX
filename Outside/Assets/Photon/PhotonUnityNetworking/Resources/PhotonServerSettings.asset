@@ -59,6 +59,10 @@ MonoBehaviour:
   - rotateObject
   - blueExit
   - removeScrewDriver
+  - setSpawn
+  - setWallOff
+  - setWallOn
+  - setDoor
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
