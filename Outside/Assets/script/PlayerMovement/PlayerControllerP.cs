@@ -40,6 +40,7 @@ namespace PlayerCon
 		{
 			if (!PV.IsMine)
 				return;
+			Cursor.lockState = CursorLockMode.Locked;
 
 			Look();
 			Move();
