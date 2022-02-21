@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace keySystem
 {
-    public class randomKeyLocation : MonoBehaviour
+    public class randomKeyLocation : MonoBehaviourPunCallbacks
     {
         public GameObject key;
 
@@ -25,7 +26,13 @@ namespace keySystem
             float new_x = generateRandomLocation(range_calc, x_min, x_max);
             float new_z = generateRandomLocation(range_calc, z_min, z_max);
 
-            setKeyPosition(new_x, key.transform.position.y, new_z);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                this.photonView.RPC("setKeyPosition", RpcTarget.All, new_x,key.transform.position.y,new_z);
+    
+            }
+
+            //setKeyPosition(new_x, key.transform.position.y, new_z);
         }
 
         private float generateRandomLocation(System.Random random, float min, float max)
@@ -35,6 +42,7 @@ namespace keySystem
             return offset;
         }
 
+        [PunRPC]
         private void setKeyPosition(float x, float y, float z)
         {
             key.transform.position = new Vector3(x, y, z);

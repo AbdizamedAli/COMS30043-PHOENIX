@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Find the key to open this door
+  m_Text: Find key to open door
 --- !u!1 &5628891484175697471
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 5016451019556821265}
   - component: {fileID: 9099809705944530587}
   - component: {fileID: 4829041212027257490}
+  - component: {fileID: 6201507183345604168}
   m_Layer: 0
   m_Name: FirstPersonController
   m_TagString: Player
@@ -797,6 +798,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bbfe3f7596f19c4ca3598a1f574e88b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6201507183345604168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389560447626567986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c62b2fd31b6d44cd9b1a47758b12d949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  has_key: {fileID: 5628891484175697471}
+  need_key: {fileID: 95614690256946993}
+  pick_key: {fileID: 8728659845647435217}
 --- !u!1 &7389560447666605837
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

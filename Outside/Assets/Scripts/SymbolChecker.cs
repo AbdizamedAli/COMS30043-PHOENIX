@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using UnityEngine.UI;
 
-public class SymbolChecker : MonoBehaviour
+public class SymbolChecker : MonoBehaviourPunCallbacks
 {
     public GameObject SymbolOne;
     public GameObject SymbolTwo;
@@ -39,6 +41,8 @@ public class SymbolChecker : MonoBehaviour
     public GameObject SymbolSelectTwoBack;
     public GameObject SymbolSelectThreeBack;
     public GameObject SymbolSelectFourBack;
+    [SerializeField] private GameObject exit;
+    [SerializeField] private GameObject enter_text;
 
 
     public int LastPressed;
@@ -70,21 +74,25 @@ public class SymbolChecker : MonoBehaviour
         SymbolList.Add(SymbolThirteen);
         SymbolList.Add(SymbolFourteen);
         SymbolList.Add(SymbolFifteen);
-        SymbolSelectOneLoc=Random.Range(0,14);
-        SymbolSelectTwoLoc=Random.Range(0,14);
-        while(SymbolSelectOneLoc==SymbolSelectTwoLoc){
-            SymbolSelectTwoLoc=Random.Range(0,14);
-        }
-        SymbolSelectThreeLoc=Random.Range(0,14);
-        while(SymbolSelectThreeLoc==SymbolSelectOneLoc ||SymbolSelectThreeLoc==SymbolSelectTwoLoc){
-            SymbolSelectThreeLoc=Random.Range(0,14);
-        }
-        SymbolSelectFourLoc=Random.Range(0,14);
-        while(SymbolSelectFourLoc==SymbolSelectOneLoc||SymbolSelectFourLoc==SymbolSelectTwoLoc||SymbolSelectFourLoc==SymbolSelectThreeLoc){
-            SymbolSelectFourLoc=Random.Range(0,14);
-        }
+        SymbolSelectOneLoc=9;
+        //SymbolSelectOneLoc=Random.Range(0,14);
+        //SymbolSelectTwoLoc = Random.Range(0,14);
+        SymbolSelectTwoLoc = 11;
+        //while (SymbolSelectOneLoc==SymbolSelectTwoLoc){
+        //    SymbolSelectTwoLoc=Random.Range(0,14);
+        //}
+        SymbolSelectThreeLoc=2;
+        //SymbolSelectThreeLoc=Random.Range(0,14);
+        //while (SymbolSelectThreeLoc==SymbolSelectOneLoc ||SymbolSelectThreeLoc==SymbolSelectTwoLoc){
+        //    SymbolSelectThreeLoc=Random.Range(0,14);
+        //}
+        SymbolSelectFourLoc = 13;
+        //SymbolSelectFourLoc=Random.Range(0,14);
+        //while(SymbolSelectFourLoc==SymbolSelectOneLoc||SymbolSelectFourLoc==SymbolSelectTwoLoc||SymbolSelectFourLoc==SymbolSelectThreeLoc){
+        //    SymbolSelectFourLoc=Random.Range(0,14);
+        //}
 
-        SymbolSelectOne=SymbolList[SymbolSelectOneLoc];
+        SymbolSelectOne =SymbolList[SymbolSelectOneLoc];
         SymbolSelectTwo=SymbolList[SymbolSelectTwoLoc];
         SymbolSelectThree=SymbolList[SymbolSelectThreeLoc];
         SymbolSelectFour=SymbolList[SymbolSelectFourLoc];
@@ -121,6 +129,7 @@ public class SymbolChecker : MonoBehaviour
         else if(LastPressed==SymbolSelectFourLoc && CorrectSymbols==3){
             CorrectSymbols=4;
             print("success");
+            this.photonView.RPC("activateExit", RpcTarget.All);
             SymbolSelectOneBack.GetComponent<Renderer>().material = Invisible;
             SymbolSelectTwoBack.GetComponent<Renderer>().material = Invisible;
             SymbolSelectThreeBack.GetComponent<Renderer>().material = Invisible;
@@ -133,6 +142,12 @@ public class SymbolChecker : MonoBehaviour
             CorrectSymbols=0;
             print("try again");
         }
+    }
+    [PunRPC]
+    private void activateExit()
+    {
+        exit.SetActive(true);
+        //enter_text.GetComponent<Text>().text = "Room Done";
     }
 
     public void SymbolOnePressed(bool pressed){
