@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public static GameManager _insatnce;
 
     // Start is called before the first frame update
+
     void Awake()
     {
         _insatnce = this;
@@ -23,9 +24,10 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 index = item.ActorNumber - 1;
                 //  PhotonNetwork.Instantiate("Player", m_spawns.mySpawns[index].spawnPos.position, Quaternion.identity);
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs","FirstPersonController"), new Vector3(0f,2f,(float)(index*10)), Quaternion.identity);
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerController"), new Vector3(0f, 2f, (float)(index * 10)), Quaternion.identity);
                 Debug.Log("userid:" + item.ActorNumber);
             }
         }
     }
+    
 }
