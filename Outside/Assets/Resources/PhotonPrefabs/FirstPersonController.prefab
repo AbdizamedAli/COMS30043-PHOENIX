@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 9099809705944530587}
   - component: {fileID: 4829041212027257490}
   - component: {fileID: 6201507183345604168}
+  - component: {fileID: 8117448263626803147}
   m_Layer: 0
   m_Name: FirstPersonController
   m_TagString: Player
@@ -813,6 +814,22 @@ MonoBehaviour:
   has_key: {fileID: 5628891484175697471}
   need_key: {fileID: 95614690256946993}
   pick_key: {fileID: 8728659845647435217}
+  screw: {fileID: 0}
+  rotate: {fileID: 0}
+  press: {fileID: 0}
+--- !u!114 &8117448263626803147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389560447626567986}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3322affa2ec4445b3870b066464b60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Parent: {fileID: 7389560447626567998}
 --- !u!1 &7389560447666605837
 GameObject:
   m_ObjectHideFlags: 0
