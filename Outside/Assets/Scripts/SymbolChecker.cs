@@ -61,8 +61,16 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     void Awake(){
         LastPressed=-1;
         CorrectSymbols=0;
+
+
         var rnd = new System.Random();
-        randoms = Enumerable.Range(1, 15).OrderBy(x => rnd.Next()).Take(4).ToList();
+
+        HashSet<int> numbers = new HashSet<int>();
+        while (numbers.Count < 4)
+        {
+            numbers.Add(rnd.Next(1, 15));
+        }
+        randoms = numbers.ToList();
 
         SymbolSelectOneLoc   = randoms[0] - 1;
         SymbolSelectTwoLoc   = randoms[1] - 1;
