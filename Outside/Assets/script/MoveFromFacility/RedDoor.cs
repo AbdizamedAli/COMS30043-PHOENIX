@@ -11,9 +11,11 @@ public class RedDoor : MonoBehaviourPunCallbacks
     private bool spawn2 = true;
 
     public bool isDone = false;
+    
     // Start is called before the first frame update
     void Start()
     {
+      
 
     }
 

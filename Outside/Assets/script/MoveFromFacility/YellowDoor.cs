@@ -9,6 +9,9 @@ public class YellowDoor : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject spawn_2;
     private bool spawn1 = true;
     private bool spawn2 = true;
+
+    
+    
     // Start is called before the first frame update
     void Start()
     {

@@ -6,10 +6,11 @@ public class BlueDoor : MonoBehaviour
 {
     [SerializeField] private GameObject spawn_1;
     public bool isDone = false;
+    
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame

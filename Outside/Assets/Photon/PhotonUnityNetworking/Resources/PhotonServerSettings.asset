@@ -63,6 +63,8 @@ MonoBehaviour:
   - setWallOff
   - setWallOn
   - setDoor
+  - ButtonTurnOff
+  - ButtonTurnOn
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
