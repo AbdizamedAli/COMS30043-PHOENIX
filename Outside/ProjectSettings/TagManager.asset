@@ -9,6 +9,7 @@ TagManager:
   - Rotatable
   - ready
   - key
+  - AI
   layers:
   - Default
   - TransparentFX
