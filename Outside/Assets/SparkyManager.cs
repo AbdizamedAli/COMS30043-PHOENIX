@@ -8,11 +8,18 @@ namespace SparkyControl
     {
         private bool isObjectSelected;
         private GameObject objectSelected;
+        public GameObject bot;
+        public GameObject user;
+
+        public Canvas canvas;
 
         // Start is called before the first frame update
         void Start()
         {
             isObjectSelected = false;
+            canvas.enabled = false;
+            bot.SetActive(false);
+            user.SetActive(false);
         }
 
         // Update is called once per frame
@@ -39,9 +46,11 @@ namespace SparkyControl
                 {
                     if (objectSelected.tag == "AI")
                     {
-                        var sparkyConvo = gameObject.AddComponent(typeof(SparkyControl.RasaManager)) as SparkyControl.RasaManager;
-                        sparkyConvo.SendMessageToRasa();
+                        //var sparkyConvo = gameObject.AddComponent(typeof(SparkyControl.RasaManager)) as SparkyControl.RasaManager;
+                        //sparkyConvo.SendMessageToRasa();
                         Debug.Log("Sparky Message Sent");
+                        canvas.enabled = true;
+                        Cursor.lockState = CursorLockMode.Confined;
                     }
                 }
             }
