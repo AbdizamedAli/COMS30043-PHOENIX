@@ -39,7 +39,7 @@ namespace SparkyControl
                 {
                     if (objectSelected.tag == "AI")
                     {
-                        var sparkyConvo = new SparkyControl.RasaManager();
+                        var sparkyConvo = gameObject.AddComponent(typeof(SparkyControl.RasaManager)) as SparkyControl.RasaManager;
                         sparkyConvo.SendMessageToRasa();
                         Debug.Log("Sparky Message Sent");
                     }
