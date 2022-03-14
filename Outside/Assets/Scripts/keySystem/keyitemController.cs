@@ -6,11 +6,13 @@ namespace keySystem
     public class keyitemController : MonoBehaviourPunCallbacks
     {
         [SerializeField] public bool key = false;
-        [SerializeField] private KeyInventory key_inventory = null;
-        [SerializeField] private GameObject clue;
+        [SerializeField] public KeyInventory key_inventory = null;
+        public GameObject clue;
 
         public Color key_colour;
         public Vector3 actual_key_location;
+
+        [SerializeField] bool actual = false;
 
         void Awake()
         {
@@ -19,7 +21,7 @@ namespace keySystem
         void Start()
         {
             key_colour = Random.ColorHSV();
-            if (PhotonNetwork.IsMasterClient)
+            if (PhotonNetwork.IsMasterClient && actual)
             {
 
                 this.photonView.RPC("setKeyColor", RpcTarget.All, new Vector3(key_colour.r, key_colour.g, key_colour.b));
