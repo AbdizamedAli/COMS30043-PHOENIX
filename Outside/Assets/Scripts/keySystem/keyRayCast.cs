@@ -28,16 +28,16 @@ namespace keySystem
                     picked_up = true;
                     instruction.SetActive(false);
 
-                    if (swap.has_key)
-                    {
-                        swap.swapPosition(key_object.transform.position,this.photonView);
-                        swap.current_key = key_object;
-                    }
-                    else
-                    {
-                        swap.current_key = key_object;
-                        swap.has_key = true;
-                    }
+                    //if (swap.has_key)
+                    //{
+                    //    swap.swapPosition(key_object.transform.position,this.photonView);
+                    //    swap.current_key = key_object;
+                    //}
+                    //else
+                    //{
+                    //    swap.current_key = key_object;
+                    //    swap.has_key = true;
+                    //}
 
                 }
             }
@@ -57,8 +57,13 @@ namespace keySystem
 
         void OnTriggerExit(Collider other)
         {
-            other.GetComponent<Instructions>().pick_key.SetActive(false);
-            trigger = false;
+            Instructions instruct = other.GetComponent<Instructions>();
+
+            if (instruct)
+            {
+                instruct.pick_key.SetActive(false);
+                trigger = false;
+            }
         }
     }
 }

@@ -7,8 +7,8 @@ public class YellowDoor : MonoBehaviourPunCallbacks
 {
     [SerializeField] private GameObject spawn_1;
     [SerializeField] private GameObject spawn_2;
-    private bool spawn1 = true;
-    private bool spawn2 = true;
+    bool spawn1 = true;
+    bool spawn2 = true;
 
     
     
@@ -23,23 +23,37 @@ public class YellowDoor : MonoBehaviourPunCallbacks
     {
         
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (spawn1)
         {
             other.transform.position = spawn_1.transform.position;
-            spawn1 = false;
+            this.photonView.RPC("setSpawn", RpcTarget.All, 0);
+    
+
 
         }
-        else if (spawn2)
+        else if (spawn2 && !spawn1)
         {
             other.transform.position = spawn_2.transform.position;
-            spawn2 = false;
+            this.photonView.RPC("setSpawn", RpcTarget.All, 1);
+
+
+        }
+
+    }
+
+    [PunRPC]
+    void setSpawn(int i)
+    {
+        if (i == 0)
+        {
+            spawn1 = false;
         }
         else
         {
-            Debug.Log("Full");
+            spawn2 = false;
         }
     }
 

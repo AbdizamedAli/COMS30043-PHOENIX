@@ -36,18 +36,28 @@ namespace keySystem
 
         void OnTriggerExit(Collider other)
         {
+
+            
             if (key_inventory.has_key)
             {
+                Instructions instruct = other.GetComponent<Instructions>();
 
-                    other.GetComponent<Instructions>().has_key.SetActive(false);
+                if (instruct)
+                {
+                    instruct.has_key.SetActive(false);
+                }
+
 
                 
             }
             else if (!key_inventory.has_key)
             {
+                Instructions instruct = other.GetComponent<Instructions>();
 
-                   other.GetComponent<Instructions>().need_key.SetActive(false);
-
+                if (instruct)
+                {
+                    instruct.need_key.SetActive(false);
+                }
 
                 
                 action = false;

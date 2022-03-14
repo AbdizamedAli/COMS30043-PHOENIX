@@ -42,7 +42,7 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public GameObject SymbolSelectThreeBack;
     public GameObject SymbolSelectFourBack;
     [SerializeField] private GameObject exit;
-    [SerializeField] private GameObject enter_text;
+    [SerializeField] private GameObject exit1;
 
     private List<int> randoms;
 
@@ -82,11 +82,14 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        Quaternion rotate = SymbolFifteen.transform.rotation;
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Symbols", "symbol button " + randoms[0]), SymbolSelectOnePos.transform.position,rotate);
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Symbols", "symbol button " + randoms[1]), SymbolSelectTwoPos.transform.position, rotate);
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Symbols", "symbol button " + randoms[2]), SymbolSelectThreePos.transform.position, rotate);
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Symbols", "symbol button " + randoms[3]), SymbolSelectFourPos.transform.position, rotate);
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            return;
+        }
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Symbols", "symbol button " + randoms[0]), SymbolSelectOnePos.transform.position,Quaternion.Euler(0,180,90));
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Symbols", "symbol button " + randoms[1]), SymbolSelectTwoPos.transform.position, Quaternion.Euler(0, 180, 90));
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Symbols", "symbol button " + randoms[2]), SymbolSelectThreePos.transform.position, Quaternion.Euler(0, 180, 90));
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Symbols", "symbol button " + randoms[3]), SymbolSelectFourPos.transform.position, Quaternion.Euler(0, 180, 90));
 
 
     }
@@ -96,20 +99,27 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     {
         if(LastPressed==SymbolSelectOneLoc&&CorrectSymbols==0){
             CorrectSymbols=1;
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 1);
             print(CorrectSymbols);
         }
         else if(LastPressed==SymbolSelectTwoLoc && CorrectSymbols==1){
             CorrectSymbols=2;
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 2);
+
             print(CorrectSymbols);
         
         }
         else if(LastPressed==SymbolSelectThreeLoc && CorrectSymbols==2){
             CorrectSymbols=3;
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 3);
+
             print(CorrectSymbols);
 
         }
         else if(LastPressed==SymbolSelectFourLoc && CorrectSymbols==3){
             CorrectSymbols=4;
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 4);
+
             print("success");
             this.photonView.RPC("activateExit", RpcTarget.All);
             SymbolSelectOneBack.GetComponent<Renderer>().material = Invisible;
@@ -122,14 +132,23 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
         
         else if(LastPressed>=0 && (LastPressed!=SymbolSelectOneLoc&&LastPressed!=SymbolSelectTwoLoc&&LastPressed!=SymbolSelectThreeLoc&&LastPressed!=SymbolSelectFourLoc)){
             CorrectSymbols=0;
-            print("try again");
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 0);
+
+            Debug.Log("try again");
         }
     }
     [PunRPC]
     private void activateExit()
     {
         exit.SetActive(true);
+        exit1.SetActive(true);
         //enter_text.GetComponent<Text>().text = "Room Done";
+    }
+
+    [PunRPC]
+    private void setCorrectSymbol(int i)
+    {
+        CorrectSymbols = i;
     }
 
     public void SymbolOnePressed(bool pressed){
