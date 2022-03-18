@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
+using System.Linq;
+using System.IO;
 
 public class SymbolChecker : MonoBehaviourPunCallbacks
 {
@@ -27,13 +29,11 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public Transform SymbolSelectOnePos;
     public Transform SymbolSelectTwoPos;
     public Transform SymbolSelectThreePos;
-
     public Transform SymbolSelectFourPos;
 
     public GameObject SymbolSelectOne;
     public GameObject SymbolSelectTwo;
     public GameObject SymbolSelectThree;
-
     public GameObject SymbolSelectFour;
 
     public Material Invisible;
@@ -42,7 +42,9 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public GameObject SymbolSelectThreeBack;
     public GameObject SymbolSelectFourBack;
     [SerializeField] private GameObject exit;
-    [SerializeField] private GameObject enter_text;
+    [SerializeField] private GameObject exit1;
+
+    private List<int> randoms;
 
 
     public int LastPressed;
@@ -59,54 +61,37 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     void Awake(){
         LastPressed=-1;
         CorrectSymbols=0;
-        SymbolList.Add(SymbolOne);
-        SymbolList.Add(SymbolTwo);
-        SymbolList.Add(SymbolThree);
-        SymbolList.Add(SymbolFour);
-        SymbolList.Add(SymbolFive);
-        SymbolList.Add(SymbolSix);
-        SymbolList.Add(SymbolSeven);
-        SymbolList.Add(SymbolEight);
-        SymbolList.Add(SymbolNine);
-        SymbolList.Add(SymbolTen);
-        SymbolList.Add(SymbolEleven);
-        SymbolList.Add(SymbolTwelve);
-        SymbolList.Add(SymbolThirteen);
-        SymbolList.Add(SymbolFourteen);
-        SymbolList.Add(SymbolFifteen);
-        SymbolSelectOneLoc=9;
-        //SymbolSelectOneLoc=Random.Range(0,14);
-        //SymbolSelectTwoLoc = Random.Range(0,14);
-        SymbolSelectTwoLoc = 11;
-        //while (SymbolSelectOneLoc==SymbolSelectTwoLoc){
-        //    SymbolSelectTwoLoc=Random.Range(0,14);
-        //}
-        SymbolSelectThreeLoc=2;
-        //SymbolSelectThreeLoc=Random.Range(0,14);
-        //while (SymbolSelectThreeLoc==SymbolSelectOneLoc ||SymbolSelectThreeLoc==SymbolSelectTwoLoc){
-        //    SymbolSelectThreeLoc=Random.Range(0,14);
-        //}
-        SymbolSelectFourLoc = 13;
-        //SymbolSelectFourLoc=Random.Range(0,14);
-        //while(SymbolSelectFourLoc==SymbolSelectOneLoc||SymbolSelectFourLoc==SymbolSelectTwoLoc||SymbolSelectFourLoc==SymbolSelectThreeLoc){
-        //    SymbolSelectFourLoc=Random.Range(0,14);
-        //}
 
-        SymbolSelectOne =SymbolList[SymbolSelectOneLoc];
-        SymbolSelectTwo=SymbolList[SymbolSelectTwoLoc];
-        SymbolSelectThree=SymbolList[SymbolSelectThreeLoc];
-        SymbolSelectFour=SymbolList[SymbolSelectFourLoc];
+
+        var rnd = new System.Random();
+
+        HashSet<int> numbers = new HashSet<int>();
+        while (numbers.Count < 4)
+        {
+            numbers.Add(rnd.Next(1, 15));
+        }
+        randoms = numbers.ToList();
+
+        SymbolSelectOneLoc   = randoms[0] - 1;
+        SymbolSelectTwoLoc   = randoms[1] - 1;
+        SymbolSelectThreeLoc = randoms[2] - 1;
+        SymbolSelectFourLoc  = randoms[3] - 1;
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        SymbolSelectOne.transform.position=SymbolSelectOnePos.transform.position;
-        SymbolSelectTwo.transform.position=SymbolSelectTwoPos.transform.position;
-        SymbolSelectThree.transform.position=SymbolSelectThreePos.transform.position;
-        SymbolSelectFour.transform.position=SymbolSelectFourPos.transform.position;
-        
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            return;
+        }
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Symbols", "symbol button " + randoms[0]), SymbolSelectOnePos.transform.position,Quaternion.Euler(0,180,90));
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Symbols", "symbol button " + randoms[1]), SymbolSelectTwoPos.transform.position, Quaternion.Euler(0, 180, 90));
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Symbols", "symbol button " + randoms[2]), SymbolSelectThreePos.transform.position, Quaternion.Euler(0, 180, 90));
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Symbols", "symbol button " + randoms[3]), SymbolSelectFourPos.transform.position, Quaternion.Euler(0, 180, 90));
+
+
     }
 
     // Update is called once per frame
@@ -114,20 +99,27 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     {
         if(LastPressed==SymbolSelectOneLoc&&CorrectSymbols==0){
             CorrectSymbols=1;
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 1);
             print(CorrectSymbols);
         }
         else if(LastPressed==SymbolSelectTwoLoc && CorrectSymbols==1){
             CorrectSymbols=2;
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 2);
+
             print(CorrectSymbols);
         
         }
         else if(LastPressed==SymbolSelectThreeLoc && CorrectSymbols==2){
             CorrectSymbols=3;
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 3);
+
             print(CorrectSymbols);
 
         }
         else if(LastPressed==SymbolSelectFourLoc && CorrectSymbols==3){
             CorrectSymbols=4;
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 4);
+
             print("success");
             this.photonView.RPC("activateExit", RpcTarget.All);
             SymbolSelectOneBack.GetComponent<Renderer>().material = Invisible;
@@ -140,14 +132,23 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
         
         else if(LastPressed>=0 && (LastPressed!=SymbolSelectOneLoc&&LastPressed!=SymbolSelectTwoLoc&&LastPressed!=SymbolSelectThreeLoc&&LastPressed!=SymbolSelectFourLoc)){
             CorrectSymbols=0;
-            print("try again");
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 0);
+
+            Debug.Log("try again");
         }
     }
     [PunRPC]
     private void activateExit()
     {
         exit.SetActive(true);
+        exit1.SetActive(true);
         //enter_text.GetComponent<Text>().text = "Room Done";
+    }
+
+    [PunRPC]
+    private void setCorrectSymbol(int i)
+    {
+        CorrectSymbols = i;
     }
 
     public void SymbolOnePressed(bool pressed){
