@@ -5,8 +5,8 @@ using TMPro;
 public class Timer : MonoBehaviourPunCallbacks
 {
     bool startTimer = false;
-    double timerIncrementValue;
-    double startTime;
+    public double timerIncrementValue;
+    public double startTime;
     [SerializeField] double timer = 600;
     ExitGames.Client.Photon.Hashtable CustomeValue;
 
