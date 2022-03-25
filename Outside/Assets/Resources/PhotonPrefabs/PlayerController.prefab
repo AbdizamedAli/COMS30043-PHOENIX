@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 3967527596439610010}
   m_Layer: 0
   m_Name: Timer
-  m_TagString: Untagged
+  m_TagString: timer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,7 +95,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 628}
+  m_AnchoredPosition: {x: 3, y: 366}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3272215402743604419
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -5.7264404, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -207,6 +207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa3844b43f344dc5a14110351e6a787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerIncrementValue: 0
+  startTime: 0
   timer: 600
 --- !u!114 &3967527596439610010
 MonoBehaviour:
@@ -490,6 +492,8 @@ GameObject:
   - component: {fileID: 4198699006038495141}
   - component: {fileID: 3510058704558735350}
   - component: {fileID: 6389013305164770997}
+  - component: {fileID: 358639630988350377}
+  - component: {fileID: 1610953974955261507}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Player
@@ -670,6 +674,40 @@ MonoBehaviour:
   screw: {fileID: 7603771113413336281}
   rotate: {fileID: 9160025113984986662}
   press: {fileID: 6593178655556997886}
+--- !u!114 &358639630988350377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317020572502089185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79a8db7f9a69438b9afea29f2cf0a3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayRange: 4
+  cam: {fileID: 6811307209815473580}
+--- !u!95 &1610953974955261507
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317020572502089185}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da1c54b83e23b4f429444e071d9ba146, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6507994933700315608
 GameObject:
   m_ObjectHideFlags: 0
