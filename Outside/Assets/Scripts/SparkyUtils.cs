@@ -138,7 +138,7 @@ namespace SparkyControl
                 }
             }
 
-            //tex.Reinitialize(newWidth, newHeight);
+            tex.Reinitialize(newWidth, newHeight);
             tex.SetPixels32(newColors);
             tex.Apply();
 
