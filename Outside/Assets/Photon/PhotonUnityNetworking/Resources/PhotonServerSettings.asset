@@ -66,6 +66,26 @@ MonoBehaviour:
   - ButtonTurnOff
   - ButtonTurnOn
   - setCorrectSymbol
+  - setWords
+  - updateText
+  - updateCorrectWords
+  - getIndexRandoms
+  - setRandomWordList
+  - setHit
+  - setStartButtonState
+  - turnOff
+  - turnOn
+  - CastRay
+  - setButtonOffTextWall
+  - setButtonOnTextWall
+  - setTextWallTextOff
+  - setTextWallTextOn
+  - playNextLevelDoorAnimationRPC
+  - thisThing
+  - setButtonO
+  - setCorrectRow
+  - setWallbuttonSetSolve
+  - updateTimerWrongCombination
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
