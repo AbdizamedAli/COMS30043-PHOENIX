@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class move : MonoBehaviour
 {
-    public GameObject go_button;
-    public GameObject move_cy;
     public bool flag = false;
     // Start is called before the first frame update
     void Start()
@@ -36,15 +34,8 @@ public class move : MonoBehaviour
             {
                 moveh += Time.deltaTime;
             }
-            move_cy.transform.Translate(new Vector3(moveh, 0, movev));
+            this.transform.Translate(new Vector3(5*moveh, 0, 5*movev));
         }
     }
-    void OnTriggerEnter(Collider go_button)
-    {
-        flag = true;
-    }
-    void OnTriggerExit(Collider go_button)
-    {
-        flag = false;
-    }
+
 }
