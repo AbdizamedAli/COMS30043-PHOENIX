@@ -31,7 +31,7 @@ public class PLayerRaycast : MonoBehaviourPunCallbacks
         {
             return;
         }
-        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo = new RaycastHit();
         bool hit = Physics.Raycast(ray, out hitInfo, rayRange);
         if (hit && hitInfo.transform.gameObject.layer == 7)
