@@ -589,7 +589,22 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: FG_MPRO
+    4: FG_MPRO
+    7: FG_MPRO
+    13: FG_MPRO
+    14: FG_MPRO
+    19: FG_MPRO
+    21: FG_MPRO
+    25: FG_MPRO
+    27: FG_MPRO
+    28: FG_MPRO
+    29: FG_MPRO
+    30: FG_MPRO
+    31: FG_MPRO
+    32: FG_MPRO
+    33: FG_MPRO
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
