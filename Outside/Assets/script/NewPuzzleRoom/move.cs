@@ -18,19 +18,19 @@ public class move : MonoBehaviour
         {
             float movev = 0;
             float moveh = 0;
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                movev += Time.deltaTime;
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.I))
             {
                 movev -= Time.deltaTime;
             }
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.K))
+            {
+                movev += Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.J))
             {
                 moveh -= Time.deltaTime;
             }
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.L))
             {
                 moveh += Time.deltaTime;
             }
