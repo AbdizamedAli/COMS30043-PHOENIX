@@ -10,6 +10,10 @@ public class EnablePush : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            return;
+        }
         sizeOfForce=1;
     }
 
