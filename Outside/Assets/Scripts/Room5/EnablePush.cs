@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class EnablePush : MonoBehaviour
+using Photon.Pun;
+public class EnablePush : MonoBehaviourPunCallbacks
 {
     
     private float sizeOfForce;
@@ -22,6 +22,10 @@ public class EnablePush : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hitObject){
         Rigidbody rigidbody=hitObject.collider.attachedRigidbody;
 
+        this.photonView.RPC("push",RpcTarget.All,rigidbody,hitObject);
+    }
+    [PunRPC]
+    private void push(Rigidbody rigidbody,ControllerColliderHit hitObject){
         if(rigidbody != null){
             Vector3 forceVector = hitObject.gameObject.transform.position-transform.position;
             forceVector.y=0;
@@ -30,5 +34,5 @@ public class EnablePush : MonoBehaviour
             rigidbody.AddForceAtPosition(forceVector*sizeOfForce,transform.position,ForceMode.Impulse);
         }
 
-    }
+    }    
 }
