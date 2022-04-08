@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17378
+  m_Name: pb_Mesh89538
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -293,7 +293,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16756
+  m_Name: pb_Mesh138760
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -457,7 +457,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17332
+  m_Name: pb_Mesh139378
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -641,11 +641,13 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3, y: 3, z: 50}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 287420342}
   - {fileID: 1005915815}
   - {fileID: 1370799047}
   - {fileID: 383335790}
+  - {fileID: 1586281037}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -663,6 +665,7 @@ GameObject:
   - component: {fileID: 79363180}
   - component: {fileID: 79363179}
   - component: {fileID: 79363178}
+  - component: {fileID: 79363183}
   m_Layer: 0
   m_Name: Panel37
   m_TagString: Rotatable
@@ -677,13 +680,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79363176}
-  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -0.5, y: 1.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 0, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 30
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &79363178
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -695,7 +699,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 64306284}
 --- !u!33 &79363179
@@ -717,6 +721,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -760,7 +765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -770,8 +775,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &79363182
 MonoBehaviour:
@@ -990,6 +996,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &79363183
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79363176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &98234305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1023,7 @@ GameObject:
   - component: {fileID: 98234309}
   - component: {fileID: 98234308}
   - component: {fileID: 98234307}
+  - component: {fileID: 98234312}
   m_Layer: 0
   m_Name: Panel14
   m_TagString: Rotatable
@@ -1018,13 +1038,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98234305}
-  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -3.5, y: 3.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3, y: -0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: -90}
+  m_Father: {fileID: 644786614}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &98234307
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1036,7 +1057,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 146203610}
 --- !u!33 &98234308
@@ -1058,6 +1079,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1101,7 +1123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -1111,8 +1133,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &98234311
 MonoBehaviour:
@@ -1331,6 +1354,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &98234312
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98234305}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &134275078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,6 +1381,7 @@ GameObject:
   - component: {fileID: 134275082}
   - component: {fileID: 134275081}
   - component: {fileID: 134275080}
+  - component: {fileID: 134275085}
   m_Layer: 0
   m_Name: Panel02
   m_TagString: Rotatable
@@ -1359,13 +1396,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134275078}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -5.5, y: 4.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
+  m_Father: {fileID: 644786614}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &134275080
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1377,7 +1415,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1035662158}
 --- !u!33 &134275081
@@ -1399,6 +1437,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1442,7 +1481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -1452,8 +1491,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &134275084
 MonoBehaviour:
@@ -1672,6 +1712,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &134275085
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134275078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &135340240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,6 +1739,7 @@ GameObject:
   - component: {fileID: 135340244}
   - component: {fileID: 135340243}
   - component: {fileID: 135340242}
+  - component: {fileID: 135340247}
   m_Layer: 0
   m_Name: Panel33
   m_TagString: Rotatable
@@ -1700,13 +1754,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135340240}
-  m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -4.5, y: 1.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.5, y: 0, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 26
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
+  m_Father: {fileID: 644786614}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &135340242
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1718,7 +1773,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1519229884}
 --- !u!33 &135340243
@@ -1740,6 +1795,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1783,7 +1839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -1793,8 +1849,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &135340246
 MonoBehaviour:
@@ -2013,13 +2070,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &135340247
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135340240}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &146203610
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16770
+  m_Name: pb_Mesh121690
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2191,6 +2261,7 @@ GameObject:
   - component: {fileID: 154078288}
   - component: {fileID: 154078287}
   - component: {fileID: 154078286}
+  - component: {fileID: 154078291}
   m_Layer: 0
   m_Name: Panel36
   m_TagString: Rotatable
@@ -2205,13 +2276,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154078284}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -1.5, y: 1.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 0, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 29
-  m_LocalEulerAnglesHint: {x: 180, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &154078286
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2223,7 +2295,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1076861425}
 --- !u!33 &154078287
@@ -2245,6 +2317,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2288,7 +2361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -2298,8 +2371,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &154078290
 MonoBehaviour:
@@ -2518,6 +2592,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &154078291
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154078284}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!850595691 &177218480
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2525,7 +2612,7 @@ LightingSettings:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  serializedVersion: 3
+  serializedVersion: 4
   m_GIWorkflowMode: 1
   m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 0
@@ -2538,7 +2625,7 @@ LightingSettings:
   m_LightmapMaxSize: 1024
   m_BakeResolution: 40
   m_Padding: 2
-  m_TextureCompression: 1
+  m_LightmapCompression: 3
   m_AO: 0
   m_AOMaxDistance: 1
   m_CompAOExponent: 1
@@ -2579,6 +2666,7 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
+  m_PVRTiledBaking: 0
 --- !u!1 &183849393
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,6 +2681,7 @@ GameObject:
   - component: {fileID: 183849396}
   - component: {fileID: 183849395}
   - component: {fileID: 183849394}
+  - component: {fileID: 183849400}
   m_Layer: 0
   m_Name: Panel01
   m_TagString: Rotatable
@@ -2611,7 +2700,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 555403109}
 --- !u!33 &183849395
@@ -2633,6 +2722,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2676,7 +2766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -2686,8 +2776,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &183849398
 MonoBehaviour:
@@ -2917,13 +3008,27 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183849393}
-  m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -6.5, y: 4.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.5, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
+  m_Father: {fileID: 644786614}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &183849400
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183849393}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &202887757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2938,6 +3043,7 @@ GameObject:
   - component: {fileID: 202887761}
   - component: {fileID: 202887760}
   - component: {fileID: 202887759}
+  - component: {fileID: 202887764}
   m_Layer: 0
   m_Name: Panel26
   m_TagString: Rotatable
@@ -2952,13 +3058,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202887757}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -1.5, y: 2.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 0, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 180, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &202887759
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2970,7 +3077,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2146631271}
 --- !u!33 &202887760
@@ -2992,6 +3099,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -3035,7 +3143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -3045,8 +3153,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &202887763
 MonoBehaviour:
@@ -3265,13 +3374,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &202887764
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202887757}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &230386080
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17108
+  m_Name: pb_Mesh139130
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3435,7 +3557,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17408
+  m_Name: pb_Mesh139456
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3647,6 +3769,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -3690,18 +3813,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
-  m_Size: {x: 1.0000001, y: 15, z: 11}
+    rid: 0
+  m_Size: {x: 1.0000001, y: 20, z: 15}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
   m_PivotPosition: {x: 0, y: 0, z: 0}
-  m_UnmodifiedMeshVersion: 1789
+  m_UnmodifiedMeshVersion: 1847
   m_ShapeBox:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.50000006, y: 7.5, z: 5.5}
+    m_Extent: {x: 0.50000006, y: 10, z: 7.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &287420341
 MonoBehaviour:
@@ -3830,55 +3954,55 @@ MonoBehaviour:
   - m_Vertices: 0b0000000e00000012000000
   m_SharedTextures: []
   m_Positions:
-  - {x: -0.50000006, y: -7.5, z: 5.5}
-  - {x: 0.50000006, y: -7.5, z: 5.5}
-  - {x: -0.50000006, y: 7.5, z: 5.5}
-  - {x: 0.50000006, y: 7.5, z: 5.5}
-  - {x: 0.50000006, y: -7.5, z: 5.5}
-  - {x: 0.50000006, y: -7.5, z: -5.5}
-  - {x: 0.50000006, y: 7.5, z: 5.5}
-  - {x: 0.50000006, y: 7.5, z: -5.5}
-  - {x: 0.50000006, y: -7.5, z: -5.5}
-  - {x: -0.50000006, y: -7.5, z: -5.5}
-  - {x: 0.50000006, y: 7.5, z: -5.5}
-  - {x: -0.50000006, y: 7.5, z: -5.5}
-  - {x: -0.50000006, y: -7.5, z: -5.5}
-  - {x: -0.50000006, y: -7.5, z: 5.5}
-  - {x: -0.50000006, y: 7.5, z: -5.5}
-  - {x: -0.50000006, y: 7.5, z: 5.5}
-  - {x: -0.50000006, y: 7.5, z: 5.5}
-  - {x: 0.50000006, y: 7.5, z: 5.5}
-  - {x: -0.50000006, y: 7.5, z: -5.5}
-  - {x: 0.50000006, y: 7.5, z: -5.5}
-  - {x: -0.50000006, y: -7.5, z: -5.5}
-  - {x: 0.50000006, y: -7.5, z: -5.5}
-  - {x: -0.50000006, y: -7.5, z: 5.5}
-  - {x: 0.50000006, y: -7.5, z: 5.5}
+  - {x: -0.50000006, y: -10, z: 7.5}
+  - {x: 0.50000006, y: -10, z: 7.5}
+  - {x: -0.50000006, y: 10, z: 7.5}
+  - {x: 0.50000006, y: 10, z: 7.5}
+  - {x: 0.50000006, y: -10, z: 7.5}
+  - {x: 0.50000006, y: -10, z: -7.5}
+  - {x: 0.50000006, y: 10, z: 7.5}
+  - {x: 0.50000006, y: 10, z: -7.5}
+  - {x: 0.50000006, y: -10, z: -7.5}
+  - {x: -0.50000006, y: -10, z: -7.5}
+  - {x: 0.50000006, y: 10, z: -7.5}
+  - {x: -0.50000006, y: 10, z: -7.5}
+  - {x: -0.50000006, y: -10, z: -7.5}
+  - {x: -0.50000006, y: -10, z: 7.5}
+  - {x: -0.50000006, y: 10, z: -7.5}
+  - {x: -0.50000006, y: 10, z: 7.5}
+  - {x: -0.50000006, y: 10, z: 7.5}
+  - {x: 0.50000006, y: 10, z: 7.5}
+  - {x: -0.50000006, y: 10, z: -7.5}
+  - {x: 0.50000006, y: 10, z: -7.5}
+  - {x: -0.50000006, y: -10, z: -7.5}
+  - {x: 0.50000006, y: -10, z: -7.5}
+  - {x: -0.50000006, y: -10, z: 7.5}
+  - {x: 0.50000006, y: -10, z: 7.5}
   m_Textures0:
+  - {x: 0.50000006, y: -10}
+  - {x: -0.50000006, y: -10}
+  - {x: 0.50000006, y: 10}
+  - {x: -0.50000006, y: 10}
+  - {x: 7.5, y: -10}
+  - {x: -7.5, y: -10}
+  - {x: 7.5, y: 10}
+  - {x: -7.5, y: 10}
+  - {x: 0.50000006, y: -10}
+  - {x: -0.50000006, y: -10}
+  - {x: 0.50000006, y: 10}
+  - {x: -0.50000006, y: 10}
+  - {x: 7.5, y: -10}
+  - {x: -7.5, y: -10}
+  - {x: 7.5, y: 10}
+  - {x: -7.5, y: 10}
+  - {x: -0.50000006, y: 7.5}
+  - {x: 0.50000006, y: 7.5}
+  - {x: -0.50000006, y: -7.5}
+  - {x: 0.50000006, y: -7.5}
   - {x: 0.50000006, y: -7.5}
   - {x: -0.50000006, y: -7.5}
   - {x: 0.50000006, y: 7.5}
   - {x: -0.50000006, y: 7.5}
-  - {x: 5.5, y: -7.5}
-  - {x: -5.5, y: -7.5}
-  - {x: 5.5, y: 7.5}
-  - {x: -5.5, y: 7.5}
-  - {x: 0.50000006, y: -7.5}
-  - {x: -0.50000006, y: -7.5}
-  - {x: 0.50000006, y: 7.5}
-  - {x: -0.50000006, y: 7.5}
-  - {x: 5.5, y: -7.5}
-  - {x: -5.5, y: -7.5}
-  - {x: 5.5, y: 7.5}
-  - {x: -5.5, y: 7.5}
-  - {x: -0.50000006, y: 5.5}
-  - {x: 0.50000006, y: 5.5}
-  - {x: -0.50000006, y: -5.5}
-  - {x: 0.50000006, y: -5.5}
-  - {x: 0.50000006, y: -5.5}
-  - {x: -0.50000006, y: -5.5}
-  - {x: 0.50000006, y: 5.5}
-  - {x: -0.50000006, y: 5.5}
   m_Textures2: []
   m_Textures3: []
   m_Tangents:
@@ -3915,7 +4039,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 1789341692}
-  m_VersionIndex: 1792
+  m_VersionIndex: 1847
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3928,8 +4052,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287420336}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -3, z: -5}
+  m_LocalPosition: {x: -2.5, y: -3, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 67920447}
   m_RootOrder: 0
@@ -3940,7 +4065,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17316
+  m_Name: pb_Mesh139360
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4126,6 +4251,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1059717741}
   m_RootOrder: 3
@@ -4183,7 +4309,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17094
+  m_Name: pb_Mesh122028
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4347,7 +4473,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17352
+  m_Name: pb_Mesh139398
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4559,6 +4685,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -4602,18 +4729,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
-  m_Size: {x: 1, y: 6, z: 10}
+    rid: 0
+  m_Size: {x: 1, y: 6, z: 15}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
   m_PivotPosition: {x: 0, y: 0, z: 0}
-  m_UnmodifiedMeshVersion: 2083
+  m_UnmodifiedMeshVersion: 2116
   m_ShapeBox:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 3, z: 5}
+    m_Extent: {x: 0.5, y: 3, z: 7.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &383335789
 MonoBehaviour:
@@ -4742,55 +4870,55 @@ MonoBehaviour:
   - m_Vertices: 0b0000000e00000012000000
   m_SharedTextures: []
   m_Positions:
-  - {x: -0.5, y: -3, z: 5}
-  - {x: 0.5, y: -3, z: 5}
-  - {x: -0.5, y: 3, z: 5}
-  - {x: 0.5, y: 3, z: 5}
-  - {x: 0.5, y: -3, z: 5}
-  - {x: 0.5, y: -3, z: -5}
-  - {x: 0.5, y: 3, z: 5}
-  - {x: 0.5, y: 3, z: -5}
-  - {x: 0.5, y: -3, z: -5}
-  - {x: -0.5, y: -3, z: -5}
-  - {x: 0.5, y: 3, z: -5}
-  - {x: -0.5, y: 3, z: -5}
-  - {x: -0.5, y: -3, z: -5}
-  - {x: -0.5, y: -3, z: 5}
-  - {x: -0.5, y: 3, z: -5}
-  - {x: -0.5, y: 3, z: 5}
-  - {x: -0.5, y: 3, z: 5}
-  - {x: 0.5, y: 3, z: 5}
-  - {x: -0.5, y: 3, z: -5}
-  - {x: 0.5, y: 3, z: -5}
-  - {x: -0.5, y: -3, z: -5}
-  - {x: 0.5, y: -3, z: -5}
-  - {x: -0.5, y: -3, z: 5}
-  - {x: 0.5, y: -3, z: 5}
+  - {x: -0.5, y: -3, z: 7.5}
+  - {x: 0.5, y: -3, z: 7.5}
+  - {x: -0.5, y: 3, z: 7.5}
+  - {x: 0.5, y: 3, z: 7.5}
+  - {x: 0.5, y: -3, z: 7.5}
+  - {x: 0.5, y: -3, z: -7.5}
+  - {x: 0.5, y: 3, z: 7.5}
+  - {x: 0.5, y: 3, z: -7.5}
+  - {x: 0.5, y: -3, z: -7.5}
+  - {x: -0.5, y: -3, z: -7.5}
+  - {x: 0.5, y: 3, z: -7.5}
+  - {x: -0.5, y: 3, z: -7.5}
+  - {x: -0.5, y: -3, z: -7.5}
+  - {x: -0.5, y: -3, z: 7.5}
+  - {x: -0.5, y: 3, z: -7.5}
+  - {x: -0.5, y: 3, z: 7.5}
+  - {x: -0.5, y: 3, z: 7.5}
+  - {x: 0.5, y: 3, z: 7.5}
+  - {x: -0.5, y: 3, z: -7.5}
+  - {x: 0.5, y: 3, z: -7.5}
+  - {x: -0.5, y: -3, z: -7.5}
+  - {x: 0.5, y: -3, z: -7.5}
+  - {x: -0.5, y: -3, z: 7.5}
+  - {x: 0.5, y: -3, z: 7.5}
   m_Textures0:
   - {x: 0.5, y: -3}
   - {x: -0.5, y: -3}
   - {x: 0.5, y: 3}
   - {x: -0.5, y: 3}
-  - {x: 5, y: -3}
-  - {x: -5, y: -3}
-  - {x: 5, y: 3}
-  - {x: -5, y: 3}
+  - {x: 7.5, y: -3}
+  - {x: -7.5, y: -3}
+  - {x: 7.5, y: 3}
+  - {x: -7.5, y: 3}
   - {x: 0.5, y: -3}
   - {x: -0.5, y: -3}
   - {x: 0.5, y: 3}
   - {x: -0.5, y: 3}
-  - {x: 5, y: -3}
-  - {x: -5, y: -3}
-  - {x: 5, y: 3}
-  - {x: -5, y: 3}
-  - {x: -0.5, y: 5}
-  - {x: 0.5, y: 5}
-  - {x: -0.5, y: -5}
-  - {x: 0.5, y: -5}
-  - {x: 0.5, y: -5}
-  - {x: -0.5, y: -5}
-  - {x: 0.5, y: 5}
-  - {x: -0.5, y: 5}
+  - {x: 7.5, y: -3}
+  - {x: -7.5, y: -3}
+  - {x: 7.5, y: 3}
+  - {x: -7.5, y: 3}
+  - {x: -0.5, y: 7.5}
+  - {x: 0.5, y: 7.5}
+  - {x: -0.5, y: -7.5}
+  - {x: 0.5, y: -7.5}
+  - {x: 0.5, y: -7.5}
+  - {x: -0.5, y: -7.5}
+  - {x: 0.5, y: 7.5}
+  - {x: -0.5, y: 7.5}
   m_Textures2: []
   m_Textures3: []
   m_Tangents:
@@ -4827,7 +4955,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 1841439003}
-  m_VersionIndex: 2083
+  m_VersionIndex: 2116
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4840,8 +4968,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383335784}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: -4.5}
+  m_LocalPosition: {x: 7, y: 0, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 67920447}
   m_RootOrder: 3
@@ -4875,11 +5004,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f867a1697b74f9347b8e7dde77341aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instruction: {fileID: 1838730502}
-  rotateInstruction: {fileID: 2145205815}
-  pressInstruction: {fileID: 930611612}
-  solvedMessage: {fileID: 313008243}
   inventory: {fileID: 1407145180}
+  exit: {fileID: 0}
+  enter: {fileID: 0}
+  enterText: {fileID: 0}
 --- !u!4 &398230978
 Transform:
   m_ObjectHideFlags: 0
@@ -4890,9 +5018,57 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30.307922, y: -20.145836, z: 43.26225}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &399964663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399964664}
+  m_Layer: 0
+  m_Name: Player2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &399964664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399964663}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1293295752}
+  - {fileID: 1250083108}
+  - {fileID: 1604031424}
+  - {fileID: 1255070731}
+  - {fileID: 669906743}
+  - {fileID: 957604255}
+  - {fileID: 1660526580}
+  - {fileID: 468653416}
+  - {fileID: 1956117955}
+  - {fileID: 202887758}
+  - {fileID: 1833242432}
+  - {fileID: 1727100507}
+  - {fileID: 1154811832}
+  - {fileID: 154078285}
+  - {fileID: 79363177}
+  - {fileID: 600525717}
+  m_Father: {fileID: 1063041906}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &460483877
 Mesh:
@@ -4900,7 +5076,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17058
+  m_Name: pb_Mesh139078
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5072,6 +5248,7 @@ GameObject:
   - component: {fileID: 468653419}
   - component: {fileID: 468653418}
   - component: {fileID: 468653417}
+  - component: {fileID: 468653422}
   m_Layer: 0
   m_Name: Panel18
   m_TagString: Rotatable
@@ -5086,13 +5263,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468653415}
-  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: 0.5, y: 3.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: -0, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &468653417
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5104,7 +5282,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1038448126}
 --- !u!33 &468653418
@@ -5126,6 +5304,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -5169,7 +5348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -5179,8 +5358,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &468653421
 MonoBehaviour:
@@ -5399,6 +5579,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &468653422
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468653415}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &489400800
 GameObject:
   m_ObjectHideFlags: 0
@@ -5413,6 +5606,7 @@ GameObject:
   - component: {fileID: 489400804}
   - component: {fileID: 489400803}
   - component: {fileID: 489400802}
+  - component: {fileID: 489400807}
   m_Layer: 0
   m_Name: Panel34
   m_TagString: Rotatable
@@ -5427,13 +5621,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489400800}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -3.5, y: 1.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3, y: 0, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 27
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+  m_Father: {fileID: 644786614}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &489400802
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5445,7 +5640,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1175641496}
 --- !u!33 &489400803
@@ -5467,6 +5662,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -5510,7 +5706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -5520,8 +5716,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &489400806
 MonoBehaviour:
@@ -5740,6 +5937,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &489400807
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489400800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &499889964
 GameObject:
   m_ObjectHideFlags: 0
@@ -5754,6 +5964,7 @@ GameObject:
   - component: {fileID: 499889968}
   - component: {fileID: 499889967}
   - component: {fileID: 499889966}
+  - component: {fileID: 499889971}
   m_Layer: 0
   m_Name: Panel24
   m_TagString: Rotatable
@@ -5768,13 +5979,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499889964}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -3.5, y: 2.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3, y: 0, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 180, y: 90, z: -90}
+  m_Father: {fileID: 644786614}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &499889966
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5786,7 +5998,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1831979520}
 --- !u!33 &499889967
@@ -5808,6 +6020,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -5851,7 +6064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -5861,8 +6074,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &499889970
 MonoBehaviour:
@@ -6081,6 +6295,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &499889971
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499889964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &536183380
 GameObject:
   m_ObjectHideFlags: 0
@@ -6095,6 +6322,7 @@ GameObject:
   - component: {fileID: 536183384}
   - component: {fileID: 536183383}
   - component: {fileID: 536183382}
+  - component: {fileID: 536183387}
   m_Layer: 0
   m_Name: Panel04
   m_TagString: Rotatable
@@ -6109,13 +6337,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536183380}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -3.5, y: 4.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
+  m_Father: {fileID: 644786614}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &536183382
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6127,7 +6356,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1470538733}
 --- !u!33 &536183383
@@ -6149,6 +6378,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6192,7 +6422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -6202,8 +6432,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &536183386
 MonoBehaviour:
@@ -6422,13 +6653,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &536183387
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536183380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &555403109
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16830
+  m_Name: pb_Mesh121752
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6592,7 +6836,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17122
+  m_Name: pb_Mesh122056
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6764,6 +7008,7 @@ GameObject:
   - component: {fileID: 600525720}
   - component: {fileID: 600525719}
   - component: {fileID: 600525718}
+  - component: {fileID: 600525723}
   m_Layer: 0
   m_Name: Panel38
   m_TagString: Rotatable
@@ -6778,13 +7023,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600525716}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.5, y: 1.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 31
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &600525718
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6796,7 +7042,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 732298496}
 --- !u!33 &600525719
@@ -6818,6 +7064,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -6861,7 +7108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -6871,8 +7118,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &600525722
 MonoBehaviour:
@@ -7091,13 +7339,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &600525723
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600525716}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &619487838
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16988
+  m_Name: pb_Mesh139008
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7255,6 +7516,53 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &644786613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 644786614}
+  m_Layer: 0
+  m_Name: Player1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &644786614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644786613}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.25, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 183849399}
+  - {fileID: 134275079}
+  - {fileID: 2114582851}
+  - {fileID: 536183381}
+  - {fileID: 1174854056}
+  - {fileID: 1926553021}
+  - {fileID: 1091566599}
+  - {fileID: 98234306}
+  - {fileID: 1464200574}
+  - {fileID: 1687351361}
+  - {fileID: 1634125434}
+  - {fileID: 499889965}
+  - {fileID: 794175885}
+  - {fileID: 1022180786}
+  - {fileID: 135340241}
+  - {fileID: 489400801}
+  m_Father: {fileID: 1063041906}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &669906742
 GameObject:
   m_ObjectHideFlags: 0
@@ -7269,6 +7577,7 @@ GameObject:
   - component: {fileID: 669906746}
   - component: {fileID: 669906745}
   - component: {fileID: 669906744}
+  - component: {fileID: 669906749}
   m_Layer: 0
   m_Name: Panel15
   m_TagString: Rotatable
@@ -7283,13 +7592,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669906742}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -2.5, y: 3.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.5, y: 0, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &669906744
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7301,7 +7611,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 619487838}
 --- !u!33 &669906745
@@ -7323,6 +7633,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -7366,7 +7677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -7376,8 +7687,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &669906748
 MonoBehaviour:
@@ -7596,13 +7908,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &669906749
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669906742}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &683977615
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17006
+  m_Name: pb_Mesh139026
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7766,7 +8091,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16972
+  m_Name: pb_Mesh138988
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7938,6 +8263,7 @@ GameObject:
   - component: {fileID: 794175888}
   - component: {fileID: 794175887}
   - component: {fileID: 794175886}
+  - component: {fileID: 794175891}
   m_Layer: 0
   m_Name: Panel31
   m_TagString: Rotatable
@@ -7952,13 +8278,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794175884}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -6.5, y: 1.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.5, y: 0, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 24
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+  m_Father: {fileID: 644786614}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &794175886
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7970,7 +8297,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 683977615}
 --- !u!33 &794175887
@@ -7992,6 +8319,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -8035,7 +8363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -8045,8 +8373,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &794175890
 MonoBehaviour:
@@ -8265,13 +8594,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &794175891
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794175884}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &830207461
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17278
+  m_Name: pb_Mesh139320
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8457,6 +8799,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1059717741}
   m_RootOrder: 2
@@ -8522,6 +8865,7 @@ GameObject:
   - component: {fileID: 957604258}
   - component: {fileID: 957604257}
   - component: {fileID: 957604256}
+  - component: {fileID: 957604261}
   m_Layer: 0
   m_Name: Panel16
   m_TagString: Rotatable
@@ -8536,13 +8880,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957604254}
-  m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -1.5, y: 3.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 0, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &957604256
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8554,7 +8899,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1228129586}
 --- !u!33 &957604257
@@ -8576,6 +8921,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -8619,7 +8965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -8629,8 +8975,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &957604260
 MonoBehaviour:
@@ -8849,6 +9196,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &957604261
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957604254}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1005915809
 GameObject:
   m_ObjectHideFlags: 0
@@ -8903,6 +9263,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -8946,18 +9307,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
-  m_Size: {x: 15, y: 6, z: 1}
+    rid: 0
+  m_Size: {x: 20, y: 6, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
   m_PivotPosition: {x: 0, y: 0, z: 0}
-  m_UnmodifiedMeshVersion: 2066
+  m_UnmodifiedMeshVersion: 2088
   m_ShapeBox:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 7.5, y: 3, z: 0.5}
+    m_Extent: {x: 10, y: 3, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1005915814
 MonoBehaviour:
@@ -9086,55 +9448,55 @@ MonoBehaviour:
   - m_Vertices: 0b0000000e00000012000000
   m_SharedTextures: []
   m_Positions:
-  - {x: -7.5, y: -3, z: 0.5}
-  - {x: 7.5, y: -3, z: 0.5}
-  - {x: -7.5, y: 3, z: 0.5}
-  - {x: 7.5, y: 3, z: 0.5}
-  - {x: 7.5, y: -3, z: 0.5}
-  - {x: 7.5, y: -3, z: -0.5}
-  - {x: 7.5, y: 3, z: 0.5}
-  - {x: 7.5, y: 3, z: -0.5}
-  - {x: 7.5, y: -3, z: -0.5}
-  - {x: -7.5, y: -3, z: -0.5}
-  - {x: 7.5, y: 3, z: -0.5}
-  - {x: -7.5, y: 3, z: -0.5}
-  - {x: -7.5, y: -3, z: -0.5}
-  - {x: -7.5, y: -3, z: 0.5}
-  - {x: -7.5, y: 3, z: -0.5}
-  - {x: -7.5, y: 3, z: 0.5}
-  - {x: -7.5, y: 3, z: 0.5}
-  - {x: 7.5, y: 3, z: 0.5}
-  - {x: -7.5, y: 3, z: -0.5}
-  - {x: 7.5, y: 3, z: -0.5}
-  - {x: -7.5, y: -3, z: -0.5}
-  - {x: 7.5, y: -3, z: -0.5}
-  - {x: -7.5, y: -3, z: 0.5}
-  - {x: 7.5, y: -3, z: 0.5}
+  - {x: -10, y: -3, z: 0.5}
+  - {x: 10, y: -3, z: 0.5}
+  - {x: -10, y: 3, z: 0.5}
+  - {x: 10, y: 3, z: 0.5}
+  - {x: 10, y: -3, z: 0.5}
+  - {x: 10, y: -3, z: -0.5}
+  - {x: 10, y: 3, z: 0.5}
+  - {x: 10, y: 3, z: -0.5}
+  - {x: 10, y: -3, z: -0.5}
+  - {x: -10, y: -3, z: -0.5}
+  - {x: 10, y: 3, z: -0.5}
+  - {x: -10, y: 3, z: -0.5}
+  - {x: -10, y: -3, z: -0.5}
+  - {x: -10, y: -3, z: 0.5}
+  - {x: -10, y: 3, z: -0.5}
+  - {x: -10, y: 3, z: 0.5}
+  - {x: -10, y: 3, z: 0.5}
+  - {x: 10, y: 3, z: 0.5}
+  - {x: -10, y: 3, z: -0.5}
+  - {x: 10, y: 3, z: -0.5}
+  - {x: -10, y: -3, z: -0.5}
+  - {x: 10, y: -3, z: -0.5}
+  - {x: -10, y: -3, z: 0.5}
+  - {x: 10, y: -3, z: 0.5}
   m_Textures0:
-  - {x: 7.5, y: -3}
-  - {x: -7.5, y: -3}
-  - {x: 7.5, y: 3}
-  - {x: -7.5, y: 3}
+  - {x: 10, y: -3}
+  - {x: -10, y: -3}
+  - {x: 10, y: 3}
+  - {x: -10, y: 3}
   - {x: 0.5, y: -3}
   - {x: -0.5, y: -3}
   - {x: 0.5, y: 3}
   - {x: -0.5, y: 3}
-  - {x: 7.5, y: -3}
-  - {x: -7.5, y: -3}
-  - {x: 7.5, y: 3}
-  - {x: -7.5, y: 3}
+  - {x: 10, y: -3}
+  - {x: -10, y: -3}
+  - {x: 10, y: 3}
+  - {x: -10, y: 3}
   - {x: 0.5, y: -3}
   - {x: -0.5, y: -3}
   - {x: 0.5, y: 3}
   - {x: -0.5, y: 3}
-  - {x: -7.5, y: 0.5}
-  - {x: 7.5, y: 0.5}
-  - {x: -7.5, y: -0.5}
-  - {x: 7.5, y: -0.5}
-  - {x: 7.5, y: -0.5}
-  - {x: -7.5, y: -0.5}
-  - {x: 7.5, y: 0.5}
-  - {x: -7.5, y: 0.5}
+  - {x: -10, y: 0.5}
+  - {x: 10, y: 0.5}
+  - {x: -10, y: -0.5}
+  - {x: 10, y: -0.5}
+  - {x: 10, y: -0.5}
+  - {x: -10, y: -0.5}
+  - {x: 10, y: 0.5}
+  - {x: -10, y: 0.5}
   m_Textures2: []
   m_Textures3: []
   m_Tangents:
@@ -9171,7 +9533,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 1085183616}
-  m_VersionIndex: 2066
+  m_VersionIndex: 2088
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9184,8 +9546,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005915809}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 67920447}
   m_RootOrder: 1
@@ -9204,6 +9567,7 @@ GameObject:
   - component: {fileID: 1022180789}
   - component: {fileID: 1022180788}
   - component: {fileID: 1022180787}
+  - component: {fileID: 1022180792}
   m_Layer: 0
   m_Name: Panel32
   m_TagString: Rotatable
@@ -9218,13 +9582,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022180785}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -5.5, y: 1.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6, y: 0, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 25
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+  m_Father: {fileID: 644786614}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1022180787
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9236,7 +9601,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 460483877}
 --- !u!33 &1022180788
@@ -9258,6 +9623,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -9301,7 +9667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -9311,8 +9677,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1022180791
 MonoBehaviour:
@@ -9531,13 +9898,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1022180792
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022180785}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1035662158
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16784
+  m_Name: pb_Mesh138790
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9701,7 +10081,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16912
+  m_Name: pb_Mesh138926
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9949,6 +10329,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1838730503}
   - {fileID: 2145205816}
@@ -9988,39 +10369,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.5, y: 0.5, z: 47}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 183849399}
-  - {fileID: 134275079}
-  - {fileID: 2114582851}
-  - {fileID: 536183381}
-  - {fileID: 1293295752}
-  - {fileID: 1250083108}
-  - {fileID: 1604031424}
-  - {fileID: 1255070731}
-  - {fileID: 1174854056}
-  - {fileID: 1926553021}
-  - {fileID: 1091566599}
-  - {fileID: 98234306}
-  - {fileID: 669906743}
-  - {fileID: 957604255}
-  - {fileID: 1660526580}
-  - {fileID: 468653416}
-  - {fileID: 1464200574}
-  - {fileID: 1687351361}
-  - {fileID: 1634125434}
-  - {fileID: 499889965}
-  - {fileID: 1956117955}
-  - {fileID: 202887758}
-  - {fileID: 1833242432}
-  - {fileID: 1727100507}
-  - {fileID: 794175885}
-  - {fileID: 1022180786}
-  - {fileID: 135340241}
-  - {fileID: 489400801}
-  - {fileID: 1154811832}
-  - {fileID: 154078285}
-  - {fileID: 79363177}
-  - {fileID: 600525717}
+  - {fileID: 644786614}
+  - {fileID: 399964664}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10030,7 +10382,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16814
+  m_Name: pb_Mesh138822
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10194,7 +10546,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17044
+  m_Name: pb_Mesh89204
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10206,7 +10558,7 @@ Mesh:
     vertexCount: 24
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 7.5, y: 3, z: 0.5}
+      m_Extent: {x: 10, y: 3, z: 0.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -10285,7 +10637,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 1152
-    _typelessdata: 0000f0c0000040c00000003f00000000000000000000803f000080bf0000000000000000000080bf0000f040000040c00000f040000040c00000003f00000000000000000000803f000080bf0000000000000000000080bf0000f0c0000040c00000f0c0000040400000003f00000000000000000000803f000080bf0000000000000000000080bf0000f040000040400000f040000040400000003f00000000000000000000803f000080bf0000000000000000000080bf0000f0c0000040400000f040000040c00000003f0000803f000000000000000000000000000000000000803f000080bf0000003f000040c00000f040000040c0000000bf0000803f000000000000000000000000000000000000803f000080bf000000bf000040c00000f040000040400000003f0000803f000000000000000000000000000000000000803f000080bf0000003f000040400000f04000004040000000bf0000803f000000000000000000000000000000000000803f000080bf000000bf000040400000f040000040c0000000bf0000000000000000000080bf0000803f0000000000000000000080bf0000f040000040c00000f0c0000040c0000000bf0000000000000000000080bf0000803f0000000000000000000080bf0000f0c0000040c00000f04000004040000000bf0000000000000000000080bf0000803f0000000000000000000080bf0000f040000040400000f0c000004040000000bf0000000000000000000080bf0000803f0000000000000000000080bf0000f0c0000040400000f0c0000040c0000000bf000080bf00000000000000000000000000000000000080bf000080bf0000003f000040c00000f0c0000040c00000003f000080bf00000000000000000000000000000000000080bf000080bf000000bf000040c00000f0c000004040000000bf000080bf00000000000000000000000000000000000080bf000080bf0000003f000040400000f0c0000040400000003f000080bf00000000000000000000000000000000000080bf000080bf000000bf000040400000f0c0000040400000003f000000000000803f000000000000803f0000000000000000000080bf0000f0c00000003f0000f040000040400000003f000000000000803f000000000000803f0000000000000000000080bf0000f0400000003f0000f0c000004040000000bf000000000000803f000000000000803f0000000000000000000080bf0000f0c0000000bf0000f04000004040000000bf000000000000803f000000000000803f0000000000000000000080bf0000f040000000bf0000f0c0000040c0000000bf00000000000080bf00000000000080bf0000000000000000000080bf0000f040000000bf0000f040000040c0000000bf00000000000080bf00000000000080bf0000000000000000000080bf0000f0c0000000bf0000f0c0000040c00000003f00000000000080bf00000000000080bf0000000000000000000080bf0000f0400000003f0000f040000040c00000003f00000000000080bf00000000000080bf0000000000000000000080bf0000f0c00000003f
+    _typelessdata: 000020c1000040c00000003f00000000000000000000803f000080bf0000000000000000000080bf00002041000040c000002041000040c00000003f00000000000000000000803f000080bf0000000000000000000080bf000020c1000040c0000020c1000040400000003f00000000000000000000803f000080bf0000000000000000000080bf000020410000404000002041000040400000003f00000000000000000000803f000080bf0000000000000000000080bf000020c10000404000002041000040c00000003f0000803f000000000000000000000000000000000000803f000080bf0000003f000040c000002041000040c0000000bf0000803f000000000000000000000000000000000000803f000080bf000000bf000040c000002041000040400000003f0000803f000000000000000000000000000000000000803f000080bf0000003f000040400000204100004040000000bf0000803f000000000000000000000000000000000000803f000080bf000000bf0000404000002041000040c0000000bf0000000000000000000080bf0000803f0000000000000000000080bf00002041000040c0000020c1000040c0000000bf0000000000000000000080bf0000803f0000000000000000000080bf000020c1000040c00000204100004040000000bf0000000000000000000080bf0000803f0000000000000000000080bf0000204100004040000020c100004040000000bf0000000000000000000080bf0000803f0000000000000000000080bf000020c100004040000020c1000040c0000000bf000080bf00000000000000000000000000000000000080bf000080bf0000003f000040c0000020c1000040c00000003f000080bf00000000000000000000000000000000000080bf000080bf000000bf000040c0000020c100004040000000bf000080bf00000000000000000000000000000000000080bf000080bf0000003f00004040000020c1000040400000003f000080bf00000000000000000000000000000000000080bf000080bf000000bf00004040000020c1000040400000003f000000000000803f000000000000803f0000000000000000000080bf000020c10000003f00002041000040400000003f000000000000803f000000000000803f0000000000000000000080bf000020410000003f000020c100004040000000bf000000000000803f000000000000803f0000000000000000000080bf000020c1000000bf0000204100004040000000bf000000000000803f000000000000803f0000000000000000000080bf00002041000000bf000020c1000040c0000000bf00000000000080bf00000000000080bf0000000000000000000080bf00002041000000bf00002041000040c0000000bf00000000000080bf00000000000080bf0000000000000000000080bf000020c1000000bf000020c1000040c00000003f00000000000080bf00000000000080bf0000000000000000000080bf000020410000003f00002041000040c00000003f00000000000080bf00000000000080bf0000000000000000000080bf000020c10000003f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -10340,7 +10692,7 @@ Mesh:
     m_UVInfo: 0
   m_LocalAABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 7.5, y: 3, z: 0.5}
+    m_Extent: {x: 10, y: 3, z: 0.5}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
@@ -10366,6 +10718,7 @@ GameObject:
   - component: {fileID: 1091566602}
   - component: {fileID: 1091566601}
   - component: {fileID: 1091566600}
+  - component: {fileID: 1091566605}
   m_Layer: 0
   m_Name: Panel13
   m_TagString: Rotatable
@@ -10380,13 +10733,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091566598}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -4.5, y: 3.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.5, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 180, y: 90, z: -90}
+  m_Father: {fileID: 644786614}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1091566600
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10398,7 +10752,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 315142965}
 --- !u!33 &1091566601
@@ -10420,6 +10774,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -10463,7 +10818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -10473,8 +10828,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1091566604
 MonoBehaviour:
@@ -10693,6 +11049,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1091566605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091566598}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1154811831
 GameObject:
   m_ObjectHideFlags: 0
@@ -10707,6 +11076,7 @@ GameObject:
   - component: {fileID: 1154811835}
   - component: {fileID: 1154811834}
   - component: {fileID: 1154811833}
+  - component: {fileID: 1154811838}
   m_Layer: 0
   m_Name: Panel35
   m_TagString: Rotatable
@@ -10721,13 +11091,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154811831}
-  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -2.5, y: 1.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.5, y: 0, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 28
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1154811833
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10739,7 +11110,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 230386080}
 --- !u!33 &1154811834
@@ -10761,6 +11132,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -10804,7 +11176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -10814,8 +11186,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1154811837
 MonoBehaviour:
@@ -11034,6 +11407,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1154811838
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154811831}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1174854055
 GameObject:
   m_ObjectHideFlags: 0
@@ -11048,6 +11434,7 @@ GameObject:
   - component: {fileID: 1174854059}
   - component: {fileID: 1174854058}
   - component: {fileID: 1174854057}
+  - component: {fileID: 1174854062}
   m_Layer: 0
   m_Name: Panel11
   m_TagString: Rotatable
@@ -11062,13 +11449,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174854055}
-  m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -6.5, y: 3.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.5, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
+  m_Father: {fileID: 644786614}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1174854057
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11080,7 +11468,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 588396277}
 --- !u!33 &1174854058
@@ -11102,6 +11490,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -11145,7 +11534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -11155,8 +11544,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1174854061
 MonoBehaviour:
@@ -11375,13 +11765,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1174854062
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174854055}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1175641496
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16926
+  m_Name: pb_Mesh138940
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11545,7 +11948,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17030
+  m_Name: pb_Mesh139050
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11717,6 +12120,7 @@ GameObject:
   - component: {fileID: 1250083111}
   - component: {fileID: 1250083110}
   - component: {fileID: 1250083109}
+  - component: {fileID: 1250083114}
   m_Layer: 0
   m_Name: Panel06
   m_TagString: Rotatable
@@ -11731,13 +12135,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250083107}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -1.5, y: 4.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 0, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 180, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1250083109
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11749,7 +12154,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1704773676}
 --- !u!33 &1250083110
@@ -11771,6 +12176,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -11814,7 +12220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -11824,8 +12230,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1250083113
 MonoBehaviour:
@@ -12044,6 +12451,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1250083114
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250083107}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1255070730
 GameObject:
   m_ObjectHideFlags: 0
@@ -12058,6 +12478,7 @@ GameObject:
   - component: {fileID: 1255070734}
   - component: {fileID: 1255070733}
   - component: {fileID: 1255070732}
+  - component: {fileID: 1255070737}
   m_Layer: 0
   m_Name: Panel08
   m_TagString: Rotatable
@@ -12072,13 +12493,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255070730}
-  m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: 0.5, y: 4.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1255070732
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12090,7 +12512,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2000080712}
 --- !u!33 &1255070733
@@ -12112,6 +12534,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -12155,7 +12578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -12165,8 +12588,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1255070736
 MonoBehaviour:
@@ -12385,6 +12809,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1255070737
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255070730}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1269242062
 GameObject:
   m_ObjectHideFlags: 0
@@ -12416,6 +12853,7 @@ Transform:
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: -0.5}
   m_LocalPosition: {x: -0.67673206, y: 15.444246, z: -19.157448}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1309643068}
   m_RootOrder: 2
@@ -12453,6 +12891,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -12496,7 +12935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -12506,8 +12945,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cylinder, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
       data:
         m_AxisDivisions: 6
@@ -13062,6 +13502,7 @@ GameObject:
   - component: {fileID: 1293295755}
   - component: {fileID: 1293295754}
   - component: {fileID: 1293295753}
+  - component: {fileID: 1293295758}
   m_Layer: 0
   m_Name: Panel05
   m_TagString: Rotatable
@@ -13076,13 +13517,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293295751}
-  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -2.5, y: 4.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.5, y: 0, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1293295753
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13094,7 +13536,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2080122357}
 --- !u!33 &1293295754
@@ -13116,6 +13558,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -13159,7 +13602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -13169,8 +13612,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1293295757
 MonoBehaviour:
@@ -13389,6 +13833,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1293295758
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293295751}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1309643067
 GameObject:
   m_ObjectHideFlags: 0
@@ -13415,6 +13872,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.676732, y: -13.444246, z: 68.40745}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1503762663}
   - {fileID: 1863537837}
@@ -13484,6 +13942,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -13517,8 +13976,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370799046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -2.5, y: 0, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 67920447}
   m_RootOrder: 2
@@ -13556,6 +14016,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -13599,18 +14060,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
-  m_Size: {x: 15, y: 6, z: 1}
+    rid: 0
+  m_Size: {x: 20, y: 6, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
   m_PivotPosition: {x: 0, y: 0, z: 0}
-  m_UnmodifiedMeshVersion: 2066
+  m_UnmodifiedMeshVersion: 2105
   m_ShapeBox:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 7.5, y: 3, z: 0.5}
+    m_Extent: {x: 10, y: 3, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1370799052
 MonoBehaviour:
@@ -13739,55 +14201,55 @@ MonoBehaviour:
   - m_Vertices: 0b0000000e00000012000000
   m_SharedTextures: []
   m_Positions:
-  - {x: -7.5, y: -3, z: 0.5}
-  - {x: 7.5, y: -3, z: 0.5}
-  - {x: -7.5, y: 3, z: 0.5}
-  - {x: 7.5, y: 3, z: 0.5}
-  - {x: 7.5, y: -3, z: 0.5}
-  - {x: 7.5, y: -3, z: -0.5}
-  - {x: 7.5, y: 3, z: 0.5}
-  - {x: 7.5, y: 3, z: -0.5}
-  - {x: 7.5, y: -3, z: -0.5}
-  - {x: -7.5, y: -3, z: -0.5}
-  - {x: 7.5, y: 3, z: -0.5}
-  - {x: -7.5, y: 3, z: -0.5}
-  - {x: -7.5, y: -3, z: -0.5}
-  - {x: -7.5, y: -3, z: 0.5}
-  - {x: -7.5, y: 3, z: -0.5}
-  - {x: -7.5, y: 3, z: 0.5}
-  - {x: -7.5, y: 3, z: 0.5}
-  - {x: 7.5, y: 3, z: 0.5}
-  - {x: -7.5, y: 3, z: -0.5}
-  - {x: 7.5, y: 3, z: -0.5}
-  - {x: -7.5, y: -3, z: -0.5}
-  - {x: 7.5, y: -3, z: -0.5}
-  - {x: -7.5, y: -3, z: 0.5}
-  - {x: 7.5, y: -3, z: 0.5}
+  - {x: -10, y: -3, z: 0.5}
+  - {x: 10, y: -3, z: 0.5}
+  - {x: -10, y: 3, z: 0.5}
+  - {x: 10, y: 3, z: 0.5}
+  - {x: 10, y: -3, z: 0.5}
+  - {x: 10, y: -3, z: -0.5}
+  - {x: 10, y: 3, z: 0.5}
+  - {x: 10, y: 3, z: -0.5}
+  - {x: 10, y: -3, z: -0.5}
+  - {x: -10, y: -3, z: -0.5}
+  - {x: 10, y: 3, z: -0.5}
+  - {x: -10, y: 3, z: -0.5}
+  - {x: -10, y: -3, z: -0.5}
+  - {x: -10, y: -3, z: 0.5}
+  - {x: -10, y: 3, z: -0.5}
+  - {x: -10, y: 3, z: 0.5}
+  - {x: -10, y: 3, z: 0.5}
+  - {x: 10, y: 3, z: 0.5}
+  - {x: -10, y: 3, z: -0.5}
+  - {x: 10, y: 3, z: -0.5}
+  - {x: -10, y: -3, z: -0.5}
+  - {x: 10, y: -3, z: -0.5}
+  - {x: -10, y: -3, z: 0.5}
+  - {x: 10, y: -3, z: 0.5}
   m_Textures0:
-  - {x: 7.5, y: -3}
-  - {x: -7.5, y: -3}
-  - {x: 7.5, y: 3}
-  - {x: -7.5, y: 3}
+  - {x: 10, y: -3}
+  - {x: -10, y: -3}
+  - {x: 10, y: 3}
+  - {x: -10, y: 3}
   - {x: 0.5, y: -3}
   - {x: -0.5, y: -3}
   - {x: 0.5, y: 3}
   - {x: -0.5, y: 3}
-  - {x: 7.5, y: -3}
-  - {x: -7.5, y: -3}
-  - {x: 7.5, y: 3}
-  - {x: -7.5, y: 3}
+  - {x: 10, y: -3}
+  - {x: -10, y: -3}
+  - {x: 10, y: 3}
+  - {x: -10, y: 3}
   - {x: 0.5, y: -3}
   - {x: -0.5, y: -3}
   - {x: 0.5, y: 3}
   - {x: -0.5, y: 3}
-  - {x: -7.5, y: 0.5}
-  - {x: 7.5, y: 0.5}
-  - {x: -7.5, y: -0.5}
-  - {x: 7.5, y: -0.5}
-  - {x: 7.5, y: -0.5}
-  - {x: -7.5, y: -0.5}
-  - {x: 7.5, y: 0.5}
-  - {x: -7.5, y: 0.5}
+  - {x: -10, y: 0.5}
+  - {x: 10, y: 0.5}
+  - {x: -10, y: -0.5}
+  - {x: 10, y: -0.5}
+  - {x: 10, y: -0.5}
+  - {x: -10, y: -0.5}
+  - {x: 10, y: 0.5}
+  - {x: -10, y: 0.5}
   m_Textures2: []
   m_Textures3: []
   m_Tangents:
@@ -13824,7 +14286,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 2025397761}
-  m_VersionIndex: 2072
+  m_VersionIndex: 2105
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -13869,10 +14331,175 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.739454, y: -12.717613, z: 62.7933}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!43 &1413776471
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pb_Mesh-74612
+  serializedVersion: 10
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 36
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 24
+    localAABB:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 3, z: 7.5}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000001000200010003000200040005000600050007000600080009000a0009000b000a000c000d000e000d000f000e00100011001200110013001200140015001600150017001600
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 24
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 40
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 1152
+    _typelessdata: 000000bf000040c00000f04000000000000000000000803f000080bf0000000000000000000080bf0000003f000040c00000003f000040c00000f04000000000000000000000803f000080bf0000000000000000000080bf000000bf000040c0000000bf000040400000f04000000000000000000000803f000080bf0000000000000000000080bf0000003f000040400000003f000040400000f04000000000000000000000803f000080bf0000000000000000000080bf000000bf000040400000003f000040c00000f0400000803f000000000000000000000000000000000000803f000080bf0000f040000040c00000003f000040c00000f0c00000803f000000000000000000000000000000000000803f000080bf0000f0c0000040c00000003f000040400000f0400000803f000000000000000000000000000000000000803f000080bf0000f040000040400000003f000040400000f0c00000803f000000000000000000000000000000000000803f000080bf0000f0c0000040400000003f000040c00000f0c00000000000000000000080bf0000803f0000000000000000000080bf0000003f000040c0000000bf000040c00000f0c00000000000000000000080bf0000803f0000000000000000000080bf000000bf000040c00000003f000040400000f0c00000000000000000000080bf0000803f0000000000000000000080bf0000003f00004040000000bf000040400000f0c00000000000000000000080bf0000803f0000000000000000000080bf000000bf00004040000000bf000040c00000f0c0000080bf00000000000000000000000000000000000080bf000080bf0000f040000040c0000000bf000040c00000f040000080bf00000000000000000000000000000000000080bf000080bf0000f0c0000040c0000000bf000040400000f0c0000080bf00000000000000000000000000000000000080bf000080bf0000f04000004040000000bf000040400000f040000080bf00000000000000000000000000000000000080bf000080bf0000f0c000004040000000bf000040400000f040000000000000803f000000000000803f0000000000000000000080bf000000bf0000f0400000003f000040400000f040000000000000803f000000000000803f0000000000000000000080bf0000003f0000f040000000bf000040400000f0c0000000000000803f000000000000803f0000000000000000000080bf000000bf0000f0c00000003f000040400000f0c0000000000000803f000000000000803f0000000000000000000080bf0000003f0000f0c0000000bf000040c00000f0c000000000000080bf00000000000080bf0000000000000000000080bf0000003f0000f0c00000003f000040c00000f0c000000000000080bf00000000000080bf0000000000000000000080bf000000bf0000f0c0000000bf000040c00000f04000000000000080bf00000000000080bf0000000000000000000080bf0000003f0000f0400000003f000040c00000f04000000000000080bf00000000000080bf0000000000000000000080bf000000bf0000f040
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.5, y: 3, z: 7.5}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &1464200573
 GameObject:
   m_ObjectHideFlags: 0
@@ -13887,6 +14514,7 @@ GameObject:
   - component: {fileID: 1464200577}
   - component: {fileID: 1464200576}
   - component: {fileID: 1464200575}
+  - component: {fileID: 1464200580}
   m_Layer: 0
   m_Name: Panel21
   m_TagString: Rotatable
@@ -13901,13 +14529,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464200573}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: -0.5}
-  m_LocalPosition: {x: -6.5, y: 2.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.5, y: 0, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 180, y: 90, z: -90}
+  m_Father: {fileID: 644786614}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1464200575
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13919,7 +14548,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1777658686}
 --- !u!33 &1464200576
@@ -13941,6 +14570,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -13984,7 +14614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -13994,8 +14624,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1464200579
 MonoBehaviour:
@@ -14214,13 +14845,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1464200580
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464200573}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1470538733
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16954
+  m_Name: pb_Mesh121882
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14384,7 +15028,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17168
+  m_Name: pb_Mesh89328
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14665,6 +15309,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -14708,7 +15353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1.5, y: 0.1, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -14718,8 +15363,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.75, y: 0.05, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1503762662
 MonoBehaviour:
@@ -14948,6 +15594,7 @@ Transform:
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: -0.5}
   m_LocalPosition: {x: -0.67673206, y: 15.444246, z: -19.202446}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1309643068}
   m_RootOrder: 0
@@ -14958,7 +15605,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16798
+  m_Name: pb_Mesh138806
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15116,6 +15763,350 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1586281036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1586281037}
+  - component: {fileID: 1586281042}
+  - component: {fileID: 1586281041}
+  - component: {fileID: 1586281040}
+  - component: {fileID: 1586281039}
+  - component: {fileID: 1586281038}
+  m_Layer: 0
+  m_Name: CubeBackWall (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1586281037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586281036}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12, y: 0, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 67920447}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1586281038
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586281036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1413776471}
+--- !u!33 &1586281039
+MeshFilter:
+  m_ObjectHideFlags: 10
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586281036}
+  m_Mesh: {fileID: 1413776471}
+--- !u!23 &1586281040
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586281036}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 2
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1586281041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586281036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca002da428252441b92f28d83c8a65f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Shape:
+    rid: 0
+  m_Size: {x: 1, y: 6, z: 15}
+  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+  m_PivotLocation: 0
+  m_PivotPosition: {x: 0, y: 0, z: 0}
+  m_UnmodifiedMeshVersion: 2116
+  m_ShapeBox:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.5, y: 3, z: 7.5}
+  references:
+    version: 2
+    RefIds:
+    - rid: 0
+      type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
+--- !u!114 &1586281042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586281036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8233d90336aea43098adf6dbabd606a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MeshFormatVersion: 2
+  m_Faces:
+  - m_Indexes: 000000000100000002000000010000000300000002000000
+    m_SmoothingGroup: 0
+    m_Uv:
+      m_UseWorldSpace: 0
+      m_FlipU: 0
+      m_FlipV: 0
+      m_SwapUV: 0
+      m_Fill: 1
+      m_Scale: {x: 1, y: 1}
+      m_Offset: {x: 0, y: 0}
+      m_Rotation: 0
+      m_Anchor: 9
+    m_Material: {fileID: 0}
+    m_SubmeshIndex: 0
+    m_ManualUV: 0
+    elementGroup: -1
+    m_TextureGroup: -1
+  - m_Indexes: 040000000500000006000000050000000700000006000000
+    m_SmoothingGroup: 0
+    m_Uv:
+      m_UseWorldSpace: 0
+      m_FlipU: 0
+      m_FlipV: 0
+      m_SwapUV: 0
+      m_Fill: 1
+      m_Scale: {x: 1, y: 1}
+      m_Offset: {x: 0, y: 0}
+      m_Rotation: 0
+      m_Anchor: 9
+    m_Material: {fileID: 0}
+    m_SubmeshIndex: 0
+    m_ManualUV: 0
+    elementGroup: -1
+    m_TextureGroup: -1
+  - m_Indexes: 08000000090000000a000000090000000b0000000a000000
+    m_SmoothingGroup: 0
+    m_Uv:
+      m_UseWorldSpace: 0
+      m_FlipU: 0
+      m_FlipV: 0
+      m_SwapUV: 0
+      m_Fill: 1
+      m_Scale: {x: 1, y: 1}
+      m_Offset: {x: 0, y: 0}
+      m_Rotation: 0
+      m_Anchor: 9
+    m_Material: {fileID: 0}
+    m_SubmeshIndex: 0
+    m_ManualUV: 0
+    elementGroup: -1
+    m_TextureGroup: -1
+  - m_Indexes: 0c0000000d0000000e0000000d0000000f0000000e000000
+    m_SmoothingGroup: 0
+    m_Uv:
+      m_UseWorldSpace: 0
+      m_FlipU: 0
+      m_FlipV: 0
+      m_SwapUV: 0
+      m_Fill: 1
+      m_Scale: {x: 1, y: 1}
+      m_Offset: {x: 0, y: 0}
+      m_Rotation: 0
+      m_Anchor: 9
+    m_Material: {fileID: 0}
+    m_SubmeshIndex: 0
+    m_ManualUV: 0
+    elementGroup: -1
+    m_TextureGroup: -1
+  - m_Indexes: 100000001100000012000000110000001300000012000000
+    m_SmoothingGroup: 0
+    m_Uv:
+      m_UseWorldSpace: 0
+      m_FlipU: 0
+      m_FlipV: 0
+      m_SwapUV: 0
+      m_Fill: 1
+      m_Scale: {x: 1, y: 1}
+      m_Offset: {x: 0, y: 0}
+      m_Rotation: 0
+      m_Anchor: 9
+    m_Material: {fileID: 0}
+    m_SubmeshIndex: 0
+    m_ManualUV: 0
+    elementGroup: -1
+    m_TextureGroup: -1
+  - m_Indexes: 140000001500000016000000150000001700000016000000
+    m_SmoothingGroup: 0
+    m_Uv:
+      m_UseWorldSpace: 0
+      m_FlipU: 0
+      m_FlipV: 0
+      m_SwapUV: 0
+      m_Fill: 1
+      m_Scale: {x: 1, y: 1}
+      m_Offset: {x: 0, y: 0}
+      m_Rotation: 0
+      m_Anchor: 9
+    m_Material: {fileID: 0}
+    m_SubmeshIndex: 0
+    m_ManualUV: 0
+    elementGroup: -1
+    m_TextureGroup: -1
+  m_SharedVertices:
+  - m_Vertices: 000000000d00000016000000
+  - m_Vertices: 010000000400000017000000
+  - m_Vertices: 020000000f00000010000000
+  - m_Vertices: 030000000600000011000000
+  - m_Vertices: 050000000800000015000000
+  - m_Vertices: 070000000a00000013000000
+  - m_Vertices: 090000000c00000014000000
+  - m_Vertices: 0b0000000e00000012000000
+  m_SharedTextures: []
+  m_Positions:
+  - {x: -0.5, y: -3, z: 7.5}
+  - {x: 0.5, y: -3, z: 7.5}
+  - {x: -0.5, y: 3, z: 7.5}
+  - {x: 0.5, y: 3, z: 7.5}
+  - {x: 0.5, y: -3, z: 7.5}
+  - {x: 0.5, y: -3, z: -7.5}
+  - {x: 0.5, y: 3, z: 7.5}
+  - {x: 0.5, y: 3, z: -7.5}
+  - {x: 0.5, y: -3, z: -7.5}
+  - {x: -0.5, y: -3, z: -7.5}
+  - {x: 0.5, y: 3, z: -7.5}
+  - {x: -0.5, y: 3, z: -7.5}
+  - {x: -0.5, y: -3, z: -7.5}
+  - {x: -0.5, y: -3, z: 7.5}
+  - {x: -0.5, y: 3, z: -7.5}
+  - {x: -0.5, y: 3, z: 7.5}
+  - {x: -0.5, y: 3, z: 7.5}
+  - {x: 0.5, y: 3, z: 7.5}
+  - {x: -0.5, y: 3, z: -7.5}
+  - {x: 0.5, y: 3, z: -7.5}
+  - {x: -0.5, y: -3, z: -7.5}
+  - {x: 0.5, y: -3, z: -7.5}
+  - {x: -0.5, y: -3, z: 7.5}
+  - {x: 0.5, y: -3, z: 7.5}
+  m_Textures0:
+  - {x: 0.5, y: -3}
+  - {x: -0.5, y: -3}
+  - {x: 0.5, y: 3}
+  - {x: -0.5, y: 3}
+  - {x: 7.5, y: -3}
+  - {x: -7.5, y: -3}
+  - {x: 7.5, y: 3}
+  - {x: -7.5, y: 3}
+  - {x: 0.5, y: -3}
+  - {x: -0.5, y: -3}
+  - {x: 0.5, y: 3}
+  - {x: -0.5, y: 3}
+  - {x: 7.5, y: -3}
+  - {x: -7.5, y: -3}
+  - {x: 7.5, y: 3}
+  - {x: -7.5, y: 3}
+  - {x: -0.5, y: 7.5}
+  - {x: 0.5, y: 7.5}
+  - {x: -0.5, y: -7.5}
+  - {x: 0.5, y: -7.5}
+  - {x: 0.5, y: -7.5}
+  - {x: -0.5, y: -7.5}
+  - {x: 0.5, y: 7.5}
+  - {x: -0.5, y: 7.5}
+  m_Textures2: []
+  m_Textures3: []
+  m_Tangents:
+  - {x: -1, y: 0, z: 0, w: -1}
+  - {x: -1, y: 0, z: 0, w: -1}
+  - {x: -1, y: 0, z: 0, w: -1}
+  - {x: -1, y: 0, z: 0, w: -1}
+  - {x: 0, y: 0, z: 1, w: -1}
+  - {x: 0, y: 0, z: 1, w: -1}
+  - {x: 0, y: 0, z: 1, w: -1}
+  - {x: 0, y: 0, z: 1, w: -1}
+  - {x: 1, y: 0, z: 0, w: -1}
+  - {x: 1, y: 0, z: 0, w: -1}
+  - {x: 1, y: 0, z: 0, w: -1}
+  - {x: 1, y: 0, z: 0, w: -1}
+  - {x: 0, y: 0, z: -1, w: -1}
+  - {x: 0, y: 0, z: -1, w: -1}
+  - {x: 0, y: 0, z: -1, w: -1}
+  - {x: 0, y: 0, z: -1, w: -1}
+  - {x: 1, y: 0, z: 0, w: -1}
+  - {x: 1, y: 0, z: 0, w: -1}
+  - {x: 1, y: 0, z: 0, w: -1}
+  - {x: 1, y: 0, z: 0, w: -1}
+  - {x: -1, y: 0, z: 0, w: -1}
+  - {x: -1, y: 0, z: 0, w: -1}
+  - {x: -1, y: 0, z: 0, w: -1}
+  - {x: -1, y: 0, z: 0, w: -1}
+  m_Colors: []
+  m_UnwrapParameters:
+    m_HardAngle: 88
+    m_PackMargin: 20
+    m_AngleError: 8
+    m_AreaError: 15
+  m_PreserveMeshAssetOnDestroy: 0
+  assetGuid: 
+  m_Mesh: {fileID: 1413776471}
+  m_VersionIndex: 2119
+  m_IsSelectable: 1
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!1 &1604031423
 GameObject:
   m_ObjectHideFlags: 0
@@ -15130,6 +16121,7 @@ GameObject:
   - component: {fileID: 1604031427}
   - component: {fileID: 1604031426}
   - component: {fileID: 1604031425}
+  - component: {fileID: 1604031430}
   m_Layer: 0
   m_Name: Panel07
   m_TagString: Rotatable
@@ -15144,13 +16136,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604031423}
-  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -0.5, y: 4.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 0, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1604031425
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15162,7 +16155,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1674458907}
 --- !u!33 &1604031426
@@ -15184,6 +16177,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -15227,7 +16221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -15237,8 +16231,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1604031429
 MonoBehaviour:
@@ -15457,6 +16452,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1604031430
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604031423}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1634125433
 GameObject:
   m_ObjectHideFlags: 0
@@ -15471,6 +16479,7 @@ GameObject:
   - component: {fileID: 1634125437}
   - component: {fileID: 1634125436}
   - component: {fileID: 1634125435}
+  - component: {fileID: 1634125440}
   m_Layer: 0
   m_Name: Panel23
   m_TagString: Rotatable
@@ -15485,13 +16494,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634125433}
-  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -4.5, y: 2.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.5, y: 0, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: -90}
+  m_Father: {fileID: 644786614}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1634125435
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15503,7 +16513,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 830207461}
 --- !u!33 &1634125436
@@ -15525,6 +16535,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -15568,7 +16579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -15578,8 +16589,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1634125439
 MonoBehaviour:
@@ -15798,13 +16810,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1634125440
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634125433}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1638396493
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17300
+  m_Name: pb_Mesh139344
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16051,6 +17076,7 @@ Transform:
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -16069,6 +17095,7 @@ GameObject:
   - component: {fileID: 1660526583}
   - component: {fileID: 1660526582}
   - component: {fileID: 1660526581}
+  - component: {fileID: 1660526586}
   m_Layer: 0
   m_Name: Panel17
   m_TagString: Rotatable
@@ -16083,13 +17110,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660526579}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -0.5, y: 3.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 0, z: -7.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1660526581
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16101,7 +17129,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1638396493}
 --- !u!33 &1660526582
@@ -16123,6 +17151,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -16166,7 +17195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -16176,8 +17205,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1660526585
 MonoBehaviour:
@@ -16396,13 +17426,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1660526586
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660526579}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1674458907
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17264
+  m_Name: pb_Mesh139306
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16574,6 +17617,7 @@ GameObject:
   - component: {fileID: 1687351364}
   - component: {fileID: 1687351363}
   - component: {fileID: 1687351362}
+  - component: {fileID: 1687351367}
   m_Layer: 0
   m_Name: Panel22
   m_TagString: Rotatable
@@ -16588,13 +17632,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687351360}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -5.5, y: 2.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6, y: 0, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+  m_Father: {fileID: 644786614}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1687351362
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16606,7 +17651,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 308995284}
 --- !u!33 &1687351363
@@ -16628,6 +17673,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -16671,7 +17717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -16681,8 +17727,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1687351366
 MonoBehaviour:
@@ -16901,13 +17948,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1687351367
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687351360}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1704773676
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17140
+  m_Name: pb_Mesh139164
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17079,6 +18139,7 @@ GameObject:
   - component: {fileID: 1727100510}
   - component: {fileID: 1727100509}
   - component: {fileID: 1727100508}
+  - component: {fileID: 1727100513}
   m_Layer: 0
   m_Name: Panel28
   m_TagString: Rotatable
@@ -17093,13 +18154,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727100506}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.5, y: 2.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 23
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1727100508
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17111,7 +18173,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 67662126}
 --- !u!33 &1727100509
@@ -17133,6 +18195,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -17176,7 +18239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -17186,8 +18249,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1727100512
 MonoBehaviour:
@@ -17406,13 +18470,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1727100513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727100506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1777658686
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17228
+  m_Name: pb_Mesh139254
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17576,7 +18653,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16862
+  m_Name: pb_Mesh138872
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17588,7 +18665,7 @@ Mesh:
     vertexCount: 24
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.50000006, y: 7.5, z: 5.5}
+      m_Extent: {x: 0.50000006, y: 10, z: 7.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -17667,7 +18744,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 1152
-    _typelessdata: 010000bf0000f0c00000b04000000000000000000000803f000080bf0000000000000000000080bf0100003f0000f0c00100003f0000f0c00000b04000000000000000000000803f000080bf0000000000000000000080bf010000bf0000f0c0010000bf0000f0400000b04000000000000000000000803f000080bf0000000000000000000080bf0100003f0000f0400100003f0000f0400000b04000000000000000000000803f000080bf0000000000000000000080bf010000bf0000f0400100003f0000f0c00000b0400000803f000000000000000000000000000000000000803f000080bf0000b0400000f0c00100003f0000f0c00000b0c00000803f000000000000000000000000000000000000803f000080bf0000b0c00000f0c00100003f0000f0400000b0400000803f000000000000000000000000000000000000803f000080bf0000b0400000f0400100003f0000f0400000b0c00000803f000000000000000000000000000000000000803f000080bf0000b0c00000f0400100003f0000f0c00000b0c00000000000000000000080bf0000803f0000000000000000000080bf0100003f0000f0c0010000bf0000f0c00000b0c00000000000000000000080bf0000803f0000000000000000000080bf010000bf0000f0c00100003f0000f0400000b0c00000000000000000000080bf0000803f0000000000000000000080bf0100003f0000f040010000bf0000f0400000b0c00000000000000000000080bf0000803f0000000000000000000080bf010000bf0000f040010000bf0000f0c00000b0c0000080bf00000000000000000000000000000000000080bf000080bf0000b0400000f0c0010000bf0000f0c00000b040000080bf00000000000000000000000000000000000080bf000080bf0000b0c00000f0c0010000bf0000f0400000b0c0000080bf00000000000000000000000000000000000080bf000080bf0000b0400000f040010000bf0000f0400000b040000080bf00000000000000000000000000000000000080bf000080bf0000b0c00000f040010000bf0000f0400000b040000000000000803f000000000000803f0000000000000000000080bf010000bf0000b0400100003f0000f0400000b040000000000000803f000000000000803f0000000000000000000080bf0100003f0000b040010000bf0000f0400000b0c0000000000000803f000000000000803f0000000000000000000080bf010000bf0000b0c00100003f0000f0400000b0c0000000000000803f000000000000803f0000000000000000000080bf0100003f0000b0c0010000bf0000f0c00000b0c000000000000080bf00000000000080bf0000000000000000000080bf0100003f0000b0c00100003f0000f0c00000b0c000000000000080bf00000000000080bf0000000000000000000080bf010000bf0000b0c0010000bf0000f0c00000b04000000000000080bf00000000000080bf0000000000000000000080bf0100003f0000b0400100003f0000f0c00000b04000000000000080bf00000000000080bf0000000000000000000080bf010000bf0000b040
+    _typelessdata: 010000bf000020c10000f04000000000000000000000803f000080bf0000000000000000000080bf0100003f000020c10100003f000020c10000f04000000000000000000000803f000080bf0000000000000000000080bf010000bf000020c1010000bf000020410000f04000000000000000000000803f000080bf0000000000000000000080bf0100003f000020410100003f000020410000f04000000000000000000000803f000080bf0000000000000000000080bf010000bf000020410100003f000020c10000f0400000803f000000000000000000000000000000000000803f000080bf0000f040000020c10100003f000020c10000f0c00000803f000000000000000000000000000000000000803f000080bf0000f0c0000020c10100003f000020410000f0400000803f000000000000000000000000000000000000803f000080bf0000f040000020410100003f000020410000f0c00000803f000000000000000000000000000000000000803f000080bf0000f0c0000020410100003f000020c10000f0c00000000000000000000080bf0000803f0000000000000000000080bf0100003f000020c1010000bf000020c10000f0c00000000000000000000080bf0000803f0000000000000000000080bf010000bf000020c10100003f000020410000f0c00000000000000000000080bf0000803f0000000000000000000080bf0100003f00002041010000bf000020410000f0c00000000000000000000080bf0000803f0000000000000000000080bf010000bf00002041010000bf000020c10000f0c0000080bf00000000000000000000000000000000000080bf000080bf0000f040000020c1010000bf000020c10000f040000080bf00000000000000000000000000000000000080bf000080bf0000f0c0000020c1010000bf000020410000f0c0000080bf00000000000000000000000000000000000080bf000080bf0000f04000002041010000bf000020410000f040000080bf00000000000000000000000000000000000080bf000080bf0000f0c000002041010000bf000020410000f040000000000000803f000000000000803f0000000000000000000080bf010000bf0000f0400100003f000020410000f040000000000000803f000000000000803f0000000000000000000080bf0100003f0000f040010000bf000020410000f0c0000000000000803f000000000000803f0000000000000000000080bf010000bf0000f0c00100003f000020410000f0c0000000000000803f000000000000803f0000000000000000000080bf0100003f0000f0c0010000bf000020c10000f0c000000000000080bf00000000000080bf0000000000000000000080bf0100003f0000f0c00100003f000020c10000f0c000000000000080bf00000000000080bf0000000000000000000080bf010000bf0000f0c0010000bf000020c10000f04000000000000080bf00000000000080bf0000000000000000000080bf0100003f0000f0400100003f000020c10000f04000000000000080bf00000000000080bf0000000000000000000080bf010000bf0000f040
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -17722,7 +18799,7 @@ Mesh:
     m_UVInfo: 0
   m_LocalAABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.50000006, y: 7.5, z: 5.5}
+    m_Extent: {x: 0.50000006, y: 10, z: 7.5}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
@@ -17740,7 +18817,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16940
+  m_Name: pb_Mesh138954
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17912,6 +18989,7 @@ GameObject:
   - component: {fileID: 1833242435}
   - component: {fileID: 1833242434}
   - component: {fileID: 1833242433}
+  - component: {fileID: 1833242438}
   m_Layer: 0
   m_Name: Panel27
   m_TagString: Rotatable
@@ -17926,13 +19004,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833242431}
-  m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: -0.5, y: 2.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 0, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 22
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1833242433
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17944,7 +19023,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 378287405}
 --- !u!33 &1833242434
@@ -17966,6 +19045,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -18009,7 +19089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -18019,8 +19099,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1833242437
 MonoBehaviour:
@@ -18239,6 +19320,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1833242438
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833242431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1838730502
 GameObject:
   m_ObjectHideFlags: 0
@@ -18267,6 +19361,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1059717741}
   m_RootOrder: 0
@@ -18324,7 +19419,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16890
+  m_Name: pb_Mesh89042
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18336,7 +19431,7 @@ Mesh:
     vertexCount: 24
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.5, y: 3, z: 5}
+      m_Extent: {x: 0.5, y: 3, z: 7.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -18415,7 +19510,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 1152
-    _typelessdata: 000000bf000040c00000a04000000000000000000000803f000080bf0000000000000000000080bf0000003f000040c00000003f000040c00000a04000000000000000000000803f000080bf0000000000000000000080bf000000bf000040c0000000bf000040400000a04000000000000000000000803f000080bf0000000000000000000080bf0000003f000040400000003f000040400000a04000000000000000000000803f000080bf0000000000000000000080bf000000bf000040400000003f000040c00000a0400000803f000000000000000000000000000000000000803f000080bf0000a040000040c00000003f000040c00000a0c00000803f000000000000000000000000000000000000803f000080bf0000a0c0000040c00000003f000040400000a0400000803f000000000000000000000000000000000000803f000080bf0000a040000040400000003f000040400000a0c00000803f000000000000000000000000000000000000803f000080bf0000a0c0000040400000003f000040c00000a0c00000000000000000000080bf0000803f0000000000000000000080bf0000003f000040c0000000bf000040c00000a0c00000000000000000000080bf0000803f0000000000000000000080bf000000bf000040c00000003f000040400000a0c00000000000000000000080bf0000803f0000000000000000000080bf0000003f00004040000000bf000040400000a0c00000000000000000000080bf0000803f0000000000000000000080bf000000bf00004040000000bf000040c00000a0c0000080bf00000000000000000000000000000000000080bf000080bf0000a040000040c0000000bf000040c00000a040000080bf00000000000000000000000000000000000080bf000080bf0000a0c0000040c0000000bf000040400000a0c0000080bf00000000000000000000000000000000000080bf000080bf0000a04000004040000000bf000040400000a040000080bf00000000000000000000000000000000000080bf000080bf0000a0c000004040000000bf000040400000a040000000000000803f000000000000803f0000000000000000000080bf000000bf0000a0400000003f000040400000a040000000000000803f000000000000803f0000000000000000000080bf0000003f0000a040000000bf000040400000a0c0000000000000803f000000000000803f0000000000000000000080bf000000bf0000a0c00000003f000040400000a0c0000000000000803f000000000000803f0000000000000000000080bf0000003f0000a0c0000000bf000040c00000a0c000000000000080bf00000000000080bf0000000000000000000080bf0000003f0000a0c00000003f000040c00000a0c000000000000080bf00000000000080bf0000000000000000000080bf000000bf0000a0c0000000bf000040c00000a04000000000000080bf00000000000080bf0000000000000000000080bf0000003f0000a0400000003f000040c00000a04000000000000080bf00000000000080bf0000000000000000000080bf000000bf0000a040
+    _typelessdata: 000000bf000040c00000f04000000000000000000000803f000080bf0000000000000000000080bf0000003f000040c00000003f000040c00000f04000000000000000000000803f000080bf0000000000000000000080bf000000bf000040c0000000bf000040400000f04000000000000000000000803f000080bf0000000000000000000080bf0000003f000040400000003f000040400000f04000000000000000000000803f000080bf0000000000000000000080bf000000bf000040400000003f000040c00000f0400000803f000000000000000000000000000000000000803f000080bf0000f040000040c00000003f000040c00000f0c00000803f000000000000000000000000000000000000803f000080bf0000f0c0000040c00000003f000040400000f0400000803f000000000000000000000000000000000000803f000080bf0000f040000040400000003f000040400000f0c00000803f000000000000000000000000000000000000803f000080bf0000f0c0000040400000003f000040c00000f0c00000000000000000000080bf0000803f0000000000000000000080bf0000003f000040c0000000bf000040c00000f0c00000000000000000000080bf0000803f0000000000000000000080bf000000bf000040c00000003f000040400000f0c00000000000000000000080bf0000803f0000000000000000000080bf0000003f00004040000000bf000040400000f0c00000000000000000000080bf0000803f0000000000000000000080bf000000bf00004040000000bf000040c00000f0c0000080bf00000000000000000000000000000000000080bf000080bf0000f040000040c0000000bf000040c00000f040000080bf00000000000000000000000000000000000080bf000080bf0000f0c0000040c0000000bf000040400000f0c0000080bf00000000000000000000000000000000000080bf000080bf0000f04000004040000000bf000040400000f040000080bf00000000000000000000000000000000000080bf000080bf0000f0c000004040000000bf000040400000f040000000000000803f000000000000803f0000000000000000000080bf000000bf0000f0400000003f000040400000f040000000000000803f000000000000803f0000000000000000000080bf0000003f0000f040000000bf000040400000f0c0000000000000803f000000000000803f0000000000000000000080bf000000bf0000f0c00000003f000040400000f0c0000000000000803f000000000000803f0000000000000000000080bf0000003f0000f0c0000000bf000040c00000f0c000000000000080bf00000000000080bf0000000000000000000080bf0000003f0000f0c00000003f000040c00000f0c000000000000080bf00000000000080bf0000000000000000000080bf000000bf0000f0c0000000bf000040c00000f04000000000000080bf00000000000080bf0000000000000000000080bf0000003f0000f0400000003f000040c00000f04000000000000080bf00000000000080bf0000000000000000000080bf000000bf0000f040
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -18470,7 +19565,7 @@ Mesh:
     m_UVInfo: 0
   m_LocalAABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 3, z: 5}
+    m_Extent: {x: 0.5, y: 3, z: 7.5}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
@@ -18488,7 +19583,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17248
+  m_Name: pb_Mesh89408
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18700,6 +19795,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -18743,7 +19839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1.5, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -18753,8 +19849,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.75, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1863537836
 MonoBehaviour:
@@ -18983,6 +20080,7 @@ Transform:
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: -0.5}
   m_LocalPosition: {x: -0.67673206, y: 15.444246, z: -18.907448}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1309643068}
   m_RootOrder: 1
@@ -18993,7 +20091,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17394
+  m_Name: pb_Mesh139440
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19165,6 +20263,7 @@ GameObject:
   - component: {fileID: 1926553024}
   - component: {fileID: 1926553023}
   - component: {fileID: 1926553022}
+  - component: {fileID: 1926553027}
   m_Layer: 0
   m_Name: Panel12
   m_TagString: Rotatable
@@ -19179,13 +20278,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926553020}
-  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -5.5, y: 3.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: -90}
+  m_Father: {fileID: 644786614}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1926553022
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19197,7 +20297,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1907534972}
 --- !u!33 &1926553023
@@ -19219,6 +20319,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -19262,7 +20363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -19272,8 +20373,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1926553026
 MonoBehaviour:
@@ -19492,6 +20594,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1926553027
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926553020}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1956117954
 GameObject:
   m_ObjectHideFlags: 0
@@ -19506,6 +20621,7 @@ GameObject:
   - component: {fileID: 1956117958}
   - component: {fileID: 1956117957}
   - component: {fileID: 1956117956}
+  - component: {fileID: 1956117961}
   m_Layer: 0
   m_Name: Panel25
   m_TagString: Rotatable
@@ -19520,13 +20636,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1956117954}
-  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -2.5, y: 2.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.5, y: 0, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: -90}
+  m_Father: {fileID: 399964664}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1956117956
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19538,7 +20655,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 283786349}
 --- !u!33 &1956117957
@@ -19560,6 +20677,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -19603,7 +20721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -19613,8 +20731,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &1956117960
 MonoBehaviour:
@@ -19833,13 +20952,26 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &1956117961
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956117954}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1974178431
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17434
+  m_Name: pb_Mesh122388
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20003,7 +21135,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17154
+  m_Name: pb_Mesh139178
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20188,7 +21320,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17208
+  m_Name: pb_Mesh139232
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20200,7 +21332,7 @@ Mesh:
     vertexCount: 24
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 7.5, y: 3, z: 0.5}
+      m_Extent: {x: 10, y: 3, z: 0.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -20279,7 +21411,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 1152
-    _typelessdata: 0000f0c0000040c00000003f00000000000000000000803f000080bf0000000000000000000080bf0000f040000040c00000f040000040c00000003f00000000000000000000803f000080bf0000000000000000000080bf0000f0c0000040c00000f0c0000040400000003f00000000000000000000803f000080bf0000000000000000000080bf0000f040000040400000f040000040400000003f00000000000000000000803f000080bf0000000000000000000080bf0000f0c0000040400000f040000040c00000003f0000803f000000000000000000000000000000000000803f000080bf0000003f000040c00000f040000040c0000000bf0000803f000000000000000000000000000000000000803f000080bf000000bf000040c00000f040000040400000003f0000803f000000000000000000000000000000000000803f000080bf0000003f000040400000f04000004040000000bf0000803f000000000000000000000000000000000000803f000080bf000000bf000040400000f040000040c0000000bf0000000000000000000080bf0000803f0000000000000000000080bf0000f040000040c00000f0c0000040c0000000bf0000000000000000000080bf0000803f0000000000000000000080bf0000f0c0000040c00000f04000004040000000bf0000000000000000000080bf0000803f0000000000000000000080bf0000f040000040400000f0c000004040000000bf0000000000000000000080bf0000803f0000000000000000000080bf0000f0c0000040400000f0c0000040c0000000bf000080bf00000000000000000000000000000000000080bf000080bf0000003f000040c00000f0c0000040c00000003f000080bf00000000000000000000000000000000000080bf000080bf000000bf000040c00000f0c000004040000000bf000080bf00000000000000000000000000000000000080bf000080bf0000003f000040400000f0c0000040400000003f000080bf00000000000000000000000000000000000080bf000080bf000000bf000040400000f0c0000040400000003f000000000000803f000000000000803f0000000000000000000080bf0000f0c00000003f0000f040000040400000003f000000000000803f000000000000803f0000000000000000000080bf0000f0400000003f0000f0c000004040000000bf000000000000803f000000000000803f0000000000000000000080bf0000f0c0000000bf0000f04000004040000000bf000000000000803f000000000000803f0000000000000000000080bf0000f040000000bf0000f0c0000040c0000000bf00000000000080bf00000000000080bf0000000000000000000080bf0000f040000000bf0000f040000040c0000000bf00000000000080bf00000000000080bf0000000000000000000080bf0000f0c0000000bf0000f0c0000040c00000003f00000000000080bf00000000000080bf0000000000000000000080bf0000f0400000003f0000f040000040c00000003f00000000000080bf00000000000080bf0000000000000000000080bf0000f0c00000003f
+    _typelessdata: 000020c1000040c00000003f00000000000000000000803f000080bf0000000000000000000080bf00002041000040c000002041000040c00000003f00000000000000000000803f000080bf0000000000000000000080bf000020c1000040c0000020c1000040400000003f00000000000000000000803f000080bf0000000000000000000080bf000020410000404000002041000040400000003f00000000000000000000803f000080bf0000000000000000000080bf000020c10000404000002041000040c00000003f0000803f000000000000000000000000000000000000803f000080bf0000003f000040c000002041000040c0000000bf0000803f000000000000000000000000000000000000803f000080bf000000bf000040c000002041000040400000003f0000803f000000000000000000000000000000000000803f000080bf0000003f000040400000204100004040000000bf0000803f000000000000000000000000000000000000803f000080bf000000bf0000404000002041000040c0000000bf0000000000000000000080bf0000803f0000000000000000000080bf00002041000040c0000020c1000040c0000000bf0000000000000000000080bf0000803f0000000000000000000080bf000020c1000040c00000204100004040000000bf0000000000000000000080bf0000803f0000000000000000000080bf0000204100004040000020c100004040000000bf0000000000000000000080bf0000803f0000000000000000000080bf000020c100004040000020c1000040c0000000bf000080bf00000000000000000000000000000000000080bf000080bf0000003f000040c0000020c1000040c00000003f000080bf00000000000000000000000000000000000080bf000080bf000000bf000040c0000020c100004040000000bf000080bf00000000000000000000000000000000000080bf000080bf0000003f00004040000020c1000040400000003f000080bf00000000000000000000000000000000000080bf000080bf000000bf00004040000020c1000040400000003f000000000000803f000000000000803f0000000000000000000080bf000020c10000003f00002041000040400000003f000000000000803f000000000000803f0000000000000000000080bf000020410000003f000020c100004040000000bf000000000000803f000000000000803f0000000000000000000080bf000020c1000000bf0000204100004040000000bf000000000000803f000000000000803f0000000000000000000080bf00002041000000bf000020c1000040c0000000bf00000000000080bf00000000000080bf0000000000000000000080bf00002041000000bf00002041000040c0000000bf00000000000080bf00000000000080bf0000000000000000000080bf000020c1000000bf000020c1000040c00000003f00000000000080bf00000000000080bf0000000000000000000080bf000020410000003f00002041000040c00000003f00000000000080bf00000000000080bf0000000000000000000080bf000020c10000003f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -20334,7 +21466,7 @@ Mesh:
     m_UVInfo: 0
   m_LocalAABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 7.5, y: 3, z: 0.5}
+    m_Extent: {x: 10, y: 3, z: 0.5}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
@@ -20352,7 +21484,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17182
+  m_Name: pb_Mesh139206
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20524,6 +21656,7 @@ GameObject:
   - component: {fileID: 2114582854}
   - component: {fileID: 2114582853}
   - component: {fileID: 2114582852}
+  - component: {fileID: 2114582857}
   m_Layer: 0
   m_Name: Panel03
   m_TagString: Rotatable
@@ -20538,13 +21671,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114582850}
-  m_LocalRotation: {x: -0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -4.5, y: 4.5, z: 2.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.5, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1063041906}
+  m_Father: {fileID: 644786614}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &2114582852
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20556,7 +21690,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1974178431}
 --- !u!33 &2114582853
@@ -20578,6 +21712,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -20621,7 +21756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Shape:
-    id: 0
+    rid: 0
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_PivotLocation: 0
@@ -20631,8 +21766,9 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.25, z: 0.5}
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &2114582856
 MonoBehaviour:
@@ -20851,6 +21987,19 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!65 &2114582857
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114582850}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2145205815
 GameObject:
   m_ObjectHideFlags: 0
@@ -20879,6 +22028,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1059717741}
   m_RootOrder: 1
@@ -20936,7 +22086,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16844
+  m_Name: pb_Mesh138854
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
