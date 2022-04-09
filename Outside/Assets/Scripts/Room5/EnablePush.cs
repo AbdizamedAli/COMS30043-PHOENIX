@@ -24,12 +24,14 @@ public class EnablePush : MonoBehaviourPunCallbacks
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hitObject){
-        Rigidbody rigidbody=hitObject.collider.attachedRigidbody;
-
-        this.photonView.RPC("push",RpcTarget.All,rigidbody,hitObject);
+        if(hitObject!=null){
+            Rigidbody rigidbody=hitObject.collider.attachedRigidbody;
+            this.photonView.RPC("push",RpcTarget.All,hitObject,rigidbody);
+        }
+        
     }
     [PunRPC]
-    private void push(Rigidbody rigidbody,ControllerColliderHit hitObject){
+    private void push(ControllerColliderHit hitObject,Rigidbody rigidbody){
         if(rigidbody != null){
             Vector3 forceVector = hitObject.gameObject.transform.position-transform.position;
             forceVector.y=0;
