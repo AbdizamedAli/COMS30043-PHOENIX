@@ -45,7 +45,7 @@ public class RoomManagerRight : MonoBehaviour
     {
         if(boxList.Count==0&&completed==false){//false so it only calls complete manager once
 
-            RoomCompleteManager.LeftComplete();
+            RoomCompleteManager.RightComplete();
             completed=true;
         }
     }
