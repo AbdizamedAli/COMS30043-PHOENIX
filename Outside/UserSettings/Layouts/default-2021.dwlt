@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 91
+  controlID: 16
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 92
+  controlID: 17
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 93
+  controlID: 18
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -375,36 +375,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/script/NewPuzzleRoom
+    - Assets/Materials/material
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/script/NewPuzzleRoom
+  - Assets/Materials/material
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\COMS30034-PHOENIX\Outside
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 128}
-    m_SelectedIDs: 302f0100
-    m_LastClickedID: 77616
-    m_ExpandedIDs: 00000000a4c30000a8c30000b8c30000bec300001ec4000000ca9a3b
+    scrollPos: {x: 0, y: 135}
+    m_SelectedIDs: f89c0000
+    m_LastClickedID: 40184
+    m_ExpandedIDs: 00000000169b0000849b00008e9b00009e9b0000a09b0000ac9b0000829c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Scenes
+      m_OriginalName: Scenes
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 39836
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 5}
     m_SearchString: 
@@ -418,7 +418,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 
+    m_ExpandedIDs: 00000000169b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -509,7 +509,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 45
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -545,10 +545,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 8053ffff
-      m_LastClickedID: -44160
-      m_ExpandedIDs: 3699ffffb299ffff109affffda9affff869bffff809dffff88eb00008a060100e8120100
+      scrollPos: {x: 0, y: 248}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: b8dfffff5ee0ffff32fbffff0e7800005e7b0000947f00005a1a010074220100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -797,9 +797,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 107.74388, y: 16.362268, z: -137.09204}
+    m_Target: {x: 138.99835, y: -33.39443, z: -11.184532}
     speed: 2
-    m_Value: {x: 107.74388, y: 16.362268, z: -137.09204}
+    m_Value: {x: 138.99835, y: -33.39443, z: -11.184532}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -846,20 +846,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.29156348, y: -0.6332667, z: 0.2778041, w: 0.6615398}
+    m_Target: {x: 0.22602534, y: -0.06462599, z: 0.013516885, w: 0.9723414}
     speed: 2
-    m_Value: {x: 0.29356763, y: -0.63371885, z: 0.2814168, w: 0.6580449}
+    m_Value: {x: 0.22594434, y: -0.06313918, z: 0.013171943, w: 0.9720026}
   m_Size:
-    m_Target: 42.430447
+    m_Target: 43.001328
     speed: 2
-    m_Value: 42.430447
+    m_Value: 41.149597
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 0.9453
-    m_SpeedNormalized: 0.47
+    m_Speed: 0.9452999
+    m_SpeedNormalized: 0.46999997
     m_SpeedMin: 0.01
     m_SpeedMax: 2
     m_EasingEnabled: 1

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e82bb525445eb3468086ad14b5e91fe, type: 3}
   m_Name: GeneralConfig
   m_EditorClassIdentifier: 
-  showWelcomeDialogAtStartup: 1
+  showWelcomeDialogAtStartup: 0
   networkProvider: 1
   voiceDetectionEnabled: 1
   voiceDetectionThreshold: 0.02
