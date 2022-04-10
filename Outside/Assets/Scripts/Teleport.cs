@@ -8,5 +8,6 @@ public class Teleport : MonoBehaviour
     
     void OnTriggerEnter(Collider other){
         other.transform.position=teleportLocation.transform.position;
+        print("collided");
     }
 }
