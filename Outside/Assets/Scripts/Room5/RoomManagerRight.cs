@@ -22,6 +22,7 @@ public class RoomManagerRight : MonoBehaviour
     private bool completed;
 
     void Awake(){
+        boxList = new List<string>();
         RoomCompleteManager=GameObject.FindObjectOfType<RoomCompleteManager>();
 
         boxList.Add(boxOne.name);
@@ -47,6 +48,7 @@ public class RoomManagerRight : MonoBehaviour
 
             RoomCompleteManager.RightComplete();
             completed=true;
+            //print("right yes");
         }
     }
 

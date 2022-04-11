@@ -48,13 +48,17 @@ public class BoxCollideCheck : MonoBehaviour
         string otherName=other.name;
         collision = true;
         
+        
         if (otherName.Equals(squareName)){
             
+            
             if(leftOrRight=="left"){
-                RoomManagerLeft.AddCorrectPosition(squareName);
+                
+                RoomManagerLeft.AddCorrectPosition(box.name);
+                
             }
             else if(leftOrRight=="right"){
-                RoomManagerRight.AddCorrectPosition(squareName);
+                RoomManagerRight.AddCorrectPosition(box.name);
             }
         }
     }
@@ -64,10 +68,11 @@ public class BoxCollideCheck : MonoBehaviour
         collision = false;
         if (otherName.Equals(squareName)){
             if(leftOrRight=="left"){
-                RoomManagerLeft.RemoveCorrectPosition(squareName);
+                
+                RoomManagerLeft.RemoveCorrectPosition(box.name);
             }
             else if(leftOrRight=="right"){
-                RoomManagerRight.RemoveCorrectPosition(squareName);
+                RoomManagerRight.RemoveCorrectPosition(box.name);
             }
 
         }
