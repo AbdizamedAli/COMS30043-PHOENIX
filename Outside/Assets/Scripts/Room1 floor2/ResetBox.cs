@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class ResetBoxPositionSwitch :  MonoBehaviourPunCallbacks
+public class ResetBox :  MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private GameObject box;
     [SerializeField]
 
     private Transform boxSpawnPosition;
+
     private bool collision;
+
+    [SerializeField]
+    private Rigidbody boxRigidBody;
+
+    private addforce addforce;
+    void Awake(){
+        addforce=GameObject.FindObjectOfType<addforce>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +38,8 @@ public class ResetBoxPositionSwitch :  MonoBehaviourPunCallbacks
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if(collision){
-                    this.photonView.RPC("ResetBoxPos",RpcTarget.All,box,boxSpawnPosition);       
-                    //ResetBox(box,boxSpawnPosition);      
+                    //this.photonView.RPC("ResetBox",RpcTarget.All,box,boxSpawnPosition);       
+                    ResetBoxPos(box,boxSpawnPosition);      
                 }
             }
         }
@@ -46,7 +55,9 @@ public class ResetBoxPositionSwitch :  MonoBehaviourPunCallbacks
     }
     [PunRPC]
     void ResetBoxPos(GameObject box,Transform boxSpawnPosition){
+        boxRigidBody.velocity=Vector3.zero;
+        addforce.Reset();
         box.transform.position=boxSpawnPosition.transform.position;
+        
     }
-
 }
