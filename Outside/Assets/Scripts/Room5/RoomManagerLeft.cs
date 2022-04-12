@@ -25,6 +25,8 @@ public class RoomManagerLeft : MonoBehaviour
     private bool completed;
     // Start is called before the first frame update
     void Awake(){
+        boxList = new List<string>();
+
         RoomCompleteManager=GameObject.FindObjectOfType<RoomCompleteManager>();
 
         boxList.Add(boxOne.name);
@@ -43,10 +45,15 @@ public class RoomManagerLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(boxList.Count);
         if(boxList.Count==0&&completed==false){//false so it only calls complete manager once, if list is empty then all boxes are in correct position
+        
 
             RoomCompleteManager.LeftComplete();
+            
             completed=true;
+            print("left yes");
+            
         }
     }
 
@@ -58,6 +65,10 @@ public class RoomManagerLeft : MonoBehaviour
 
 
     public void AddCorrectPosition(string boxName){ //removes box from list, the number of correct positions has increased by 1
-        boxList.Remove(boxName);
+        print(boxName);
+        print("called");
+        int boxPosition=boxList.IndexOf(boxName);
+        boxList.RemoveAt(boxPosition);
+        
     }
 }

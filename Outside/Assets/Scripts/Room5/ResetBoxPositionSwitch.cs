@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class ResetBoxPositionSwitch : MonoBehaviour
+public class ResetBoxPositionSwitch :  MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private GameObject box;
@@ -14,7 +15,10 @@ public class ResetBoxPositionSwitch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            return;
+        }
     }
 
     // Update is called once per frame
@@ -25,7 +29,8 @@ public class ResetBoxPositionSwitch : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if(collision){
-                    box.transform.position=boxSpawnPosition.transform.position;
+                    this.photonView.RPC("ResetBoxPos",RpcTarget.All,box,boxSpawnPosition);       
+                    //ResetBox(box,boxSpawnPosition);      
                 }
             }
         }
@@ -38,6 +43,10 @@ public class ResetBoxPositionSwitch : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         collision = false;
+    }
+    [PunRPC]
+    void ResetBoxPos(GameObject box,Transform boxSpawnPosition){
+        box.transform.position=boxSpawnPosition.transform.position;
     }
 
 }

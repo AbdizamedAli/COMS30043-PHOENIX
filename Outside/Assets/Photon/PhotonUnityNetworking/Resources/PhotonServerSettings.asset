@@ -86,6 +86,9 @@ MonoBehaviour:
   - setCorrectRow
   - setWallbuttonSetSolve
   - updateTimerWrongCombination
+  - push
+  - ResetBox
+  - ResetBoxPos
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
