@@ -38,8 +38,8 @@ public class ResetBox :  MonoBehaviourPunCallbacks
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if(collision){
-                    //this.photonView.RPC("ResetBox",RpcTarget.All,box,boxSpawnPosition);       
-                    ResetBoxPos(box,boxSpawnPosition);      
+                    this.photonView.RPC("ResetBox",RpcTarget.All,box,boxSpawnPosition);       
+                    //ResetBoxPos(box,boxSpawnPosition);      
                 }
             }
         }
