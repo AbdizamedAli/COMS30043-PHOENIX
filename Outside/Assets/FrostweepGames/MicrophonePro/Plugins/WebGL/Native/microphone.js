@@ -30,6 +30,7 @@ class UnityMicrophone {
         this.recordingBufferCallback = null;
         this.recordingEndedCallback = null;
         this.recordingStartedCallback = null;
+        this.localStream = null;
 
         if (UnityMicrophone.AUDIO_WORKLET === true) {
             this.audioContext.audioWorklet.addModule('./Native/mic-worklet-processor.js')
@@ -204,7 +205,7 @@ class UnityMicrophone {
 
     getUserMediaSuccessForRecording(stream) {
         this.recordingBuffer = [];
-
+        this.localStream = stream;
         this.recordingSource = this.audioContext.createMediaStreamSource(stream);
 
         if (UnityMicrophone.AUDIO_WORKLET === true) {
