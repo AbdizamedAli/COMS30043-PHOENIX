@@ -45,7 +45,7 @@ public class RoomManagerLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(boxList.Count);
+        //print(boxList.Count);
         if(boxList.Count==0&&completed==false){//false so it only calls complete manager once, if list is empty then all boxes are in correct position
         
 
