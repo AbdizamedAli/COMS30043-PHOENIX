@@ -86,6 +86,24 @@ MonoBehaviour:
   - setCorrectRow
   - setWallbuttonSetSolve
   - updateTimerWrongCombination
-  DisableAutoOpenWizard: 1
-  ShowSettings: 1
-  DevRegionSetOnce: 1
+  - push
+  - ResetBox
+  - ResetBoxPos
+
+  - CompleteRoom
+  - FlipCollided
+  - FlipMoving
+  - PushDown
+  - PushForward
+  - PushLeft
+  - PushRight
+  - SetPushDirection
+  - SetVelocityZero
+  - SpawnExitDoors
+  - RoomCompleted
+  
+
+  - GetForeignPeerIDRPC
+  - addNewPeer
+  - getClientIdRpc
+

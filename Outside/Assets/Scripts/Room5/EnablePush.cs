@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class EnablePush : MonoBehaviour
+using Photon.Pun;
+public class EnablePush : MonoBehaviourPunCallbacks
 {
-    
+    [SerializeField]
     private float sizeOfForce;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        sizeOfForce=1;
+        
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            return;
+        }
+        
+        //sizeOfForce=200;
     }
 
     // Update is called once per frame
@@ -20,9 +28,18 @@ public class EnablePush : MonoBehaviour
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hitObject){
-        Rigidbody rigidbody=hitObject.collider.attachedRigidbody;
-
+        if(hitObject!=null){
+            Rigidbody rigidbody=hitObject.collider.attachedRigidbody;
+            this.photonView.RPC("push",RpcTarget.All,hitObject,rigidbody);
+            //push(hitObject,rigidbody);
+        }
+        
+    }
+    [PunRPC]
+    private void push(ControllerColliderHit hitObject,Rigidbody rigidbody){
+        print("yes");
         if(rigidbody != null){
+            
             Vector3 forceVector = hitObject.gameObject.transform.position-transform.position;
             forceVector.y=0;
             forceVector.Normalize();
@@ -30,5 +47,5 @@ public class EnablePush : MonoBehaviour
             rigidbody.AddForceAtPosition(forceVector*sizeOfForce,transform.position,ForceMode.Impulse);
         }
 
-    }
+    }    
 }
