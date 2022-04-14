@@ -89,6 +89,7 @@ MonoBehaviour:
   - push
   - ResetBox
   - ResetBoxPos
+
   - CompleteRoom
   - FlipCollided
   - FlipMoving
@@ -100,6 +101,9 @@ MonoBehaviour:
   - SetVelocityZero
   - SpawnExitDoors
   - RoomCompleted
-  DisableAutoOpenWizard: 1
-  ShowSettings: 1
-  DevRegionSetOnce: 1
+  
+
+  - GetForeignPeerIDRPC
+  - addNewPeer
+  - getClientIdRpc
+

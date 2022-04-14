@@ -1334,6 +1334,8 @@ GameObject:
   - component: {fileID: 2473520764944588493}
   - component: {fileID: 8651418286038927744}
   - component: {fileID: 4205602816385820006}
+  - component: {fileID: 4488327210165052233}
+  - component: {fileID: -2659739929896304221}
   m_Layer: 0
   m_Name: MaleFreeSimpleMovement1
   m_TagString: Player
@@ -1499,6 +1501,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayRange: 4
   cam: {fileID: 5469059744430234488}
+--- !u!114 &4488327210165052233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8941489884622618080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d00e8c83fcf4254b208f64852fb9c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioListener: {fileID: 7112764599055232205}
+--- !u!114 &-2659739929896304221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8941489884622618080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1fb7923f99d4b7296d0104931f0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDistance: 1
+  maxDistance: 20
 --- !u!1 &8941506892714249832
 GameObject:
   m_ObjectHideFlags: 0
