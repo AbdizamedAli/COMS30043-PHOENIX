@@ -40,19 +40,19 @@ public class addforce : MonoBehaviourPunCallbacks
 
         if(pushDirection=="Forward"){
             //PushForward(box);//
-            this.photonView.RPC("PushForward",RpcTarget.All,box);
+            this.photonView.RPC("PushForward",RpcTarget.All);
         }
         if(pushDirection=="Right"){
             //PushRight(box);//
-            this.photonView.RPC("PushRight",RpcTarget.All,box);
+            this.photonView.RPC("PushRight",RpcTarget.All);
         }
         if(pushDirection=="Down"){
             //PushDown(box);//
-            this.photonView.RPC("PushDown",RpcTarget.All,box);
+            this.photonView.RPC("PushDown",RpcTarget.All);
         }
         if(pushDirection=="Left"){
             //PushLeft(box);//
-            this.photonView.RPC("PushLeft",RpcTarget.All,box);
+            this.photonView.RPC("PushLeft",RpcTarget.All);
         }
     }
 
@@ -67,24 +67,24 @@ public class addforce : MonoBehaviourPunCallbacks
 
 
     [PunRPC]
-    void PushForward(Rigidbody box){
+    void PushForward(){
         box.velocity= new Vector3(0,0,-10);
                  
     }
     [PunRPC]
-    void PushRight(Rigidbody box){
+    void PushRight(){
         
         box.velocity= new Vector3(-10,0,0);
         
      
     }
     [PunRPC]
-    void PushDown(Rigidbody box){
+    void PushDown(){
         
         box.velocity= new Vector3(0,0,10);
     }
     [PunRPC]
-    void PushLeft(Rigidbody box){  
+    void PushLeft(){  
         box.velocity= new Vector3(10,0,0);
     }
     IEnumerator Wait(int seconds){
@@ -161,6 +161,7 @@ public class addforce : MonoBehaviourPunCallbacks
         this.photonView.RPC("SetPushDirection",RpcTarget.All,"nil");
         //no direction
     }
+    [PunRPC]
     void RoomCompleted(){
         //SetVelocityZero();//
         this.photonView.RPC("SetVelocityZero",RpcTarget.All);

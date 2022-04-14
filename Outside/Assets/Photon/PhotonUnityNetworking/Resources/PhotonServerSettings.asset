@@ -89,6 +89,17 @@ MonoBehaviour:
   - push
   - ResetBox
   - ResetBoxPos
+  - CompleteRoom
+  - FlipCollided
+  - FlipMoving
+  - PushDown
+  - PushForward
+  - PushLeft
+  - PushRight
+  - SetPushDirection
+  - SetVelocityZero
+  - SpawnExitDoors
+  - RoomCompleted
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
