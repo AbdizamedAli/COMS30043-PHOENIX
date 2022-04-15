@@ -38,7 +38,7 @@ public class ResetBox :  MonoBehaviourPunCallbacks
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if(collision){
-                    this.photonView.RPC("ResetBox",RpcTarget.All,box,boxSpawnPosition);       
+                    this.photonView.RPC("ResetBox",RpcTarget.All);       
                     //ResetBoxPos(box,boxSpawnPosition);      
                 }
             }
@@ -54,7 +54,7 @@ public class ResetBox :  MonoBehaviourPunCallbacks
         collision = false;
     }
     [PunRPC]
-    void ResetBoxPos(GameObject box,Transform boxSpawnPosition){
+    void ResetBoxPos(){
         boxRigidBody.velocity=Vector3.zero;
         addforce.Reset();
         box.transform.position=boxSpawnPosition.transform.position;
