@@ -3,9 +3,8 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
 
-namespace Lobby
+namespace Photon.Pun.Demo.Asteroids
 {
     public class LobbyMainPanel : MonoBehaviourPunCallbacks
     {
@@ -99,7 +98,7 @@ namespace Lobby
         {
             string roomName = "Room " + Random.Range(1000, 10000);
 
-            RoomOptions options = new RoomOptions {MaxPlayers = 4};
+            RoomOptions options = new RoomOptions {MaxPlayers = 8};
 
             PhotonNetwork.CreateRoom(roomName, options, null);
         }
@@ -125,7 +124,7 @@ namespace Lobby
                 entry.GetComponent<PlayerListEntry>().Initialize(p.ActorNumber, p.NickName);
 
                 object isPlayerReady;
-                if (p.CustomProperties.TryGetValue("isPlayerReady", out isPlayerReady))
+                if (p.CustomProperties.TryGetValue(AsteroidsGame.PLAYER_READY, out isPlayerReady))
                 {
                     entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool) isPlayerReady);
                 }
@@ -137,7 +136,7 @@ namespace Lobby
 
             Hashtable props = new Hashtable
             {
-                {"PlayerLoadedLevel", false}
+                {AsteroidsGame.PLAYER_LOADED_LEVEL, false}
             };
             PhotonNetwork.LocalPlayer.SetCustomProperties(props);
         }
@@ -194,7 +193,7 @@ namespace Lobby
             if (playerListEntries.TryGetValue(targetPlayer.ActorNumber, out entry))
             {
                 object isPlayerReady;
-                if (changedProps.TryGetValue("isPlayerReady", out isPlayerReady))
+                if (changedProps.TryGetValue(AsteroidsGame.PLAYER_READY, out isPlayerReady))
                 {
                     entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool) isPlayerReady);
                 }
@@ -224,7 +223,7 @@ namespace Lobby
 
             byte maxPlayers;
             byte.TryParse(MaxPlayersInputField.text, out maxPlayers);
-            maxPlayers = (byte) Mathf.Clamp(maxPlayers, 2, 4);
+            maxPlayers = (byte) Mathf.Clamp(maxPlayers, 2, 8);
 
             RoomOptions options = new RoomOptions {MaxPlayers = maxPlayers, PlayerTtl = 10000 };
 
@@ -273,7 +272,7 @@ namespace Lobby
             PhotonNetwork.CurrentRoom.IsOpen = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
 
-            PhotonNetwork.LoadLevel("PuzzleRoom01");
+            PhotonNetwork.LoadLevel("DemoAsteroids-GameScene");
         }
 
         #endregion
@@ -288,7 +287,7 @@ namespace Lobby
             foreach (Player p in PhotonNetwork.PlayerList)
             {
                 object isPlayerReady;
-                if (p.CustomProperties.TryGetValue("isPlayerReady", out isPlayerReady))
+                if (p.CustomProperties.TryGetValue(AsteroidsGame.PLAYER_READY, out isPlayerReady))
                 {
                     if (!(bool) isPlayerReady)
                     {

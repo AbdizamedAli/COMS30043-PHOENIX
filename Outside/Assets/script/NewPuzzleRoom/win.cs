@@ -21,7 +21,8 @@ public class win : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                other.transform.Translate(new Vector3(29, 2, 28));
+                Destroy(other);
+                PhotonNetwork.LoadLevel("PuzzleRoom01");
             }
         }
 
