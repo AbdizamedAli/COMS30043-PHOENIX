@@ -19,7 +19,7 @@ public class reborn : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            other.transform.Translate(new Vector3(114, 4, -79));
+            other.transform.Translate(new Vector3(-46, 3,-3 ));
         }
     }
 }

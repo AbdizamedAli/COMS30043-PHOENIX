@@ -1,12 +1,21 @@
-﻿using UnityEngine;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="PlayerListEntry.cs" company="Exit Games GmbH">
+//   Part of: Asteroid Demo,
+// </copyright>
+// <summary>
+//  Player List Entry
+// </summary>
+// <author>developer@exitgames.com</author>
+// --------------------------------------------------------------------------------------------------------------------
+
+using UnityEngine;
 using UnityEngine.UI;
 
 using ExitGames.Client.Photon;
 using Photon.Realtime;
 using Photon.Pun.UtilityScripts;
-using Photon.Pun;
 
-namespace Lobby
+namespace Photon.Pun.Demo.Asteroids
 {
     public class PlayerListEntry : MonoBehaviour
     {
@@ -35,6 +44,8 @@ namespace Lobby
             }
             else
             {
+                Hashtable initialProps = new Hashtable() {{AsteroidsGame.PLAYER_READY, isPlayerReady}, {AsteroidsGame.PLAYER_LIVES, AsteroidsGame.PLAYER_MAX_LIVES}};
+                PhotonNetwork.LocalPlayer.SetCustomProperties(initialProps);
                 PhotonNetwork.LocalPlayer.SetScore(0);
 
                 PlayerReadyButton.onClick.AddListener(() =>
@@ -42,7 +53,7 @@ namespace Lobby
                     isPlayerReady = !isPlayerReady;
                     SetPlayerReady(isPlayerReady);
 
-                    Hashtable props = new Hashtable() {{"isPlayerReady", isPlayerReady}};
+                    Hashtable props = new Hashtable() {{AsteroidsGame.PLAYER_READY, isPlayerReady}};
                     PhotonNetwork.LocalPlayer.SetCustomProperties(props);
 
                     if (PhotonNetwork.IsMasterClient)
@@ -72,7 +83,7 @@ namespace Lobby
             {
                 if (p.ActorNumber == ownerId)
                 {
-                    PlayerColorImage.color = GetColor(p.GetPlayerNumber());
+                    PlayerColorImage.color = AsteroidsGame.GetColor(p.GetPlayerNumber());
                 }
             }
         }
@@ -81,18 +92,6 @@ namespace Lobby
         {
             PlayerReadyButton.GetComponentInChildren<Text>().text = playerReady ? "Ready!" : "Ready?";
             PlayerReadyImage.enabled = playerReady;
-        }
-
-        private Color GetColor(int c)
-        {
-            switch (c)
-            {
-                case 0: return Color.red;
-                case 1: return Color.green;
-                case 2: return Color.blue;
-                case 3: return Color.yellow;
-            }
-            return Color.blue;
         }
     }
 }
