@@ -92,6 +92,8 @@ MonoBehaviour:
   - GetForeignPeerIDRPC
   - addNewPeer
   - getClientIdRpc
+  - setPlayerVoiceChat
+  - randomSettoSeeIfIDsyncs
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

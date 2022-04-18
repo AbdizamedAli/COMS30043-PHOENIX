@@ -15,14 +15,14 @@ public class AudioChat : MonoBehaviourPunCallbacks
     void Start()
     {
         if (!photonView.IsMine) return;
-        PeerjsWrapper.Instance.code_stack += checkConected;
-        checkConected(PeerjsWrapper.Instance.Connection);
+        //PeerjsWrapper.Instance.code_stack += checkConected;
+        //checkConected(PeerjsWrapper.Instance.Connection);
 
     }
 
     private void Update()
     {
-        UpdateVolume();
+        //UpdateVolume();
     }
     private float getVolume(float distance)
     {
