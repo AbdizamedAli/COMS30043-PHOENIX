@@ -111,6 +111,8 @@ var FGMicrophoneLibrary = {
         audio.srcObject = remoteStream;
         audio.autoplay = true;
         connected = true;
+        audio.id = call.peer;
+        console.log("We have set the id of caller to: " + call.peer);
         document.getElementById("unity-footer").appendChild(audio);
         SendMessage("Voice_Audio_PeerJS", "updateCode", 0);
       });
@@ -169,9 +171,10 @@ var FGMicrophoneLibrary = {
     }
   },
 
-  updateVolume: function (newVolume) {
-    // var audio = document.getElementById(id);
-    // audio.volume = newVolume;
+  updateVolume: function (newVolume,audio_id) {
+    var audio = document.getElementById(UTF8ToString(audio_id));
+    console.log("New volume: " + newVolume + " for id: " + UTF8ToString(audio_id)  );
+    audio.volume = newVolume;
   },
 
   init: async function (version, worklet) {
