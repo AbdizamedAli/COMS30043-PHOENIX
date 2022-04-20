@@ -15,10 +15,7 @@ public class ResetBoxPositionSwitch :  MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            return;
-        }
+        
     }
 
     // Update is called once per frame
