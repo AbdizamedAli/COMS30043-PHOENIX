@@ -21,7 +21,7 @@ public class Buttonb : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            Bridge.GetComponent<bridge>().flag = false;
+            Bridge.SetActive(true);
         }
 
     }
@@ -29,7 +29,7 @@ public class Buttonb : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Bridge.GetComponent<bridge>().flag = true;
+            Bridge.SetActive(false);
         }
     }
 }
