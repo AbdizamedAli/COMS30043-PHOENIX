@@ -18,6 +18,11 @@ namespace ObjectInteraction
         private bool solved = false;
         [SerializeField] GameObject enter;
         [SerializeField] GameObject enterText;
+        private FloorManagerOne FloorManagerOne;
+
+        void Awake(){
+            FloorManagerOne=GameObject.FindObjectOfType<FloorManagerOne>();
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -141,6 +146,7 @@ namespace ObjectInteraction
         {
             exit.SetActive(true);
             enter.GetComponent<BlueDoor>().isDone = true;
+            FloorManagerOne.PuzzleComplete();
 
 
         }
