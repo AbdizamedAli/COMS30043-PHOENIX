@@ -54,6 +54,8 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     int SymbolSelectFourLoc;
     int CorrectSymbols;
 
+    private FloorManagerOne FloorManagerOne;
+
 
 
 
@@ -76,6 +78,7 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
         SymbolSelectTwoLoc   = randoms[1] - 1;
         SymbolSelectThreeLoc = randoms[2] - 1;
         SymbolSelectFourLoc  = randoms[3] - 1;
+        FloorManagerOne=GameObject.FindObjectOfType<FloorManagerOne>();
     }
 
 
@@ -142,6 +145,8 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     {
         exit.SetActive(true);
         exit1.SetActive(true);
+        FloorManagerOne.PuzzleComplete();
+
         //enter_text.GetComponent<Text>().text = "Room Done";
     }
 
