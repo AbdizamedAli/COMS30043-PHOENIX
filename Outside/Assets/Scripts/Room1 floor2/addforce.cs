@@ -27,10 +27,7 @@ public class addforce : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            return;
-        }
+        
         
     }
 

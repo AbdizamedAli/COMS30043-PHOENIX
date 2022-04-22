@@ -13,10 +13,7 @@ public class EnablePush : MonoBehaviourPunCallbacks
     void Start()
     {
         
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            return;
-        }
+        
         
         //sizeOfForce=200;
     }
