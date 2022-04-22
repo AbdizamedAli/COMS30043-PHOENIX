@@ -13,7 +13,7 @@ using System.Linq;
 ///     - ProcessResult(string result): given a string result, convert it to an array of floats and find the max score and max score index.
 ///     - Start(): to build the JSON correctly, we need to make a string array of all robot sentences;
 /// </summary>
-public class HuggingFaceAPI_Tutorial : MonoBehaviour
+public class HuggingFaceAPI : MonoBehaviour
 {
     [Header("HuggingFace Model URL")]
     public string model_url;
@@ -34,15 +34,17 @@ public class HuggingFaceAPI_Tutorial : MonoBehaviour
     public int maxScoreIndex; // Index of the action with the highest score
 
     [Header("Jammo Behavior")]
-    public JammoBehavior_Tutorial jammo; // A reference to Jammo Behavior Script
+    public AI_Behaviour jammo; // A reference to Jammo Behavior Script
 
     void Start()
     {
         // To prepare the JSON, we take all the sentences candidates
-        foreach (JammoBehavior_Tutorial.Actions actions in jammo.actionsList)
+        foreach (AI_Behaviour.PlayerEmotions emotions in jammo.playerEmotionsList)
         {
-            sentences.Add(actions.sentence);
+            sentences.Add(emotions.emotion);
         }
+
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     /// <summary>
@@ -69,22 +71,52 @@ public class HuggingFaceAPI_Tutorial : MonoBehaviour
     public IEnumerator HFScore(string prompt)
     {
         // Form the JSON
-        var form = new Dictionary<string, object>();
-        var attributes = new Dictionary<string, object>();
-        attributes["source_sentence"] = prompt;
-        attributes["sentences"] = sentences;
-        form["inputs"] = attributes;
+        //var form = new Dictionary<string, object>();
+        //var attributes = new Dictionary<string, object>();
+        //attributes["source_sentence"] = prompt;
+        //attributes["sentences"] = sentences;
+        //form["inputs"] = attributes;
+        //form["inputs"] = prompt;
 
-        var json = Json.Serialize(form);
-        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(json);
+        //var json = Json.Serialize(prompt);
+        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(prompt);
 
         // Make the web request
-        UnityWebRequest request = UnityWebRequest.Put(model_url, bytes);
+        var request = new UnityWebRequest(model_url, "POST");
+        request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bytes);
+        request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
         request.SetRequestHeader("Content-Type", "application/json");
-        request.SetRequestHeader("Authorization", "Bearer " + hf_api_key);
-        request.method = "POST"; // Hack to send POST to server instead of PUT
+        //request.SetRequestHeader("Authorization", "Bearer " + hf_api_key);
+        //request.method = "POST"; // Hack to send POST to server instead of PUT
 
-        yield return request.SendWebRequest();
+        //var request = UnityWebRequest.Post(model_url, bytes);
+        //request.SetRequestHeader("Content-Type", "application/json");
+        //request.SetRequestHeader("Authorization", "Bearer " + hf_api_key);
+
+        //WWWForm form = new WWWForm();
+        //form.AddField("inputs", bytes);
+
+        /*using (UnityWebRequest request = UnityWebRequest.Put(model_url, bytes))
+        {
+            request.SetRequestHeader("Content-Type", "application/json");
+            request.method = "POST";
+            yield return request.SendWebRequest();
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(request.error);
+            }
+            else
+            {
+                Debug.Log("Form upload complete!");
+                Debug.Log(request.downloadHandler.text);
+            }
+        }*/
+
+        yield return request.Send();
+
+        Debug.Log("Status Code: " + request.responseCode);
+        Debug.Log(request.downloadHandler.text);
 
         // If the request return an error set the error on console.
         if (request.isNetworkError || request.isHttpError)
@@ -97,7 +129,7 @@ public class HuggingFaceAPI_Tutorial : MonoBehaviour
         {
             JSONNode data = request.downloadHandler.text;
             // Process the result
-            yield return ProcessResult(data);
+            //yield return ProcessResult(data);
         }
 
     }
@@ -114,6 +146,8 @@ public class HuggingFaceAPI_Tutorial : MonoBehaviour
         // First, we need to remove [ and ]
         string cleanedResult = result.Replace("[", "");
         cleanedResult = cleanedResult.Replace("]", "");
+        cleanedResult = cleanedResult.Replace("{", "");
+        cleanedResult = cleanedResult.Replace("}", "");
 
         // Then, we need to split each element of the array and convert to float
         string[] splitArray = cleanedResult.Split(char.Parse(","));
