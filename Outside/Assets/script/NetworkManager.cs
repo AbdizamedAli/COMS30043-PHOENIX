@@ -11,16 +11,16 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     #region 私有变量
     #endregion
     #region 公开变量
-    public static NetworkManager _instance;//单例
-    public InputField nameInputField;//名字输入框
-    public InputField RoomnameInputField;//房间名输入框
-    public GameObject readyBtn;//准备按钮
-    public GameObject startBtn;//开始游戏按钮
+    public static NetworkManager _instance;
+    public InputField nameInputField;
+    public InputField RoomnameInputField;
+    public GameObject readyBtn;
+    public GameObject startBtn;
 
-    public GameObject NamePanel;//名字设置面板
-    public GameObject LobbyPanel;//大厅面板
-    public GameObject RoomPanel;//房间面板
-    public GameObject StartInitPanel;//开始初始化面板
+    public GameObject NamePanel;
+    public GameObject LobbyPanel;
+    public GameObject RoomPanel;
+    public GameObject StartInitPanel;
 
     #endregion
 
@@ -38,13 +38,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     private void Start()
     {
 
-        PhotonNetwork.ConnectUsingSettings();//初始化设置，连接服务器
+        PhotonNetwork.ConnectUsingSettings();
     }
 
     private void Update()
     {
 
-        if (PhotonNetwork.LocalPlayer.IsMasterClient)//判断是否是房主，是就显示开始游戏按钮，不是就显示准备按钮
+        if (PhotonNetwork.LocalPlayer.IsMasterClient)
         {
 
             readyBtn.SetActive(false);
