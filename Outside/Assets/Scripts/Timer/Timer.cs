@@ -50,11 +50,19 @@ public class Timer : MonoBehaviourPunCallbacks
         {
             gameObject.GetComponent<TextMeshProUGUI>().text = string.Format("{0:00}:{1:00}", 10, 0);
         }
-        gameObject.GetComponent<TextMeshProUGUI>().text = string.Format("{0:00}:{1:00}", minutes,seconds);
         if (timerIncrementValue >= timer)
         {
             //Timer Completed
             //Do What Ever You What to Do Here
+
+            gameObject.GetComponent<TextMeshProUGUI>().text = "Test Over";
+
         }
+        else
+        {
+
+            gameObject.GetComponent<TextMeshProUGUI>().text = string.Format("{0:00}:{1:00}", minutes,seconds);
+        }
+
     }
 }

@@ -175,7 +175,7 @@ namespace PlayerCon
 		{
 			if (!PV.IsMine)
 				return;
-
+			rb.angularVelocity = Vector3.zero;
 			rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
 
 		}

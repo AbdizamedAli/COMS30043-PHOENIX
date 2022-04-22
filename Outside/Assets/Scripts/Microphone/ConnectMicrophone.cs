@@ -12,6 +12,14 @@ public class ConnectMicrophone : MonoBehaviourPunCallbacks
     private string client_id = "";
     private string _microphoneDevice;
 
+    public string ID
+    {
+        get
+        {
+            return id;
+        }
+    }
+
     void Start()
     {
         if (!photonView.IsMine) return;
@@ -56,10 +64,17 @@ public class ConnectMicrophone : MonoBehaviourPunCallbacks
 
     void trackID(string ID)
     {
-        id = ID;
+        photonView.RPC(nameof(setPlayerIdPeerJS), RpcTarget.All, ID);
         if (!PhotonNetwork.IsMasterClient)
         {
             photonView.RPC(nameof(getClientIdRpc), RpcTarget.Others, ID);
         }
     }
+    [PunRPC]
+    void setPlayerIdPeerJS(string id_peer)
+    {
+        id = id_peer;
+    }
+
+
 }

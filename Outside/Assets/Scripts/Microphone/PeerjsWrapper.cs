@@ -26,7 +26,7 @@ namespace Peer
         private static extern void startCall(string foreignID);
 
         [DllImport("__Internal")]
-        private static extern void updateVolume(float newVolume);
+        private static extern void updateVolume(float newVolume, string ID);
         #endregion
 
         private static PeerjsWrapper _Instance;
@@ -105,10 +105,10 @@ namespace Peer
 #endif
         }
 
-        public void sendVolume(float volume)
+        public void sendVolume(float volume, string ID)
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
-            updateVolume(volume);
+            updateVolume(volume, ID);
 #endif
         }
 
