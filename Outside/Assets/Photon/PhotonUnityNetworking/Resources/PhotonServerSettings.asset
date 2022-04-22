@@ -102,6 +102,10 @@ MonoBehaviour:
   - SetPushDirection
   - SetVelocityZero
   - SpawnExitDoors
+  - addToAnswerList
+  - setPlayerIdPeerJS
+  - DecreasePuzzleCount
+  - FlipLeftOrRight
   DisableAutoOpenWizard: 1
   ShowSettings: 0
-  DevRegionSetOnce: 0
+  DevRegionSetOnce: 1

@@ -7,6 +7,12 @@ public class TopDoor : MonoBehaviourPunCallbacks
 {
     [SerializeField] private GameObject door;
     private bool collision;
+
+    private FloorManagerOne FloorManagerOne;
+
+    void Awake(){
+        FloorManagerOne=GameObject.FindObjectOfType<FloorManagerOne>();
+    }
     void Update()
     {
         if (collision)
@@ -14,6 +20,7 @@ public class TopDoor : MonoBehaviourPunCallbacks
             if (Input.GetKeyDown(KeyCode.E))
             {
                 this.photonView.RPC("setDoor", RpcTarget.All);
+                FloorManagerOne.PuzzleComplete();
             }
         }
 

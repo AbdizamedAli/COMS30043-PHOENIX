@@ -3,8 +3,9 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-namespace Photon.Pun.Demo.Asteroids
+namespace Lobby
 {
     public class LobbyMainPanel : MonoBehaviourPunCallbacks
     {
@@ -49,7 +50,7 @@ namespace Photon.Pun.Demo.Asteroids
 
             cachedRoomList = new Dictionary<string, RoomInfo>();
             roomListEntries = new Dictionary<string, GameObject>();
-            
+
             PlayerNameInput.text = "Player " + Random.Range(1000, 10000);
         }
 
@@ -98,7 +99,7 @@ namespace Photon.Pun.Demo.Asteroids
         {
             string roomName = "Room " + Random.Range(1000, 10000);
 
-            RoomOptions options = new RoomOptions {MaxPlayers = 8};
+            RoomOptions options = new RoomOptions { MaxPlayers = 4 };
 
             PhotonNetwork.CreateRoom(roomName, options, null);
         }
@@ -124,9 +125,9 @@ namespace Photon.Pun.Demo.Asteroids
                 entry.GetComponent<PlayerListEntry>().Initialize(p.ActorNumber, p.NickName);
 
                 object isPlayerReady;
-                if (p.CustomProperties.TryGetValue(AsteroidsGame.PLAYER_READY, out isPlayerReady))
+                if (p.CustomProperties.TryGetValue("isPlayerReady", out isPlayerReady))
                 {
-                    entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool) isPlayerReady);
+                    entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool)isPlayerReady);
                 }
 
                 playerListEntries.Add(p.ActorNumber, entry);
@@ -136,7 +137,7 @@ namespace Photon.Pun.Demo.Asteroids
 
             Hashtable props = new Hashtable
             {
-                {AsteroidsGame.PLAYER_LOADED_LEVEL, false}
+                {"PlayerLoadedLevel", false}
             };
             PhotonNetwork.LocalPlayer.SetCustomProperties(props);
         }
@@ -193,9 +194,9 @@ namespace Photon.Pun.Demo.Asteroids
             if (playerListEntries.TryGetValue(targetPlayer.ActorNumber, out entry))
             {
                 object isPlayerReady;
-                if (changedProps.TryGetValue(AsteroidsGame.PLAYER_READY, out isPlayerReady))
+                if (changedProps.TryGetValue("isPlayerReady", out isPlayerReady))
                 {
-                    entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool) isPlayerReady);
+                    entry.GetComponent<PlayerListEntry>().SetPlayerReady((bool)isPlayerReady);
                 }
             }
 
@@ -223,9 +224,9 @@ namespace Photon.Pun.Demo.Asteroids
 
             byte maxPlayers;
             byte.TryParse(MaxPlayersInputField.text, out maxPlayers);
-            maxPlayers = (byte) Mathf.Clamp(maxPlayers, 2, 8);
+            maxPlayers = (byte)Mathf.Clamp(maxPlayers, 2, 4);
 
-            RoomOptions options = new RoomOptions {MaxPlayers = maxPlayers, PlayerTtl = 10000 };
+            RoomOptions options = new RoomOptions { MaxPlayers = maxPlayers, PlayerTtl = 10000 };
 
             PhotonNetwork.CreateRoom(roomName, options, null);
         }
@@ -272,7 +273,7 @@ namespace Photon.Pun.Demo.Asteroids
             PhotonNetwork.CurrentRoom.IsOpen = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
 
-            PhotonNetwork.LoadLevel("DemoAsteroids-GameScene");
+            PhotonNetwork.LoadLevel("PuzzleRoom01");
         }
 
         #endregion
@@ -287,9 +288,9 @@ namespace Photon.Pun.Demo.Asteroids
             foreach (Player p in PhotonNetwork.PlayerList)
             {
                 object isPlayerReady;
-                if (p.CustomProperties.TryGetValue(AsteroidsGame.PLAYER_READY, out isPlayerReady))
+                if (p.CustomProperties.TryGetValue("isPlayerReady", out isPlayerReady))
                 {
-                    if (!(bool) isPlayerReady)
+                    if (!(bool)isPlayerReady)
                     {
                         return false;
                     }
@@ -302,7 +303,7 @@ namespace Photon.Pun.Demo.Asteroids
 
             return true;
         }
-        
+
         private void ClearRoomListView()
         {
             foreach (GameObject entry in roomListEntries.Values)
