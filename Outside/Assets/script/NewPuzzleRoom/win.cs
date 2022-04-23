@@ -4,6 +4,8 @@ using UnityEngine;
 using Photon.Pun;
 public class win : MonoBehaviour
 {
+    public GameObject Ret;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +23,7 @@ public class win : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Destroy(other);
-                PhotonNetwork.LoadLevel("PuzzleRoom01");
+                other.transform.position = Ret.transform.position;
             }
         }
 
