@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 711530975}
   - component: {fileID: 711530974}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: HuggingFaceAPI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1084,7 +1084,7 @@ GameObject:
   - component: {fileID: 1188502960}
   - component: {fileID: 1188502959}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: AI_Behaviour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1112,6 +1112,7 @@ MonoBehaviour:
   hfAPI: {fileID: 711530974}
   cam: {fileID: 651301292}
   inputField: {fileID: 1034231392}
+  AIState: 
 --- !u!4 &1188502960
 Transform:
   m_ObjectHideFlags: 0

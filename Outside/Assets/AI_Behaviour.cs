@@ -55,6 +55,8 @@ public class AI_Behaviour : MonoBehaviour
 
     private State state;
 
+    public string AIState;
+
     private void Awake()
     {
         // Set the State to Idle
@@ -142,26 +144,38 @@ public class AI_Behaviour : MonoBehaviour
         {
             default:
             case State.Idle:
-                Debug.Log("STATE IDLE");
+                //Debug.Log("STATE IDLE");
+                AIState = "neutral";
                 break;
 
             case State.sadness:
+                //Debug.Log("STATE SADNESS");
+                AIState = "sad";
                 break;
 
             case State.joy:
+                //Debug.Log("STATE JOY");
+                AIState = "happy";
                 break;
 
             case State.love:
-                Debug.Log("STATE LOVE");
+                //Debug.Log("STATE LOVE");
+                AIState = "happy";
                 break;
 
             case State.anger:
+                //Debug.Log("STATE ANGER);
+                AIState = "sad";
                 break;
 
             case State.fear:
+                //Debug.Log("STATE FEAR");
+                AIState = "sad";
                 break;
 
             case State.surprise:
+                //Debug.Log("STATE SURPRISE");
+                AIState = "happy";
                 break;
         }
     }
