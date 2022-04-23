@@ -21,10 +21,9 @@ public class win : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
+            
                 other.transform.position = Ret.transform.position;
-            }
+           
         }
 
 
