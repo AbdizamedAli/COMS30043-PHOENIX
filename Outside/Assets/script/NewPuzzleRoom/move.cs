@@ -26,11 +26,11 @@ public class move : MonoBehaviour
             {
                 movev += Time.deltaTime;
             }
-            if (Input.GetKey(KeyCode.J))
+            if (Input.GetKey(KeyCode.L))
             {
                 moveh -= Time.deltaTime;
             }
-            if (Input.GetKey(KeyCode.L))
+            if (Input.GetKey(KeyCode.J))
             {
                 moveh += Time.deltaTime;
             }

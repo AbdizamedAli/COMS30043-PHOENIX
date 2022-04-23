@@ -158,7 +158,7 @@ Transform:
   m_Children:
   - {fileID: 549680290}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1461776
 MeshCollider:
@@ -963,7 +963,6 @@ Transform:
   - {fileID: 811053071}
   - {fileID: 1430462479}
   - {fileID: 905656154}
-  - {fileID: 1391129881}
   - {fileID: 457720981}
   - {fileID: 1215348927}
   - {fileID: 1795654189}
@@ -983,7 +982,7 @@ Transform:
   - {fileID: 466288374}
   - {fileID: 1668540859}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &155134411
 Mesh:
@@ -2774,7 +2773,7 @@ Transform:
   m_Children:
   - {fileID: 2068235670}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
 --- !u!64 &389235582
 MeshCollider:
@@ -3283,7 +3282,7 @@ Transform:
   m_Children:
   - {fileID: 1682640734}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &456020830
 MeshCollider:
@@ -3655,7 +3654,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 91513671}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &466288373
 GameObject:
@@ -3692,7 +3691,7 @@ Transform:
   m_Children:
   - {fileID: 604055735}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 29
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
 --- !u!64 &466288375
 MeshCollider:
@@ -7655,7 +7654,7 @@ Transform:
   m_Children:
   - {fileID: 467743935}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
 --- !u!64 &760712405
 MeshCollider:
@@ -8745,7 +8744,7 @@ Transform:
   m_Children:
   - {fileID: 1947113179}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &859721853
 MeshCollider:
@@ -9867,7 +9866,7 @@ Transform:
   m_Children:
   - {fileID: 679193737}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &951576776
 MeshCollider:
@@ -10334,7 +10333,7 @@ Transform:
   m_Children:
   - {fileID: 1353993668}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
 --- !u!64 &966227303
 MeshCollider:
@@ -12701,7 +12700,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 91513671}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1215348928
 MonoBehaviour:
@@ -14678,7 +14677,7 @@ Transform:
   m_Children:
   - {fileID: 1775138043}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1354051996
 MeshCollider:
@@ -15157,23 +15156,23 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 91513671}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1739060609677575426, guid: ac787a9b7d370954fa0c64da7b23818f, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1739060609677575426, guid: ac787a9b7d370954fa0c64da7b23818f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -39.626343
+      value: 121
       objectReference: {fileID: 0}
     - target: {fileID: 1739060609677575426, guid: ac787a9b7d370954fa0c64da7b23818f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4719763
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1739060609677575426, guid: ac787a9b7d370954fa0c64da7b23818f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.648857
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 1739060609677575426, guid: ac787a9b7d370954fa0c64da7b23818f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15209,11 +15208,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac787a9b7d370954fa0c64da7b23818f, type: 3}
---- !u!4 &1391129881 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1739060609677575426, guid: ac787a9b7d370954fa0c64da7b23818f, type: 3}
-  m_PrefabInstance: {fileID: 1391129880}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1405144274
 GameObject:
   m_ObjectHideFlags: 0
@@ -16489,7 +16483,7 @@ Transform:
   m_Children:
   - {fileID: 1280285036}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1554707611
 MeshCollider:
@@ -17006,7 +17000,7 @@ Transform:
   m_Children:
   - {fileID: 1114048238}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1611593708
 MeshCollider:
@@ -17856,7 +17850,7 @@ Transform:
   m_Children:
   - {fileID: 2113628322}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 30
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
 --- !u!64 &1668540860
 MeshCollider:
@@ -19326,7 +19320,7 @@ Transform:
   m_Children:
   - {fileID: 1181390708}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1729012226
 MeshCollider:
@@ -20523,7 +20517,7 @@ Transform:
   m_Children:
   - {fileID: 467423118}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
 --- !u!64 &1790252815
 MeshCollider:
@@ -21244,7 +21238,7 @@ Transform:
   m_Children:
   - {fileID: 517006934}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1795654190
 MeshCollider:
@@ -23252,7 +23246,7 @@ Transform:
   m_Children:
   - {fileID: 202928737}
   m_Father: {fileID: 91513671}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &2073306910
 MeshCollider:
