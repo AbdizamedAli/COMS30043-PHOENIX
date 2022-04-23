@@ -129,7 +129,7 @@ public class HuggingFaceAPI : MonoBehaviour
         {
             JSONNode data = request.downloadHandler.text;
             // Process the result
-            //yield return ProcessResult(data);
+            yield return ProcessResult(data);
         }
 
     }
@@ -150,13 +150,26 @@ public class HuggingFaceAPI : MonoBehaviour
         cleanedResult = cleanedResult.Replace("}", "");
 
         // Then, we need to split each element of the array and convert to float
-        string[] splitArray = cleanedResult.Split(char.Parse(","));
-        float[] myFloat = splitArray.Select(float.Parse).ToArray();
+        string[] splitArray = cleanedResult.Split(char.Parse(",")).ToArray();
+        float[] values = new float[6];
+        int arrayCounter = 0;
+        //float[] myFloat = splitArray.Select(float.Parse).ToArray();
+        for (int i = 0; i < 12; i++)
+        {
+            if (i % 2 != 0)
+            {
+                values[arrayCounter] = float.Parse(splitArray[i].Remove(0, 8));
+                arrayCounter++;
+            }
+        }
 
         // Now that we have a array of floats, we can find the max score and the index of it.
         // We don't need to return these 2 variables, we'll access them directly since they are public.
-        maxScore = myFloat.Max();
-        maxScoreIndex = myFloat.ToList().IndexOf(maxScore);
+        maxScore = values.Max();
+        maxScoreIndex = values.ToList().IndexOf(maxScore);
+
+        Debug.Log(maxScore);
+        Debug.Log(maxScoreIndex);
 
         yield return null;
     }

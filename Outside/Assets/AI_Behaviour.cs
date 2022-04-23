@@ -131,7 +131,7 @@ public class AI_Behaviour : MonoBehaviour
         yield return hfAPI.HFScore(prompt);
 
         Utility(hfAPI.maxScore, hfAPI.maxScoreIndex);
-        Debug.Log(hfAPI.maxScore);
+        //Debug.Log(hfAPI.maxScore);
         yield return null;
     }
 
@@ -152,6 +152,7 @@ public class AI_Behaviour : MonoBehaviour
                 break;
 
             case State.love:
+                Debug.Log("STATE LOVE");
                 break;
 
             case State.anger:
