@@ -26,12 +26,23 @@ public class EnablePush : MonoBehaviourPunCallbacks
 
     private void OnControllerColliderHit(ControllerColliderHit hitObject){
         if(hitObject!=null){
-            Rigidbody rigidbody=hitObject.collider.attachedRigidbody;
-            this.photonView.RPC("push",RpcTarget.All,hitObject,rigidbody);
-            //push(hitObject,rigidbody);
+            Rigidbody rigidbody;
+            if(hitObject.collider.gameObject.GetComponent<PhotonView>().Owner.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber){
+                rigidbody=hitObject.collider.attachedRigidbody;
+                this.photonView.RPC("push",RpcTarget.All,hitObject,rigidbody);
+            }
+            else{
+                hitObject.collider.gameObject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer.ActorNumber);
+                rigidbody=hitObject.collider.attachedRigidbody;
+                this.photonView.RPC("push",RpcTarget.All,hitObject,rigidbody);
+            }
+
         }
-        
+            
+            //push(hitObject,rigidbody);
     }
+        
+    
     [PunRPC]
     private void push(ControllerColliderHit hitObject,Rigidbody rigidbody){
         print("yes");
