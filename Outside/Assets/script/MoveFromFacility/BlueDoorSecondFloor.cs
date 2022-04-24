@@ -14,12 +14,12 @@ public class BlueDoorSecondFloor : MonoBehaviourPunCallbacks
 
     public bool isDone = false;
 
-    private bool leftOrRight;// left false right true
+    private string leftOrRight;// left false right true
     
     // Start is called before the first frame update
     void Start()
     {
-        leftOrRight=false;
+        leftOrRight="false";
         
     }
 
@@ -32,15 +32,15 @@ public class BlueDoorSecondFloor : MonoBehaviourPunCallbacks
     private void OnTriggerEnter(Collider other)
     {
         
-            other.transform.position = spawn_1.transform.position;
+            
 
             
 
-            if(leftOrRight==false){
+            if(leftOrRight.Equals("false")){
                 this.photonView.RPC("FlipLeftOrRight",RpcTarget.All);
                 other.transform.position = spawn_1.transform.position;
             }
-            else if(leftOrRight==true){
+            else if(leftOrRight.Equals("true")){
                 this.photonView.RPC("FlipLeftOrRight",RpcTarget.All);
                 other.transform.position = spawn_2.transform.position;
             }
@@ -48,11 +48,11 @@ public class BlueDoorSecondFloor : MonoBehaviourPunCallbacks
     }
     [PunRPC]
     void FlipLeftOrRight(){
-        if(leftOrRight==false){
-            leftOrRight=true;
+        if(leftOrRight.Equals("false")){
+            leftOrRight="true";
         }
-        else if(leftOrRight==true){
-            leftOrRight=false;
+        else if(leftOrRight.Equals("true")){
+            leftOrRight="false";
         }
 
     }
