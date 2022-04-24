@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class AudioChat : MonoBehaviourPunCallbacks
 {
-    private bool connected = false;
+    public bool connected = false;
     private float max_volume = 1f;
 
     void Start()
@@ -14,13 +14,10 @@ public class AudioChat : MonoBehaviourPunCallbacks
         if (!photonView.IsMine) return;
         PeerjsWrapper.Instance.code_stack += checkConected;
         checkConected(PeerjsWrapper.Instance.Connection);
+        InvokeRepeating(nameof(updateVolume),0,0.5f);
 
     }
 
-    private void Update()
-    {
-        UpdateVolume();
-    }
     private float getVolume(float distance)
     {
         return Math.Min(max_volume, max_volume / distance);
@@ -30,23 +27,29 @@ public class AudioChat : MonoBehaviourPunCallbacks
     {
         if (code == Code.ConnectionOn)
         {
-            connected = true;
+            this.photonView.RPC(nameof(setCheckConnectedVariableAudioChat), RpcTarget.All);
         }
     }
 
-    private void UpdateVolume()
+    [PunRPC]
+    void setCheckConnectedVariableAudioChat()
+    {
+        connected = true;
+    }
+
+    private void updateVolume()
     {
         if (!photonView.IsMine) return;
 
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
         foreach (GameObject player in players)
         {
             if (!player.GetPhotonView().IsMine)
             {
                 float distance = Vector3.Distance(transform.position, player.transform.position);
                 float new_volume = getVolume(distance);
-                if (0f <= new_volume && new_volume <= 1f && connected == true)
+                bool player_connected = player.GetComponent<AudioChat>().connected;
+                if (0f <= new_volume && new_volume <= 1f && connected == true && player_connected == true)
                 {
                     string ID = player.GetComponent<ConnectMicrophone>().ID;
                     PeerjsWrapper.Instance.sendVolume(new_volume, ID);
