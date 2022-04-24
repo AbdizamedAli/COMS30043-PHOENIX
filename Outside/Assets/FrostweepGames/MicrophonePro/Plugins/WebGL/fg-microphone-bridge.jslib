@@ -107,13 +107,19 @@ var FGMicrophoneLibrary = {
           console.error("Failed to get local stream", err);
         });
       call.on("stream", (remoteStream) => {
-        var audio = document.createElement("audio");
-        audio.srcObject = remoteStream;
-        audio.autoplay = true;
-        connected = true;
-        audio.id = call.peer;
-        console.log("We have set the id of caller to: " + call.peer);
-        document.getElementById("unity-footer").appendChild(audio);
+        if (!document.peers.includes(call.peer)) {
+          var audio = document.createElement("audio");
+          audio.srcObject = remoteStream;
+          audio.autoplay = true;
+          connected = true;
+          audio.id = call.peer;
+
+          console.log("We have set the id of caller to: " + call.peer);
+          document.getElementById("unity-footer").appendChild(audio);
+          document.peers.push(call.peer);
+        } else {
+          console.log("Stream already exists");
+        }
         SendMessage("Voice_Audio_PeerJS", "updateCode", 0);
       });
     });
@@ -171,10 +177,16 @@ var FGMicrophoneLibrary = {
     }
   },
 
-  updateVolume: function (newVolume,audio_id) {
-    var audio = document.getElementById(UTF8ToString(audio_id));
-    console.log("New volume: " + newVolume + " for id: " + UTF8ToString(audio_id)  );
-    audio.volume = newVolume;
+  updateVolume: function (newVolume, audio_id) {
+    if (document.getElementById(UTF8ToString(audio_id)) != null) {
+      var audio = document.getElementById(UTF8ToString(audio_id));
+      console.log(
+        "New volume: " + newVolume + " for id: " + UTF8ToString(audio_id)
+      );
+      audio.volume = newVolume;
+    } else {
+      console.log("Something is wrong");
+    }
   },
 
   init: async function (version, worklet) {
@@ -221,6 +233,7 @@ var FGMicrophoneLibrary = {
             audio.autoplay = true;
             audio.id = receiverId;
             document.getElementById("unity-footer").appendChild(audio);
+            document.peers.push(receiverId);
             SendMessage("Voice_Audio_PeerJS", "updateCode", 0);
           });
           call.on("error", function (err) {
@@ -298,6 +311,7 @@ var FGMicrophoneLibrary = {
     document.call = null;
     document.setupConnection = setupConnection;
     document.setupCall = setupCall;
+    document.peers = [];
 
     return 1;
   },

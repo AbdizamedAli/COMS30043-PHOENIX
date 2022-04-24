@@ -5,7 +5,7 @@ using Photon.Pun;
 public class win : MonoBehaviour
 {
     public GameObject Ret;
-
+    private FloorManagerTwo FloorManagerTwo;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +22,10 @@ public class win : MonoBehaviour
         if(other.tag == "Player")
         {
             
-                other.transform.position = Ret.transform.position;
-           
+            other.transform.position = Ret.transform.position;
+            FloorManagerTwo.PuzzleComplete();
+
+
         }
 
 

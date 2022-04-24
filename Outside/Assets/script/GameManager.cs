@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
-    public GameObject player;     
+    public GameObject player;
     public static GameManager _insatnce;
 
     // Start is called before the first frame update
@@ -18,28 +18,28 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "row1"), new Vector3(106.5f,27.45f,21.8f), Quaternion.identity);
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "row2"), new Vector3(106.5f,27.45f,21.6f), Quaternion.identity);
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "row3"), new Vector3(106.5f,27.45f,21.8f), Quaternion.identity);
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "row1"), new Vector3(106.5f, 27.45f, 21.8f), Quaternion.identity);
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "row2"), new Vector3(106.5f, 27.45f, 21.6f), Quaternion.identity);
+                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "row3"), new Vector3(106.5f, 27.45f, 21.8f), Quaternion.identity);
                 float x_1 = 53.85f;
 
                 for (int i = 1; i < 4; i++)
                 {
                     float y_1 = 7f;
-                    x_1 +=  7;
+                    x_1 += 7;
 
                     for (int j = 1; j < 4; j++)
                     {
                         y_1 -= 2;
-                        if(i == 1)
+                        if (i == 1)
                         {
-                            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "text_wall_objects","row_" + i + "_" + j), new Vector3(x_1, y_1, 43.71f), Quaternion.identity);
+                            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "text_wall_objects", "row_" + i + "_" + j), new Vector3(x_1, y_1, 43.71f), Quaternion.identity);
                         }
                         else if (i == 2)
                         {
                             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "text_wall_objects", "row_" + i + "_" + j), new Vector3(x_1, y_1, 43.71f), Quaternion.identity);
                         }
-                        else 
+                        else
                         {
                             PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "text_wall_objects", "row_" + i + "_" + j), new Vector3(x_1, y_1, 43.71f), Quaternion.identity);
                         }
@@ -65,5 +65,5 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
         }
     }
-    
+
 }
