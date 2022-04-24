@@ -52,13 +52,10 @@ public class ConnectMicrophone : MonoBehaviourPunCallbacks
     [PunRPC]
     void getClientIdRpc(string ID)
     {
-        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        if (client_id != ID)
         {
-            if (player.GetPhotonView().IsMine)
-            {
-                ConnectMicrophone mic = player.GetComponent<ConnectMicrophone>();
-                mic.getClientID(ID);
-            }
+
+            getClientID(ID);
         }
     }
 
