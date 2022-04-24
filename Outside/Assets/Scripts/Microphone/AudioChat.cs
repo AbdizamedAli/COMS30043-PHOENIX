@@ -9,7 +9,6 @@ public class AudioChat : MonoBehaviourPunCallbacks
     private bool connected = false;
     private float max_volume = 1f;
 
-
     void Start()
     {
         if (!photonView.IsMine) return;
@@ -26,6 +25,7 @@ public class AudioChat : MonoBehaviourPunCallbacks
     {
         return Math.Min(max_volume, max_volume / distance);
     }
+
     private void checkConected(Code code)
     {
         if (code == Code.ConnectionOn)
@@ -40,25 +40,20 @@ public class AudioChat : MonoBehaviourPunCallbacks
 
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-        if (players.Length == PhotonNetwork.CountOfPlayers)
+        foreach (GameObject player in players)
         {
-
-            foreach (GameObject player in players)
+            if (!player.GetPhotonView().IsMine)
             {
-                if (!player.GetPhotonView().IsMine)
+                float distance = Vector3.Distance(transform.position, player.transform.position);
+                float new_volume = getVolume(distance);
+                if (0f <= new_volume && new_volume <= 1f && connected == true)
                 {
-                    float distance = Vector3.Distance(transform.position, player.transform.position);
-                    float new_volume = getVolume(distance);
-                    Debug.Log(connected + " " + new_volume);
-                    if (0f <= new_volume && new_volume <= 1f && connected == true)
-                    {
-                        string ID = player.GetComponent<ConnectMicrophone>().ID;
-                        PeerjsWrapper.Instance.sendVolume(new_volume, ID);
+                    string ID = player.GetComponent<ConnectMicrophone>().ID;
+                    PeerjsWrapper.Instance.sendVolume(new_volume, ID);
 
-                    }
                 }
             }
-        }
+        }  
     }
 
 }
