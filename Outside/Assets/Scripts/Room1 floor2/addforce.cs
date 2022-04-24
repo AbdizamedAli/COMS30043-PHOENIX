@@ -65,24 +65,24 @@ public class addforce : MonoBehaviourPunCallbacks
 
     [PunRPC]
     void PushForward(){
-        box.velocity= new Vector3(0,0,-10);
+        box.velocity= new Vector3(0,0,-5);
                  
     }
     [PunRPC]
     void PushRight(){
         
-        box.velocity= new Vector3(-10,0,0);
+        box.velocity= new Vector3(-5,0,0);
         
      
     }
     [PunRPC]
     void PushDown(){
         
-        box.velocity= new Vector3(0,0,10);
+        box.velocity= new Vector3(0,0,5);
     }
     [PunRPC]
     void PushLeft(){  
-        box.velocity= new Vector3(10,0,0);
+        box.velocity= new Vector3(5,0,0);
     }
     IEnumerator Wait(int seconds){
         yield return new WaitForSeconds(seconds);
