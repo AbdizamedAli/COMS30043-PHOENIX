@@ -33,6 +33,8 @@ public class AI_Behaviour : MonoBehaviour
         surprise
     }
 
+    public EmotBotUI botUI;
+
     [Header("Robot list of actions")]
     public List<PlayerEmotions> playerEmotionsList;
 
@@ -56,6 +58,8 @@ public class AI_Behaviour : MonoBehaviour
     private State state;
 
     public string AIState;
+
+    
 
     private void Awake()
     {
@@ -124,6 +128,8 @@ public class AI_Behaviour : MonoBehaviour
     {
         // Get the input text
         prompt = inputField.text;
+        inputField.text = "";
+        botUI.UpdateDisplay("user", prompt);
         // Call the Corountine UISend_
         StartCoroutine(UISend_(prompt));
     }
@@ -134,13 +140,14 @@ public class AI_Behaviour : MonoBehaviour
 
         Utility(hfAPI.maxScore, hfAPI.maxScoreIndex);
         //Debug.Log(hfAPI.maxScore);
+        AIStateFromState();
+        Behaviour();
         yield return null;
     }
 
-    private void Update()
+    public void AIStateFromState()
     {
-        // TODO: Define the State Machine that will define how the Robot needs to act given its state
-        switch(state)
+        switch (state)
         {
             default:
             case State.Idle:
@@ -178,5 +185,64 @@ public class AI_Behaviour : MonoBehaviour
                 AIState = "happy";
                 break;
         }
+    }
+
+    public void Behaviour()
+    {
+        var rnd = Random.Range(0, 3);
+
+        switch(AIState)
+        {
+            default:
+            case "happy":
+                botUI.UpdateDisplay("bot", "happy");
+                break;
+            case "sad":
+                botUI.UpdateDisplay("bot", "sad");
+                break;
+        }
+    }
+
+    private void Update()
+    {
+        // TODO: Define the State Machine that will define how the Robot needs to act given its state
+        /*switch(state)
+        {
+            default:
+            case State.Idle:
+                //Debug.Log("STATE IDLE");
+                AIState = "neutral";
+                break;
+
+            case State.sadness:
+                //Debug.Log("STATE SADNESS");
+                AIState = "sad";
+                break;
+
+            case State.joy:
+                //Debug.Log("STATE JOY");
+                AIState = "happy";
+                break;
+
+            case State.love:
+                //Debug.Log("STATE LOVE");
+                AIState = "happy";
+                break;
+
+            case State.anger:
+                //Debug.Log("STATE ANGER);
+                AIState = "sad";
+                break;
+
+            case State.fear:
+                //Debug.Log("STATE FEAR");
+                AIState = "sad";
+                break;
+
+            case State.surprise:
+                //Debug.Log("STATE SURPRISE");
+                AIState = "happy";
+                break;*/
+        //}
     }
 }
