@@ -28,10 +28,10 @@ TagManager:
   - InteractiveObject
   - InteractiveObjectWallButton
   - EnterButtonWall
-  - 
-  - 
-  - 
-  - 
+  - Player_one
+  - Player_two
+  - Player_three
+  - Player_four
   - 
   - 
   - 
