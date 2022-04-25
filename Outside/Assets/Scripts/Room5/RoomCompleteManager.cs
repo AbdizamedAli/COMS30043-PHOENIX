@@ -43,10 +43,10 @@ public class RoomCompleteManager : MonoBehaviourPunCallbacks
         }
     }
     public void LeftComplete(){
-        leftCompleted=true;
+        this.photonView.RPC("CompleteLeft",RpcTarget.All);
     }
     public void RightComplete(){
-        rightCompleted=true;
+        this.photonView.RPC("CompleteRight",RpcTarget.All);
     }
 
     [PunRPC]
@@ -54,5 +54,13 @@ public class RoomCompleteManager : MonoBehaviourPunCallbacks
         leftExitDoor.transform.position=leftExitDoorPosition.transform.position;
         rightExitDoor.transform.position=rightExitDoorPosition.transform.position;
 
+    }
+    [PunRPC]
+    private void CompleteLeft(){
+        leftCompleted=true;
+    }
+    [PunRPC]
+    private void CompleteRight(){
+        rightCompleted=true;
     }
 }
