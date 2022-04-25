@@ -46,7 +46,7 @@ public class RedButtonPress : MonoBehaviourPunCallbacks
                 if (pressed)
                 {
                     //print("button on yes");
-                    ButtonTurnOff();
+                    this.photonView.RPC(nameof(ButtonTurnOff), RpcTarget.All);
                     pressed = false;
 
                 }
@@ -56,10 +56,11 @@ public class RedButtonPress : MonoBehaviourPunCallbacks
                     //print("button off yes");
                     Debug.Log(playerCount);
                     Debug.Log(GameObject.Find("RedPlayerDetectionCube").GetComponent<RedPlayerDetection>().RedDoorCount);
-                    ButtonTurnOn();
+                    this.photonView.RPC(nameof(ButtonTurnOn), RpcTarget.All);
                     pressed = true;
-                    redDoor.transform.position = redDoorLocation.transform.position;
-                    slammingDoor.transform.position = slammingDoorLocation.transform.position;
+                    this.photonView.RPC(nameof(redDoorSetOpenDoor), RpcTarget.All);
+                    //redDoor.transform.position = redDoorLocation.transform.position;
+                    //slammingDoor.transform.position = slammingDoorLocation.transform.position;
                 }
             }
         }
@@ -74,6 +75,13 @@ public class RedButtonPress : MonoBehaviourPunCallbacks
     void OnTriggerExit(Collider other)
     {
         collision = false;
+    }
+
+    [PunRPC]
+    void redDoorSetOpenDoor()
+    {
+        redDoor.transform.position = redDoorLocation.transform.position;
+        slammingDoor.transform.position = slammingDoorLocation.transform.position;
     }
 
     [PunRPC]
