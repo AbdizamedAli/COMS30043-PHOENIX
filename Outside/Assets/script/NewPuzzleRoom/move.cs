@@ -5,10 +5,11 @@ using UnityEngine;
 public class move : MonoBehaviour
 {
     public bool flag = false;
+    private CharacterController Cc;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        Cc = gameObject.GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -34,7 +35,7 @@ public class move : MonoBehaviour
             {
                 moveh += Time.deltaTime;
             }
-            this.transform.Translate(new Vector3(5*moveh, 0, 5*movev));
+            Cc.Move(new Vector3(5*moveh, 0, 5*movev));
         }
     }
 
