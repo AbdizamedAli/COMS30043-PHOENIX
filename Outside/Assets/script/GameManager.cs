@@ -60,10 +60,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 index = item.ActorNumber - 1;
                 //  PhotonNetwork.Instantiate("Player", m_spawns.mySpawns[index].spawnPos.position, Quaternion.identity);
-                PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "MaleFreeSimpleMovement1"), new Vector3(0f, 2f, (float)(index * 10)), Quaternion.identity);
-                Debug.Log("userid:" + item.ActorNumber);
+                GameObject p =  PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "MaleFreeSimpleMovement1"), new Vector3(0f, 2f, (float)(index * 10)), Quaternion.identity);
+                p.transform.GetChild(1).gameObject.layer = 9 + index;
+                p.GetComponentInChildren<Camera>().cullingMask = ~(1 << 9 + index);
+                //Debug.Log(index + " Is the index");
             }
         }
     }
-
 }
