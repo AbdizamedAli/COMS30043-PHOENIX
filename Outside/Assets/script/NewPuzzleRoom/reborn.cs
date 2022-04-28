@@ -5,6 +5,7 @@ using Photon;
 public class reborn : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameObject re;
     void Start()
     {
         
@@ -19,7 +20,7 @@ public class reborn : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            other.transform.Translate(new Vector3(-46, 3,-3 ));
+            other.transform.position = re.transform.position;
         }
     }
 }
