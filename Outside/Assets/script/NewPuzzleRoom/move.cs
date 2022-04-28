@@ -17,25 +17,17 @@ public class move : MonoBehaviour
     {
         if(flag == true)
         {
-            float movev = 0;
             float moveh = 0;
-            if (Input.GetKey(KeyCode.I))
-            {
-                movev -= Time.deltaTime;
-            }
-            if (Input.GetKey(KeyCode.K))
-            {
-                movev += Time.deltaTime;
-            }
-            if (Input.GetKey(KeyCode.L))
-            {
-                moveh -= Time.deltaTime;
-            }
-            if (Input.GetKey(KeyCode.J))
+
+            if (Input.GetKey(KeyCode.B))
             {
                 moveh += Time.deltaTime;
             }
-            Cc.Move(new Vector3(5*moveh, 0, 5*movev));
+            if (Input.GetKey(KeyCode.G))
+            {
+                moveh -= Time.deltaTime;
+            }
+            Cc.Move(new Vector3(5*moveh, 0, 0));
         }
     }
 
