@@ -24,7 +24,8 @@ public class move : MonoBehaviour
             photonView.RPC("_go", RpcTarget.All);
         }
     }
-    public void _go()
+    [PunRPC]
+    void _go()
     {
             float moveh = 0;
 
