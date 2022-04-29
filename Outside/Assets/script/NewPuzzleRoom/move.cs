@@ -21,12 +21,6 @@ public class move : MonoBehaviour
     {
         if(flag == true)
         {
-            photonView.RPC("_go", RpcTarget.All);
-        }
-    }
-    [PunRPC]
-    void _go()
-    {
             float moveh = 0;
 
             if (Input.GetKey(KeyCode.B))
@@ -37,7 +31,14 @@ public class move : MonoBehaviour
             {
                 moveh -= Time.deltaTime;
             }
-            Cc.Move(new Vector3(5*moveh, 0, 0));
+            photonView.RPC("Go_cy", RpcTarget.Others,moveh);
+        }
+    }
+    [PunRPC]
+    void Go_cy(float xgo)
+    {
+
+            Cc.Move(new Vector3(5*xgo, 0, 0));
     }
 
 }
