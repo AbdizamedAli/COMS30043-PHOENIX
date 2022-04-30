@@ -39,7 +39,7 @@ public class move : MonoBehaviour
     void Go_cy(float xgo)
     {
 
-            Cc.Move(new Vector3(5*xgo, 0, 0));
+            Cc.Move(new Vector3(0, 0, 5 * xgo));
     }
 
 }
