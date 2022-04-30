@@ -9,12 +9,11 @@ public class move : MonoBehaviour
     PhotonView photonView;
     public bool flag = false;
     private CharacterController Cc;
-    private Rigidbody rb;
     // Start is called before the first frame update
     void Awake()
     {
         Cc = gameObject.GetComponent<CharacterController>();
-        rb = gameObject.GetComponent<Rigidbody>();
+       
         photonView = GetComponent<PhotonView>();
     }
 
@@ -40,7 +39,7 @@ public class move : MonoBehaviour
     void Go_cy(float xgo)
     {
 
-            rb.MovePosition(new Vector3(5*xgo, 0, 0));
+            Cc.Move(new Vector3(5*xgo, 0, 0));
     }
 
 }
