@@ -13,6 +13,7 @@ public class move : MonoBehaviour
     void Awake()
     {
         Cc = gameObject.GetComponent<CharacterController>();
+       
         photonView = GetComponent<PhotonView>();
     }
 
@@ -31,7 +32,7 @@ public class move : MonoBehaviour
             {
                 moveh -= Time.deltaTime;
             }
-            photonView.RPC("Go_cy", RpcTarget.Others,moveh);
+            photonView.RPC("Go_cy", RpcTarget.All,moveh);
         }
     }
     [PunRPC]

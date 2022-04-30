@@ -113,6 +113,7 @@ MonoBehaviour:
   - CompleteLeft
   - CompleteRight
   - _go
+  - Go_cy
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
