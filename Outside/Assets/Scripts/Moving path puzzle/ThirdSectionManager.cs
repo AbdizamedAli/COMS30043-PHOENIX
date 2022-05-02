@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class ThirdSectionManager : MonoBehaviour
+public class ThirdSectionManager : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     GameObject leftOne;
@@ -38,6 +39,10 @@ public class ThirdSectionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            return;
+        }
         leftOne.GetComponent<Renderer>().enabled=false;
         leftTwo.GetComponent<Renderer>().enabled=false;
         leftThree.GetComponent<Renderer>().enabled=false;
@@ -75,7 +80,12 @@ public class ThirdSectionManager : MonoBehaviour
         time=time+1f*Time.deltaTime;
         //timeSecond=timeSecond+1f*Time.deltaTime;
         if(time>=delay){
-            if(currentBridgeFirst==1){
+            this.photonView.RPC("MovePaths",RpcTarget.All);
+        }
+    }
+    [PunRPC]
+    void MovePaths(){
+        if(currentBridgeFirst==1){
                 leftThree.GetComponent<Renderer>().enabled=false;
                 leftThree.GetComponent<Collider>().enabled=false;
                 rightThree.GetComponent<Collider>().enabled=false;
@@ -151,10 +161,9 @@ public class ThirdSectionManager : MonoBehaviour
     
                 
                 currentBridgeSecond=2;
-                ;
+                
 
             }
-            
-        }
+
     }
 }
