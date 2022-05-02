@@ -35,14 +35,7 @@ public class ThirdSectionManager : MonoBehaviourPunCallbacks
     
     int currentBridgeFirst;
     int currentBridgeSecond;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            return;
-        }
+    void Awake(){
         leftOne.GetComponent<Renderer>().enabled=false;
         leftTwo.GetComponent<Renderer>().enabled=false;
         leftThree.GetComponent<Renderer>().enabled=false;
@@ -66,6 +59,16 @@ public class ThirdSectionManager : MonoBehaviourPunCallbacks
         rightTwoSecond.GetComponent<Collider>().enabled=false;
         leftThreeSecond.GetComponent<Collider>().enabled=false;
         rightThreeSecond.GetComponent<Collider>().enabled=false;
+    }
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            return;
+        }
+        
         time=0f;
         delay=0.8f;
         
