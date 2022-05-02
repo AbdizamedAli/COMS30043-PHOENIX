@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class RoomManagerRight : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject boxOne;
-    [SerializeField]
-    private GameObject boxTwo;
+    
     [SerializeField]
     private GameObject boxThree;
     [SerializeField]
     private GameObject boxFour;
-    [SerializeField]
-    private GameObject boxFive;
-    [SerializeField]
-    private GameObject boxSix;
-
+    
     private List<string> boxList;
     private RoomCompleteManager RoomCompleteManager;
     private bool completed;
@@ -25,13 +18,10 @@ public class RoomManagerRight : MonoBehaviour
         boxList = new List<string>();
         RoomCompleteManager=GameObject.FindObjectOfType<RoomCompleteManager>();
 
-        boxList.Add(boxOne.name);
-        boxList.Add(boxTwo.name);
+        
         boxList.Add(boxThree.name);
         boxList.Add(boxFour.name);
-        boxList.Add(boxFive.name);
-        boxList.Add(boxSix.name);
-
+        
         completed =false;
     }
 
