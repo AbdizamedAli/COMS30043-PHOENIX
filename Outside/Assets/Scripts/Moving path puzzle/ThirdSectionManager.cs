@@ -64,10 +64,30 @@ public class ThirdSectionManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            return;
-        }
+        leftOne.GetComponent<Renderer>().enabled=false;
+        leftTwo.GetComponent<Renderer>().enabled=false;
+        leftThree.GetComponent<Renderer>().enabled=false;
+        
+
+        leftOne.GetComponent<Collider>().enabled=false;
+        rightOne.GetComponent<Collider>().enabled=false;
+        leftTwo.GetComponent<Collider>().enabled=false;
+        rightTwo.GetComponent<Collider>().enabled=false;
+        leftThree.GetComponent<Collider>().enabled=false;
+        rightThree.GetComponent<Collider>().enabled=false;
+
+        rightOneSecond.GetComponent<Renderer>().enabled=false;
+        rightTwoSecond.GetComponent<Renderer>().enabled=false;
+        rightThreeSecond.GetComponent<Renderer>().enabled=false;
+        
+
+        leftOneSecond.GetComponent<Collider>().enabled=false;
+        rightOneSecond.GetComponent<Collider>().enabled=false;
+        leftTwoSecond.GetComponent<Collider>().enabled=false;
+        rightTwoSecond.GetComponent<Collider>().enabled=false;
+        leftThreeSecond.GetComponent<Collider>().enabled=false;
+        rightThreeSecond.GetComponent<Collider>().enabled=false;
+        
         
         time=0f;
         delay=0.8f;
@@ -82,7 +102,7 @@ public class ThirdSectionManager : MonoBehaviourPunCallbacks
     {
         time=time+1f*Time.deltaTime;
         //timeSecond=timeSecond+1f*Time.deltaTime;
-        if(time>=delay){
+        if(time>=delay&&PhotonNetwork.IsMasterClient){
             this.photonView.RPC("MovePaths",RpcTarget.All);
         }
     }

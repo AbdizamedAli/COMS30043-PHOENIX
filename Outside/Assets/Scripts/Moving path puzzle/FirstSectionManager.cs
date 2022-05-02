@@ -42,10 +42,20 @@ public class FirstSectionManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            return;
-        }
+        leftOne.GetComponent<Renderer>().enabled=false;
+        
+        leftTwo.GetComponent<Renderer>().enabled=false;
+        
+        leftThree.GetComponent<Renderer>().enabled=false;
+        
+
+        leftOne.GetComponent<Collider>().enabled=false;
+        rightOne.GetComponent<Collider>().enabled=false;
+        leftTwo.GetComponent<Collider>().enabled=false;
+        rightTwo.GetComponent<Collider>().enabled=false;
+        leftThree.GetComponent<Collider>().enabled=false;
+        rightThree.GetComponent<Collider>().enabled=false;
+        
         
         currentBridge=1;
         time=0f;
@@ -60,7 +70,7 @@ public class FirstSectionManager : MonoBehaviourPunCallbacks
     {
         time=time+1f*Time.deltaTime;
         
-        if(time>=delay){
+        if(time>=delay&&PhotonNetwork.IsMasterClient){
             this.photonView.RPC("MovePaths",RpcTarget.All);
             
         }
