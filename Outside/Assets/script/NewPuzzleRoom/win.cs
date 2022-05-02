@@ -7,6 +7,9 @@ public class win : MonoBehaviour
     public GameObject Ret;
     private FloorManagerTwo FloorManagerTwo;
     // Start is called before the first frame update
+    void Awake(){
+        FloorManagerTwo=GameObject.FindObjectOfType<FloorManagerTwo>();
+    }
     void Start()
     {
         
