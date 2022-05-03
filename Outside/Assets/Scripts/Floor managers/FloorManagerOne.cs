@@ -39,7 +39,11 @@ public class FloorManagerOne : MonoBehaviourPunCallbacks
     }
 
     public void PuzzleComplete(){
-        this.photonView.RPC("DecreasePuzzleCount",RpcTarget.All);
+        if(PhotonNetwork.IsMasterClient){
+            this.photonView.RPC("DecreasePuzzleCount",RpcTarget.All);
+
+        }
+        
     }
 
     [PunRPC]
