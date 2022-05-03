@@ -59,8 +59,6 @@ public class AI_Behaviour : MonoBehaviour
 
     public string AIState;
 
-    
-
     private void Awake()
     {
         // Set the State to Idle
@@ -205,6 +203,16 @@ public class AI_Behaviour : MonoBehaviour
 
     private void Update()
     {
+        /*if(Input.GetMouseButtonDown(0))
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+
+        if(Input.GetMouseButtonUp(0))
+        {
+            //Cursor.lockState = CursorLockMode.Locked;
+        }*/
+
         // TODO: Define the State Machine that will define how the Robot needs to act given its state
         /*switch(state)
         {

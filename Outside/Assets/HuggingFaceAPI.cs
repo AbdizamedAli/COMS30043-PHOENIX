@@ -36,6 +36,8 @@ public class HuggingFaceAPI : MonoBehaviour
     [Header("Jammo Behavior")]
     public AI_Behaviour jammo; // A reference to Jammo Behavior Script
 
+    //public bool roomEnter;
+
     void Start()
     {
         // To prepare the JSON, we take all the sentences candidates
@@ -44,7 +46,8 @@ public class HuggingFaceAPI : MonoBehaviour
             sentences.Add(emotions.emotion);
         }
 
-        Cursor.lockState = CursorLockMode.Confined;
+        //roomEnter = false;
+        //Cursor.lockState = CursorLockMode.Confined;
     }
 
     /// <summary>
