@@ -5,6 +5,19 @@ TagManager:
   serializedVersion: 2
   tags:
   - InteractiveObject
+  - Selectable
+  - Rotatable
+  - ready
+  - key
+  - AI
+  - row_1_word
+  - row_2_word
+  - row_3_word
+  - row_1_button
+  - row_2_button
+  - row_3_button
+  - enter_wall_selection
+  - timer
   layers:
   - Default
   - TransparentFX
@@ -13,12 +26,12 @@ TagManager:
   - Water
   - UI
   - InteractiveObject
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - InteractiveObjectWallButton
+  - EnterButtonWall
+  - Player_one
+  - Player_two
+  - Player_three
+  - Player_four
   - 
   - 
   - 
