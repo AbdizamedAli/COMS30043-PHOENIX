@@ -39,7 +39,7 @@ public class RoomCompleteManager : MonoBehaviourPunCallbacks
             //add code to spawn exit doors here
             print("room completed");
             this.photonView.RPC("SpawnExitDoors",RpcTarget.All);
-            FloorManagerOne.PuzzleComplete();
+            
         }
     }
     public void LeftComplete(){
@@ -51,6 +51,7 @@ public class RoomCompleteManager : MonoBehaviourPunCallbacks
 
     [PunRPC]
     public void SpawnExitDoors(){
+        FloorManagerOne.PuzzleComplete();
         leftExitDoor.transform.position=leftExitDoorPosition.transform.position;
         rightExitDoor.transform.position=rightExitDoorPosition.transform.position;
 
