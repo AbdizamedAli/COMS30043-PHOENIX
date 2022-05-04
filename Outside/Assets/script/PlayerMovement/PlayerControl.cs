@@ -12,6 +12,7 @@ namespace PlayerCon
 		[SerializeField] GameObject cameraHolder;
 		[SerializeField] float mouseSensitivity, sprintSpeed, walkSpeed, jumpForce, smoothTime;
 
+		[SerializeField] GameObject cursorControl;
 		private bool showCursor;
 
 
@@ -107,12 +108,13 @@ namespace PlayerCon
 				Destroy(rb);
 			}
 			m_animator.SetBool("Grounded", true);
-			showCursor = false;
+			//showCursor = false;
 		}
 
 
 		void Update()
 		{
+			showCursor = cursorControl.GetComponent<bool>();
 			if (!PV.IsMine)
 				return;
 			if (!showCursor)
