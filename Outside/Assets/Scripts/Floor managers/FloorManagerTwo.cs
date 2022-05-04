@@ -18,6 +18,8 @@ public class FloorManagerTwo : MonoBehaviourPunCallbacks
     [SerializeField]
     private AudioSource AiSoundSecond;
     bool onePuzzleCompleted;
+    [SerializeField]
+    GameObject redDoor;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class FloorManagerTwo : MonoBehaviourPunCallbacks
         //AiSoundSecond.Play();
         complete=true;
         stairWall.transform.position=stairWallNewPos.transform.position;
+        redDoor.transform.position=stairWallNewPos.transform.position;
         print("yessss");
     }
 
