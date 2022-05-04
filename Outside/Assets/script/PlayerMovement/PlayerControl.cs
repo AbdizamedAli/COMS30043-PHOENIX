@@ -12,7 +12,8 @@ namespace PlayerCon
 		[SerializeField] GameObject cameraHolder;
 		[SerializeField] float mouseSensitivity, sprintSpeed, walkSpeed, jumpForce, smoothTime;
 
-		private bool showCursor;
+		//[SerializeField] GameObject cursorControl;
+		//private bool showCursor;
 
 
 		private bool m_wasGrounded;
@@ -107,22 +108,23 @@ namespace PlayerCon
 				Destroy(rb);
 			}
 			m_animator.SetBool("Grounded", true);
-			showCursor = false;
+			//showCursor = false;
 		}
 
 
 		void Update()
 		{
+			//showCursor = cursorControl.GetComponent<bool>();
 			if (!PV.IsMine)
 				return;
-			if (!showCursor)
+			/*if (!showCursor)
             {
 				Cursor.lockState = CursorLockMode.Locked;
 			}
 			else
             {
 				Cursor.lockState = CursorLockMode.Confined;
-            }
+            }*/
 				
 			m_animator.SetBool("Grounded", m_isGrounded);
 			Look();
