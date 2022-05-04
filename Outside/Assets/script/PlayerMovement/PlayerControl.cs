@@ -12,8 +12,8 @@ namespace PlayerCon
 		[SerializeField] GameObject cameraHolder;
 		[SerializeField] float mouseSensitivity, sprintSpeed, walkSpeed, jumpForce, smoothTime;
 
-		[SerializeField] GameObject cursorControl;
-		private bool showCursor;
+		//[SerializeField] GameObject cursorControl;
+		//private bool showCursor;
 
 
 		private bool m_wasGrounded;
@@ -114,17 +114,17 @@ namespace PlayerCon
 
 		void Update()
 		{
-			showCursor = cursorControl.GetComponent<bool>();
+			//showCursor = cursorControl.GetComponent<bool>();
 			if (!PV.IsMine)
 				return;
-			if (!showCursor)
+			/*if (!showCursor)
             {
 				Cursor.lockState = CursorLockMode.Locked;
 			}
 			else
             {
 				Cursor.lockState = CursorLockMode.Confined;
-            }
+            }*/
 				
 			m_animator.SetBool("Grounded", m_isGrounded);
 			Look();
