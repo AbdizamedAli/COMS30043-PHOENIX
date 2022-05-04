@@ -13,6 +13,8 @@ public class FloorManagerOne : MonoBehaviourPunCallbacks
     GameObject stairWall;
     [SerializeField]
     Transform stairWallNewPos;
+    [SerializeField]
+    private AudioSource AiSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class FloorManagerOne : MonoBehaviourPunCallbacks
 
     [PunRPC]
     void CompleteRoom(){
+        //AiSound.Play();
         complete=true;
         stairWall.transform.position=stairWallNewPos.transform.position;
     }
