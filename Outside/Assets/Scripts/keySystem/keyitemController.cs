@@ -13,11 +13,6 @@ namespace keySystem
         public Vector3 actual_key_location;
 
         [SerializeField] bool actual = false;
-
-        void Awake()
-        {
-
-        }
         void Start()
         {
             key_colour = GetColor(Random.Range(0,2));
@@ -57,7 +52,6 @@ namespace keySystem
 
         private Color GetColor(int c)
         {
-            Debug.Log(c);
             switch (c)
             {
                 case 0: return Color.red;
