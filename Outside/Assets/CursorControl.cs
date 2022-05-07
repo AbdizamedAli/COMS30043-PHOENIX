@@ -22,6 +22,7 @@ public class CursorControl : MonoBehaviour
         else
         {
             Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
         }
     }
 }
