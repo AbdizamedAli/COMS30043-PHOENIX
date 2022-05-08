@@ -55,6 +55,9 @@ public class AI_Behaviour : MonoBehaviour
     {
         // Set the State to Idle
         state = State.Idle;
+        botUI.UpdateDisplay("bot", "Hello. Welcome to the emotional intelligence test.");
+        botUI.UpdateDisplay("bot", "I suggest you have a chat with your friend and figure out what to do.");
+        MakeMe();
     }
 
     void MakeMe()
@@ -70,6 +73,7 @@ public class AI_Behaviour : MonoBehaviour
         {
             botUI.UpdateDisplay("bot", "Well done. You made me " + target);
             botUI.UpdateDisplay("bot", "Here is a riddle for you:");
+            GiveRiddle();
         }
         else
         {
@@ -102,12 +106,13 @@ public class AI_Behaviour : MonoBehaviour
 
     public void CheckRiddle(string answer)
     {
-        string[] answers = { "U", "leaf", "mushroom" };
+        string[] answers = { "U", "Leaf", "Mushroom" };
         var correctAnswer = answers[riddleNumber];
         if (answer == correctAnswer)
         {
             botUI.UpdateDisplay("bot", "Your friend answered the riddle correctly.");
             riddleNumber++;
+            MakeMe();
         }
         else
         {
@@ -215,10 +220,12 @@ public class AI_Behaviour : MonoBehaviour
             case "happy":
                 chosenPhrase = happyChat[rnd];
                 botUI.UpdateDisplay("bot", chosenPhrase);
+                CorrectEmotion("happy");
                 break;
             case "sad":
                 chosenPhrase = sadChat[rnd];
                 botUI.UpdateDisplay("bot", chosenPhrase);
+                CorrectEmotion("sad");
                 break;
         }
     }
