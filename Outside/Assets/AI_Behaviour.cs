@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /// <summary>
 /// This class is used to control the behavior of our Robot by calling the HuggingFaceAPI instance.
 /// </summary>
-public class AI_Behaviour : MonoBehaviour
+public class AI_Behaviour : MonoBehaviourPunCallbacks
 {
     /// <summary>
     /// The Robot Action List
@@ -52,11 +52,16 @@ public class AI_Behaviour : MonoBehaviour
     private int riddleNumber = 0;
     private string mode;
 
+    [SerializeField] GameObject exit1;
+    [SerializeField] GameObject exit2;
+    [SerializeField] GameObject enter;
+
     private void Awake()
     {
         // Set the State to Idle
         state = State.Idle;
         mode = "emotion";
+        this.photonView.RPC("hideExit", RpcTarget.All);
         botUI.UpdateDisplay("bot", "Hello. Welcome to the emotional intelligence test.");
         botUI.UpdateDisplay("bot", "I suggest you have a chat with your friend and figure out what to do.");
         MakeMe();
@@ -132,7 +137,8 @@ public class AI_Behaviour : MonoBehaviour
             }
             if (riddleNumber == 3)
             {
-                //puzzle finished
+                //finish puzzle
+                this.photonView.RPC("showExit", RpcTarget.All);
             }
         }        
     }
@@ -246,5 +252,22 @@ public class AI_Behaviour : MonoBehaviour
     {
 
 
+    }
+
+    [PunRPC]
+    private void hideExit()
+    {
+        exit1.SetActive(false);
+        exit2.SetActive(false);
+
+    }
+
+    [PunRPC]
+    private void showExit()
+    {
+        exit1.SetActive(true);
+        exit2.SetActive(false);
+        enter.GetComponent<AIDoor>().isDone = true;
+        //FloorManagerTwo.PuzzleComplete();
     }
 }
