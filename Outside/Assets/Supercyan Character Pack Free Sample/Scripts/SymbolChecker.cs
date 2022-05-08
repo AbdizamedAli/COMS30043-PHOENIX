@@ -70,7 +70,7 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
         HashSet<int> numbers = new HashSet<int>();
         while (numbers.Count < 4)
         {
-            numbers.Add(rnd.Next(1, 15));
+            numbers.Add(rnd.Next(2, 15));
         }
         randoms = numbers.ToList();
 
@@ -132,10 +132,15 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
 
 
         }
-        
-        else if(LastPressed>=0 && (LastPressed!=SymbolSelectOneLoc&&LastPressed!=SymbolSelectTwoLoc&&LastPressed!=SymbolSelectThreeLoc&&LastPressed!=SymbolSelectFourLoc)){
-            CorrectSymbols=0;
-            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 0);
+
+        else if (LastPressed >= 0 && (LastPressed != SymbolSelectOneLoc && LastPressed != SymbolSelectTwoLoc && LastPressed != SymbolSelectThreeLoc && LastPressed != SymbolSelectFourLoc))
+        {
+            if(CorrectSymbols != 0)
+            {
+                CorrectSymbols = 0;
+                this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 0);
+
+            }
 
             Debug.Log("try again");
         }
@@ -166,7 +171,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolTwoPressed(bool pressed){
         if (pressed==true){
             LastPressed=1;
-            
         }
 
 
@@ -174,7 +178,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolThreePressed(bool pressed){
         if (pressed==true){
             LastPressed=2;
-            
         }
 
 
@@ -182,7 +185,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolFourPressed(bool pressed){
         if (pressed==true){
             LastPressed=3;
-            
         }
 
 
@@ -190,7 +192,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolFivePressed(bool pressed){
         if (pressed==true){
             LastPressed=4;
-            
         }
 
 
@@ -198,7 +199,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolSixPressed(bool pressed){
         if (pressed==true){
             LastPressed=5;
-            
         }
 
 
@@ -206,7 +206,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolSevenPressed(bool pressed){
         if (pressed==true){
             LastPressed=6;
-            
         }
 
 
@@ -214,7 +213,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolEightPressed(bool pressed){
         if (pressed==true){
             LastPressed=7;
-            
         }
 
 
@@ -222,7 +220,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolNinePressed(bool pressed){
         if (pressed==true){
             LastPressed=8;
-            
         }
 
 
@@ -230,7 +227,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolTenPressed(bool pressed){
         if (pressed==true){
             LastPressed=9;
-            
         }
 
 
@@ -238,7 +234,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolElevenPressed(bool pressed){
         if (pressed==true){
             LastPressed=10;
-            
         }
 
 
@@ -246,7 +241,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolTwelvePressed(bool pressed){
         if (pressed==true){
             LastPressed=11;
-            
         }
 
 
@@ -254,7 +248,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolThirteenPressed(bool pressed){
         if (pressed==true){
             LastPressed=12;
-            
         }
 
 
@@ -262,7 +255,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolFourteenPressed(bool pressed){
         if (pressed==true){
             LastPressed=13;
-            
         }
 
 
@@ -270,7 +262,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public void SymbolFifteenPressed(bool pressed){
         if (pressed==true){
             LastPressed=14;
-            
         }
 
 

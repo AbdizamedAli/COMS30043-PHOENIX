@@ -33,10 +33,18 @@ public class SymbolButton13 : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        collision = true;
+        if (other.tag == "Player")
+        {
+
+            collision = true;
+        }
     }
     void OnTriggerExit(Collider other)
     {
-        collision = false;
+        if (other.tag == "Player")
+        {
+
+            collision = false;
+        }
     }
 }
