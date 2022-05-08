@@ -100,7 +100,7 @@ public class AI_Behaviour : MonoBehaviour
         }
     }
 
-    void CheckRiddle(string answer)
+    public void CheckRiddle(string answer)
     {
         string[] answers = { "U", "leaf", "mushroom" };
         var correctAnswer = answers[riddleNumber];
@@ -108,6 +108,11 @@ public class AI_Behaviour : MonoBehaviour
         {
             botUI.UpdateDisplay("bot", "Your friend answered the riddle correctly.");
             riddleNumber++;
+        }
+        else
+        {
+            botUI.UpdateDisplay("bot", "Your friend clearly doesn't know what they're doing.");
+            botUI.UpdateDisplay("bot", "Tell them to give it another go...");
         }
         if (riddleNumber == 3)
         {
