@@ -41,17 +41,6 @@ public class AI_Behaviour : MonoBehaviour
     [Header("HuggingFace API")]
     public HuggingFaceAPI hfAPI;
 
-    [Header("NavMesh and Animation")]
-    //public Animator anim;                       // Robot Animator
-    //public NavMeshAgent agent;                  // Robot agent (takes care of robot movement in the navmesh)
-    //public float reachedPositionDistance;       // Tolerance distance between the robot and object.
-    //public float reachedObjectPositionDistance; // Tolerance distance between the robot and object.
-    //public Transform playerPosition;            // Our position
-    //public GameObject goalObject;
-    //public GameObject grabPosition;             // Position where the object will be placed during the grab
-
-    public Camera cam;                          // Main Camera
-
     [Header("Input UI")]
     public InputField inputField;     // Our Input Field UI
 
@@ -59,49 +48,72 @@ public class AI_Behaviour : MonoBehaviour
 
     public string AIState;
 
+    private string target;
+    private int riddleNumber = 0;
+
     private void Awake()
     {
         // Set the State to Idle
         state = State.Idle;
     }
 
-    /// <summary>
-    /// Rotate the agent towards the camera
-    /// </summary>
-    /*private void RotateTo()
+    void MakeMe()
     {
-        var _lookRotation = Quaternion.LookRotation(cam.transform.position);
-        agent.transform.rotation = Quaternion.RotateTowards(agent.transform.rotation, _lookRotation, 360);
-    }*/
+        target = "happy";
+        var message = "make me " + target;
+        botUI.UpdateDisplay("bot", message);
+    }
 
-    /// <summary>
-    /// Grab the object by putting it in the grabPosition
-    /// </summary>
-    /// <param name="gameObject">Cube of color</param>
-    /*void Grab(GameObject gameObject)
+    void CorrectEmotion(string emotion)
     {
-        // Set the gameObject as child of grabPosition
-        gameObject.transform.parent = grabPosition.transform;
+        if (emotion == target)
+        {
+            botUI.UpdateDisplay("bot", "Well done. You made me " + target);
+            botUI.UpdateDisplay("bot", "Here is a riddle for you:");
+        }
+        else
+        {
+            botUI.UpdateDisplay("bot", "That wasn't quite right. You were supposed to make me " + target);
+            botUI.UpdateDisplay("bot", "Try again.");
+        }
+    }
 
-        // To avoid bugs, set object velocity and angular velocity to 0
-        gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-
-        // Set the gameObject transform position to grabPosition
-        gameObject.transform.position = grabPosition.transform.position;
-    }*/
-
-    /// <summary>
-    /// Drop the gameObject
-    /// </summary>
-    /// <param name="gameObject">Cube of color</param>
-   /* void Drop(GameObject gameObject)
+    void GiveRiddle()
     {
-        gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        gameObject.transform.SetParent(null);
-    }*/
+        switch (riddleNumber)
+        {
+            default:
+            case 0:
+                botUI.UpdateDisplay("bot", "I'm in you, but not in him.");
+                botUI.UpdateDisplay("bot", "I go up, but not down");
+                botUI.UpdateDisplay("bot", "I'm in the colosseum, but not in a tower.");
+                botUI.UpdateDisplay("bot", "I'm in a puzzle, but not a riddle.");
+                botUI.UpdateDisplay("bot", "What am I?");
+                break;
+            case 1:
+                botUI.UpdateDisplay("bot", "Walk on the living, they don't even mumble.");
+                botUI.UpdateDisplay("bot", "Walk on the dead, they mutter and grumble.");
+                break;
+            case 2:
+                botUI.UpdateDisplay("bot", "What kind of room has no doors or windows?");
+                break;
+        }
+    }
 
+    void CheckRiddle(string answer)
+    {
+        string[] answers = { "U", "leaf", "mushroom" };
+        var correctAnswer = answers[riddleNumber];
+        if (answer == correctAnswer)
+        {
+            botUI.UpdateDisplay("bot", "Your friend answered the riddle correctly.");
+            riddleNumber++;
+        }
+        if (riddleNumber == 3)
+        {
+            //puzzle finished
+        }
+    }
 
     /// <summary>
     /// Utility function: Given the results of HuggingFace API, select the State with the highest score
@@ -188,69 +200,27 @@ public class AI_Behaviour : MonoBehaviour
     public void Behaviour()
     {
         var rnd = Random.Range(0, 3);
+        string[] happyChat = { "That was a nice thing to say. that makes me happy.", "I'm glad to hear it.", "Hearing you say that makes me happy", "That's great." };
+        string[] sadChat = { "Well, that's not a very nice thing to say", "That makes me sad", "How could you say such a thing?", "How rude. Mother didn't raise you to say such things." };
+        string chosenPhrase;
 
-        switch(AIState)
+        switch (AIState)
         {
             default:
             case "happy":
-                botUI.UpdateDisplay("bot", "happy");
+                chosenPhrase = happyChat[rnd];
+                botUI.UpdateDisplay("bot", chosenPhrase);
                 break;
             case "sad":
-                botUI.UpdateDisplay("bot", "sad");
+                chosenPhrase = sadChat[rnd];
+                botUI.UpdateDisplay("bot", chosenPhrase);
                 break;
         }
     }
 
     private void Update()
     {
-        /*if(Input.GetMouseButtonDown(0))
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-        }
 
-        if(Input.GetMouseButtonUp(0))
-        {
-            //Cursor.lockState = CursorLockMode.Locked;
-        }*/
 
-        // TODO: Define the State Machine that will define how the Robot needs to act given its state
-        /*switch(state)
-        {
-            default:
-            case State.Idle:
-                //Debug.Log("STATE IDLE");
-                AIState = "neutral";
-                break;
-
-            case State.sadness:
-                //Debug.Log("STATE SADNESS");
-                AIState = "sad";
-                break;
-
-            case State.joy:
-                //Debug.Log("STATE JOY");
-                AIState = "happy";
-                break;
-
-            case State.love:
-                //Debug.Log("STATE LOVE");
-                AIState = "happy";
-                break;
-
-            case State.anger:
-                //Debug.Log("STATE ANGER);
-                AIState = "sad";
-                break;
-
-            case State.fear:
-                //Debug.Log("STATE FEAR");
-                AIState = "sad";
-                break;
-
-            case State.surprise:
-                //Debug.Log("STATE SURPRISE");
-                AIState = "happy";
-                break;*/
-        //}
     }
 }
