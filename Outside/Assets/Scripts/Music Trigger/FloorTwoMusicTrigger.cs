@@ -6,7 +6,8 @@ public class FloorTwoMusicTrigger : MonoBehaviour
 {
     [SerializeField]
     private AudioSource musicTrack;
-    //private AudioSource oldMusicTrack;
+    [SerializeField]
+    private AudioSource oldMusicTrack;
     private bool collided;
 
 
@@ -27,7 +28,7 @@ public class FloorTwoMusicTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if( collided == false && !musicTrack.isPlaying){
-            //oldMusicTrack.Stop();
+            oldMusicTrack.Stop();
             musicTrack.Play();
         }
     }
