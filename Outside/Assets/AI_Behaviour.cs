@@ -50,11 +50,13 @@ public class AI_Behaviour : MonoBehaviour
 
     private string target;
     private int riddleNumber = 0;
+    private string mode;
 
     private void Awake()
     {
         // Set the State to Idle
         state = State.Idle;
+        mode = "emotion";
         botUI.UpdateDisplay("bot", "Hello. Welcome to the emotional intelligence test.");
         botUI.UpdateDisplay("bot", "I suggest you have a chat with your friend and figure out what to do.");
         MakeMe();
@@ -62,24 +64,30 @@ public class AI_Behaviour : MonoBehaviour
 
     void MakeMe()
     {
-        target = "happy";
+        var rnd = Random.Range(0, 1);
+        string[] targets = { "happy", "sad" };
+        target = targets[rnd];
         var message = "make me " + target;
         botUI.UpdateDisplay("bot", message);
     }
 
     void CorrectEmotion(string emotion)
     {
-        if (emotion == target)
+        if (mode == "emotion")
         {
-            botUI.UpdateDisplay("bot", "Well done. You made me " + target);
-            botUI.UpdateDisplay("bot", "Here is a riddle for you:");
-            GiveRiddle();
-        }
-        else
-        {
-            botUI.UpdateDisplay("bot", "That wasn't quite right. You were supposed to make me " + target);
-            botUI.UpdateDisplay("bot", "Try again.");
-        }
+            if (emotion == target)
+            {
+                botUI.UpdateDisplay("bot", "Well done. You made me " + target);
+                botUI.UpdateDisplay("bot", "Here is a riddle for you:");
+                mode = "riddle";
+                GiveRiddle();
+            }
+            else
+            {
+                botUI.UpdateDisplay("bot", "That wasn't quite right. You were supposed to make me " + target);
+                botUI.UpdateDisplay("bot", "Try again.");
+            }
+        }       
     }
 
     void GiveRiddle()
@@ -108,21 +116,25 @@ public class AI_Behaviour : MonoBehaviour
     {
         string[] answers = { "U", "Leaf", "Mushroom" };
         var correctAnswer = answers[riddleNumber];
-        if (answer == correctAnswer)
+        if (mode == "riddle")
         {
-            botUI.UpdateDisplay("bot", "Your friend answered the riddle correctly.");
-            riddleNumber++;
-            MakeMe();
-        }
-        else
-        {
-            botUI.UpdateDisplay("bot", "Your friend clearly doesn't know what they're doing.");
-            botUI.UpdateDisplay("bot", "Tell them to give it another go...");
-        }
-        if (riddleNumber == 3)
-        {
-            //puzzle finished
-        }
+            if (answer == correctAnswer)
+            {
+                botUI.UpdateDisplay("bot", "Your friend answered the riddle correctly.");
+                mode = "emotion";
+                riddleNumber++;
+                MakeMe();
+            }
+            else
+            {
+                botUI.UpdateDisplay("bot", "Your friend clearly doesn't know what they're doing.");
+                botUI.UpdateDisplay("bot", "Tell them to give it another go...");
+            }
+            if (riddleNumber == 3)
+            {
+                //puzzle finished
+            }
+        }        
     }
 
     /// <summary>
