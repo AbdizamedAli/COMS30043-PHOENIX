@@ -6,13 +6,14 @@ public class win : MonoBehaviour
 {
     public GameObject Ret;
     private FloorManagerTwo FloorManagerTwo;
+    private bool done;
     // Start is called before the first frame update
     void Awake(){
         FloorManagerTwo=GameObject.FindObjectOfType<FloorManagerTwo>();
     }
     void Start()
     {
-        
+        done=false;
     }
 
     // Update is called once per frame
@@ -22,7 +23,7 @@ public class win : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player"&&done==false)
         {
             
             other.transform.position = Ret.transform.position;
