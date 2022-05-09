@@ -120,28 +120,7 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
 
     public void CheckRiddle(string answer)
     {
-        string[] answers = { "U", "Leaf", "Mushroom" };
-        var correctAnswer = answers[riddleNumber];
-        if (mode == "riddle")
-        {
-            if (answer == correctAnswer)
-            {
-                botUI.UpdateDisplay("bot", "Your friend answered the riddle correctly.");
-                mode = "emotion";
-                riddleNumber++;
-                MakeMe();
-            }
-            else
-            {
-                botUI.UpdateDisplay("bot", "Your friend clearly doesn't know what they're doing.");
-                botUI.UpdateDisplay("bot", "Tell them to give it another go...");
-            }
-            if (riddleNumber == 3)
-            {
-                //finish puzzle
-                this.photonView.RPC("showExit", RpcTarget.All);
-            }
-        }        
+        this.photonView.RPC("checkRiddle", RpcTarget.All, answer);
     }
 
     /// <summary>
@@ -260,7 +239,6 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
     {
         exit1.SetActive(false);
         exit2.SetActive(false);
-
     }
 
     [PunRPC]
@@ -270,5 +248,32 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
         exit2.SetActive(false);
         enter.GetComponent<AIDoor>().isDone = true;
         //FloorManagerTwo.PuzzleComplete();
+    }
+
+    [PunRPC]
+    private void checkRiddle(string answer)
+    {
+        string[] answers = { "U", "Leaf", "Mushroom" };
+        var correctAnswer = answers[riddleNumber];
+        if (mode == "riddle")
+        {
+            if (answer == correctAnswer)
+            {
+                botUI.UpdateDisplay("bot", "Your friend answered the riddle correctly.");
+                mode = "emotion";
+                riddleNumber++;
+                MakeMe();
+            }
+            else
+            {
+                botUI.UpdateDisplay("bot", "Your friend clearly doesn't know what they're doing.");
+                botUI.UpdateDisplay("bot", "Tell them to give it another go...");
+            }
+            if (riddleNumber == 3)
+            {
+                //finish puzzle
+                this.photonView.RPC("showExit", RpcTarget.All);
+            }
+        }
     }
 }
