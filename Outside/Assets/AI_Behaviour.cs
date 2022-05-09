@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Photon.Pun;
 
 /// <summary>
 /// This class is used to control the behavior of our Robot by calling the HuggingFaceAPI instance.
 /// </summary>
-public class AI_Behaviour : MonoBehaviour
+public class AI_Behaviour : MonoBehaviourPunCallbacks
 {
     /// <summary>
     /// The Robot Action List
@@ -50,32 +51,49 @@ public class AI_Behaviour : MonoBehaviour
 
     private string target;
     private int riddleNumber = 0;
+    private string mode;
+
+    [SerializeField] GameObject exit1;
+    [SerializeField] GameObject exit2;
+    [SerializeField] GameObject enter;
 
     private void Awake()
     {
         // Set the State to Idle
         state = State.Idle;
+        mode = "emotion";
+        this.photonView.RPC("hideExit", RpcTarget.All);
+        botUI.UpdateDisplay("bot", "Hello. Welcome to the emotional intelligence test.");
+        botUI.UpdateDisplay("bot", "I suggest you have a chat with your friend and figure out what to do.");
+        MakeMe();
     }
 
     void MakeMe()
     {
-        target = "happy";
+        var rnd = Random.Range(0, 1);
+        string[] targets = { "happy", "sad" };
+        target = targets[rnd];
         var message = "make me " + target;
         botUI.UpdateDisplay("bot", message);
     }
 
     void CorrectEmotion(string emotion)
     {
-        if (emotion == target)
+        if (mode == "emotion")
         {
-            botUI.UpdateDisplay("bot", "Well done. You made me " + target);
-            botUI.UpdateDisplay("bot", "Here is a riddle for you:");
-        }
-        else
-        {
-            botUI.UpdateDisplay("bot", "That wasn't quite right. You were supposed to make me " + target);
-            botUI.UpdateDisplay("bot", "Try again.");
-        }
+            if (emotion == target)
+            {
+                botUI.UpdateDisplay("bot", "Well done. You made me " + target);
+                botUI.UpdateDisplay("bot", "Here is a riddle for you:");
+                mode = "riddle";
+                GiveRiddle();
+            }
+            else
+            {
+                botUI.UpdateDisplay("bot", "That wasn't quite right. You were supposed to make me " + target);
+                botUI.UpdateDisplay("bot", "Try again.");
+            }
+        }       
     }
 
     void GiveRiddle()
@@ -102,22 +120,28 @@ public class AI_Behaviour : MonoBehaviour
 
     public void CheckRiddle(string answer)
     {
-        string[] answers = { "U", "leaf", "mushroom" };
+        string[] answers = { "U", "Leaf", "Mushroom" };
         var correctAnswer = answers[riddleNumber];
-        if (answer == correctAnswer)
+        if (mode == "riddle")
         {
-            botUI.UpdateDisplay("bot", "Your friend answered the riddle correctly.");
-            riddleNumber++;
-        }
-        else
-        {
-            botUI.UpdateDisplay("bot", "Your friend clearly doesn't know what they're doing.");
-            botUI.UpdateDisplay("bot", "Tell them to give it another go...");
-        }
-        if (riddleNumber == 3)
-        {
-            //puzzle finished
-        }
+            if (answer == correctAnswer)
+            {
+                botUI.UpdateDisplay("bot", "Your friend answered the riddle correctly.");
+                mode = "emotion";
+                riddleNumber++;
+                MakeMe();
+            }
+            else
+            {
+                botUI.UpdateDisplay("bot", "Your friend clearly doesn't know what they're doing.");
+                botUI.UpdateDisplay("bot", "Tell them to give it another go...");
+            }
+            if (riddleNumber == 3)
+            {
+                //finish puzzle
+                this.photonView.RPC("showExit", RpcTarget.All);
+            }
+        }        
     }
 
     /// <summary>
@@ -215,10 +239,12 @@ public class AI_Behaviour : MonoBehaviour
             case "happy":
                 chosenPhrase = happyChat[rnd];
                 botUI.UpdateDisplay("bot", chosenPhrase);
+                CorrectEmotion("happy");
                 break;
             case "sad":
                 chosenPhrase = sadChat[rnd];
                 botUI.UpdateDisplay("bot", chosenPhrase);
+                CorrectEmotion("sad");
                 break;
         }
     }
@@ -227,5 +253,22 @@ public class AI_Behaviour : MonoBehaviour
     {
 
 
+    }
+
+    [PunRPC]
+    private void hideExit()
+    {
+        exit1.SetActive(false);
+        exit2.SetActive(false);
+
+    }
+
+    [PunRPC]
+    private void showExit()
+    {
+        exit1.SetActive(true);
+        exit2.SetActive(false);
+        enter.GetComponent<AIDoor>().isDone = true;
+        //FloorManagerTwo.PuzzleComplete();
     }
 }

@@ -21,14 +21,7 @@ public class UButton : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (pressed == false)
-                {
-                    pressed = true;
-                }
-                else if (pressed == true)
-                {
-                    pressed = false;
-                }
+                
                 //SymbolChecker.SymbolOnePressed(pressed);
                 checker.CheckRiddle("U");
             }
