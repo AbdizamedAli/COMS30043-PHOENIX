@@ -82,7 +82,7 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
         SymbolSelectFourLoc  = randoms[3] - 1;
 
         this.photonView.RPC(nameof(setSelectLocSymbol), RpcTarget.All, randoms[0] - 1, randoms[1] - 1, randoms[2] - 1, randoms[3] - 1);
-        FloorManagerOne=GameObject.FindObjectOfType<FloorManagerOne>();
+        this.photonView.RPC(nameof(setFloorManager), RpcTarget.All);
     }
 
     [PunRPC]
@@ -92,6 +92,12 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
         SymbolSelectTwoLoc = y;
         SymbolSelectThreeLoc = z;
         SymbolSelectFourLoc = q;
+    }
+
+    [PunRPC]
+    void setFloorManager()
+    {
+        FloorManagerOne = GameObject.FindObjectOfType<FloorManagerOne>();
     }
 
     // Start is called before the first frame update
