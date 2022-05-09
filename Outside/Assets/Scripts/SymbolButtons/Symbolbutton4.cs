@@ -35,7 +35,7 @@ public class Symbolbutton4 : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-
+            other.GetComponent<Instructions>().symbol.SetActive(true);
             collision = true;
         }
     }
@@ -43,7 +43,7 @@ public class Symbolbutton4 : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-
+            other.GetComponent<Instructions>().symbol.SetActive(false);
             collision = false;
         }
     }

@@ -11,4 +11,5 @@ public class Instructions : MonoBehaviour
     public GameObject screw;
     public GameObject rotate;
     public GameObject press;
+    public GameObject symbol;
 }

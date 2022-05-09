@@ -37,6 +37,7 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public GameObject SymbolSelectFour;
 
     public Material Invisible;
+    public Material strart_room_colour;
     public GameObject SymbolSelectOneBack;
     public GameObject SymbolSelectTwoBack;
     public GameObject SymbolSelectThreeBack;
@@ -102,11 +103,14 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     {
         if(LastPressed==SymbolSelectOneLoc&&CorrectSymbols==0){
             CorrectSymbols=1;
+            SymbolList[randoms[0] - 1].GetComponent<Renderer>().material.color = Color.green;
             this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 1);
             print(CorrectSymbols);
         }
         else if(LastPressed==SymbolSelectTwoLoc && CorrectSymbols==1){
             CorrectSymbols=2;
+            SymbolList[randoms[1] - 1].GetComponent<Renderer>().material.color = Color.green;
+
             this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 2);
 
             print(CorrectSymbols);
@@ -114,6 +118,8 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
         }
         else if(LastPressed==SymbolSelectThreeLoc && CorrectSymbols==2){
             CorrectSymbols=3;
+            SymbolList[randoms[2] - 1].GetComponent<Renderer>().material.color = Color.green;
+
             this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 3);
 
             print(CorrectSymbols);
@@ -121,6 +127,7 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
         }
         else if(LastPressed==SymbolSelectFourLoc && CorrectSymbols==3){
             CorrectSymbols=4;
+            SymbolList[randoms[3] - 1].GetComponent<Renderer>().material.color = Color.green;
             this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 4);
 
             print("success");
@@ -130,6 +137,11 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
             SymbolSelectThreeBack.GetComponent<Renderer>().material = Invisible;
             SymbolSelectFourBack.GetComponent<Renderer>().material = Invisible;
 
+            foreach (var item in SymbolList)
+            {
+                item.GetComponent<Renderer>().material = Invisible;
+            }
+
 
         }
 
@@ -137,12 +149,16 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
         {
             if(CorrectSymbols != 0)
             {
-                CorrectSymbols = 0;
                 this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 0);
 
+                foreach (var item in SymbolList)
+                {
+                    item.GetComponent<Renderer>().material = strart_room_colour;
+                }
+
+                Debug.Log("try again");
             }
 
-            Debug.Log("try again");
         }
     }
     [PunRPC]
@@ -163,108 +179,114 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
 
     public void SymbolOnePressed(bool pressed){
         if (pressed==true){
-            LastPressed=0;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 0);
+
         }
 
     }
     public void SymbolTwoPressed(bool pressed){
         if (pressed==true){
-            LastPressed=1;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 1);
         }
 
 
     }
     public void SymbolThreePressed(bool pressed){
         if (pressed==true){
-            LastPressed=2;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 2);
         }
 
 
     }
     public void SymbolFourPressed(bool pressed){
         if (pressed==true){
-            LastPressed=3;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 3);
         }
 
 
     }
     public void SymbolFivePressed(bool pressed){
         if (pressed==true){
-            LastPressed=4;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 4);
         }
 
 
     }
     public void SymbolSixPressed(bool pressed){
         if (pressed==true){
-            LastPressed=5;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 5);
         }
 
 
     }
     public void SymbolSevenPressed(bool pressed){
         if (pressed==true){
-            LastPressed=6;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 6);
         }
 
 
     }
     public void SymbolEightPressed(bool pressed){
         if (pressed==true){
-            LastPressed=7;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 7);
         }
 
 
     }
     public void SymbolNinePressed(bool pressed){
         if (pressed==true){
-            LastPressed=8;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 8);
         }
 
 
     }
     public void SymbolTenPressed(bool pressed){
         if (pressed==true){
-            LastPressed=9;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 9);
         }
 
 
     }
     public void SymbolElevenPressed(bool pressed){
         if (pressed==true){
-            LastPressed=10;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 10);
         }
 
 
     }
     public void SymbolTwelvePressed(bool pressed){
         if (pressed==true){
-            LastPressed=11;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 11);
         }
 
 
     }
     public void SymbolThirteenPressed(bool pressed){
         if (pressed==true){
-            LastPressed=12;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 12);
         }
 
 
     }
     public void SymbolFourteenPressed(bool pressed){
         if (pressed==true){
-            LastPressed=13;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 13);
         }
 
 
     }
     public void SymbolFifteenPressed(bool pressed){
         if (pressed==true){
-            LastPressed=14;
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 14);
         }
 
 
+    }
+
+    [PunRPC]
+    private void setSymbolLastPressed(int pressed)
+    {
+        LastPressed = pressed;
     }
     
 }
