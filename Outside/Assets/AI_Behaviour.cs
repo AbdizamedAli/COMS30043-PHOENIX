@@ -53,6 +53,8 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
     private int riddleNumber = 0;
     private string mode;
 
+    public FloorManagerTwo floorManagerTwo;
+
     [SerializeField] GameObject exit1;
     [SerializeField] GameObject exit2;
     [SerializeField] GameObject enter;
@@ -60,6 +62,7 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
     private void Awake()
     {
         // Set the State to Idle
+        floorManagerTwo = GameObject.FindObjectOfType<FloorManagerTwo>();
         state = State.Idle;
         mode = "emotion";
         this.photonView.RPC("hideExit", RpcTarget.All);
@@ -70,9 +73,22 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
 
     void MakeMe()
     {
-        var rnd = Random.Range(0, 1);
-        string[] targets = { "happy", "sad" };
-        target = targets[rnd];
+        switch (riddleNumber)
+        {
+            default:
+            case 0:
+                target = "happy";
+                break;
+            case 1:
+                target = "sad";
+                break;
+            case 2:
+                target = "happy";
+                break;
+        }
+        //var rnd = Random.Range(0, 1);
+        //string[] targets = { "happy", "sad" };
+        //target = targets[rnd];
         var message = "make me " + target;
         botUI.UpdateDisplay("bot", message);
     }
@@ -245,9 +261,9 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
     private void showExit()
     {
         exit1.SetActive(true);
-        exit2.SetActive(false);
+        exit2.SetActive(true);
         enter.GetComponent<AIDoor>().isDone = true;
-        //FloorManagerTwo.PuzzleComplete();
+        floorManagerTwo.PuzzleComplete();
     }
 
     [PunRPC]
