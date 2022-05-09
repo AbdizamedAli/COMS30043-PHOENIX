@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Photon.Pun;
 
 /// <summary>
 /// This class is used to control the behavior of our Robot by calling the HuggingFaceAPI instance.
