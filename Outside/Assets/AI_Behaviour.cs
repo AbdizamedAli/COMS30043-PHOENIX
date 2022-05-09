@@ -44,6 +44,8 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
 
     [Header("Input UI")]
     public InputField inputField;     // Our Input Field UI
+    
+    [SerializeField] CursorControl cursorControl;
 
     private State state;
 
@@ -289,6 +291,7 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
             {
                 //finish puzzle
                 this.photonView.RPC("showExit", RpcTarget.All);
+                cursorControl.showCursor = false;
             }
         }
     }
