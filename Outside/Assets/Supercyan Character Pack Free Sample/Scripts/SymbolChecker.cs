@@ -48,12 +48,12 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     private List<int> randoms;
 
 
-    public int LastPressed;
+    public int LastPressed = -1;
     int SymbolSelectOneLoc;
     int SymbolSelectTwoLoc;
     int SymbolSelectThreeLoc;
     int SymbolSelectFourLoc;
-    int CorrectSymbols;
+    int CorrectSymbols = 0;
 
     private FloorManagerOne FloorManagerOne;
 
@@ -62,16 +62,17 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
 
 
     void Awake(){
-        LastPressed=-1;
-        CorrectSymbols=0;
-
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            return;
+        }
 
         var rnd = new System.Random();
 
         HashSet<int> numbers = new HashSet<int>();
         while (numbers.Count < 4)
         {
-            numbers.Add(rnd.Next(2, 15));
+            numbers.Add(rnd.Next(1, 15));
         }
         randoms = numbers.ToList();
 
@@ -79,9 +80,19 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
         SymbolSelectTwoLoc   = randoms[1] - 1;
         SymbolSelectThreeLoc = randoms[2] - 1;
         SymbolSelectFourLoc  = randoms[3] - 1;
+
+        this.photonView.RPC(nameof(setSelectLocSymbol), RpcTarget.All, randoms[0] - 1, randoms[1] - 1, randoms[2] - 1, randoms[3] - 1);
         FloorManagerOne=GameObject.FindObjectOfType<FloorManagerOne>();
     }
 
+    [PunRPC]
+    void setSelectLocSymbol(int x, int y, int z, int q)
+    {
+        SymbolSelectOneLoc = x;
+        SymbolSelectTwoLoc = y;
+        SymbolSelectThreeLoc = z;
+        SymbolSelectFourLoc = q;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -103,32 +114,26 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     {
         if(LastPressed==SymbolSelectOneLoc&&CorrectSymbols==0){
             CorrectSymbols=1;
-            SymbolList[randoms[0] - 1].GetComponent<Renderer>().material.color = Color.green;
-            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 1);
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 1, SymbolList[randoms[0] - 1].name);
             print(CorrectSymbols);
         }
         else if(LastPressed==SymbolSelectTwoLoc && CorrectSymbols==1){
             CorrectSymbols=2;
-            SymbolList[randoms[1] - 1].GetComponent<Renderer>().material.color = Color.green;
-
-            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 2);
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 2, SymbolList[randoms[1] - 1].name);
 
             print(CorrectSymbols);
         
         }
         else if(LastPressed==SymbolSelectThreeLoc && CorrectSymbols==2){
             CorrectSymbols=3;
-            SymbolList[randoms[2] - 1].GetComponent<Renderer>().material.color = Color.green;
-
-            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 3);
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 3, SymbolList[randoms[2] - 1].name);
 
             print(CorrectSymbols);
 
         }
         else if(LastPressed==SymbolSelectFourLoc && CorrectSymbols==3){
             CorrectSymbols=4;
-            SymbolList[randoms[3] - 1].GetComponent<Renderer>().material.color = Color.green;
-            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 4);
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 4, SymbolList[randoms[3] - 1].name);
 
             print("success");
             this.photonView.RPC("activateExit", RpcTarget.All);
@@ -137,11 +142,6 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
             SymbolSelectThreeBack.GetComponent<Renderer>().material = Invisible;
             SymbolSelectFourBack.GetComponent<Renderer>().material = Invisible;
 
-            foreach (var item in SymbolList)
-            {
-                item.GetComponent<Renderer>().material = Invisible;
-            }
-
 
         }
 
@@ -149,12 +149,8 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
         {
             if(CorrectSymbols != 0)
             {
-                this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 0);
-
-                foreach (var item in SymbolList)
-                {
-                    item.GetComponent<Renderer>().material = strart_room_colour;
-                }
+                CorrectSymbols = 0;
+                this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 0, "Empty");
 
                 Debug.Log("try again");
             }
@@ -172,9 +168,28 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    private void setCorrectSymbol(int i)
+    private void setCorrectSymbol(int i,string name)
     {
-        CorrectSymbols = i;
+        if (i == 0)
+        {
+            foreach (var item in SymbolList)
+            {
+                item.GetComponent<Renderer>().material = strart_room_colour;
+            }
+        }
+        else if(i == 4)
+        {
+            foreach (var item in SymbolList)
+            {
+                item.GetComponent<Renderer>().material = Invisible;
+            }
+        }
+        else
+        {
+
+            GameObject.Find(name).GetComponent<Renderer>().material.color = Color.green;
+            CorrectSymbols = i;
+        }
     }
 
     public void SymbolOnePressed(bool pressed){
