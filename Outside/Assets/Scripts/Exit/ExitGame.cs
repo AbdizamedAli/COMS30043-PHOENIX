@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class ExitGame : MonoBehaviour
+public class ExitGame : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool called = false;
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.tag == "Player" && !called)
+        {
+            PhotonNetwork.LoadLevel(3);
+            called = true;
+        }
     }
 }
