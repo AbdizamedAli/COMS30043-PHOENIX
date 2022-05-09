@@ -1481,6 +1481,7 @@ MonoBehaviour:
   screw: {fileID: 747531986789790835}
   rotate: {fileID: 2073682932995933836}
   press: {fileID: 4082069843926432340}
+  symbol: {fileID: 6698505625947357771}
 --- !u!114 &2473520764944588493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1814,6 +1815,11 @@ GameObject:
 --- !u!1 &4511397616580388546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8744732560436826951, guid: d5fcce6a3ee1f9a4c997c0a23ae26d78, type: 3}
+  m_PrefabInstance: {fileID: 5170189359868048773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6698505625947357771 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1960733470912952270, guid: d5fcce6a3ee1f9a4c997c0a23ae26d78, type: 3}
   m_PrefabInstance: {fileID: 5170189359868048773}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8115967095994205081 stripped

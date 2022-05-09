@@ -181,7 +181,7 @@ var FGMicrophoneLibrary = {
     if (document.getElementById(UTF8ToString(audio_id)) != null) {
       var audio = document.getElementById(UTF8ToString(audio_id));
       console.log(
-        "New volume: " + newVolume + " for id: " + UTF8ToString(audio_id)
+        // "New volume: " + newVolume + " for id: " + UTF8ToString(audio_id)
       );
       audio.volume = newVolume;
     } else {

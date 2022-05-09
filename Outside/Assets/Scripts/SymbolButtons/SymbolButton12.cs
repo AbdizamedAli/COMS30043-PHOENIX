@@ -35,11 +35,18 @@ public class SymbolButton12 : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        
-        collision = true;
+        if (other.tag == "Player")
+        {
+            other.GetComponent<Instructions>().symbol.SetActive(true);
+            collision = true;
+        }
     }
     void OnTriggerExit(Collider other)
     {
-        collision = false;
+        if (other.tag == "Player")
+        {
+            other.GetComponent<Instructions>().symbol.SetActive(false);
+            collision = false;
+        }
     }
 }
