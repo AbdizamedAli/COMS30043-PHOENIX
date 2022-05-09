@@ -25,6 +25,7 @@ public class FloorManagerTwo : MonoBehaviourPunCallbacks
     {
         complete=false;
         onePuzzleCompleted=false;
+       
     }
 
     // Update is called once per frame

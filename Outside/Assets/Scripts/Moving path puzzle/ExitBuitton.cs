@@ -8,10 +8,12 @@ public class ExitBuitton : MonoBehaviour
 
     private bool collision;
     private PuzzleCompleteManager PuzzleCompleteManager;
+    private bool done;
 
     
     void Awake(){
         PuzzleCompleteManager=GameObject.FindObjectOfType<PuzzleCompleteManager>();
+        done=false;
     }
 
     // Start is called before the first frame update
@@ -27,8 +29,9 @@ public class ExitBuitton : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if(collision){
+                if(collision&&done==false){
                     PuzzleCompleteManager.CompleteRoom();
+                    done=true;
                 }
             }
         }
