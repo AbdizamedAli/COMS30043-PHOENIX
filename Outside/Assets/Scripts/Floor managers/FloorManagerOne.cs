@@ -37,7 +37,7 @@ public class FloorManagerOne : MonoBehaviourPunCallbacks
     [PunRPC]
     void CompleteRoom(){
         AiSound.Play();
-        complete=true;
+        complete =true;
         stairWall.transform.position=stairWallNewPos.transform.position;
     }
 

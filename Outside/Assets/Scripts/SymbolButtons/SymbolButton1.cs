@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SymbolButton1 : MonoBehaviour
 {
-   private bool collision=false;
+    private bool collision=false;
     private bool pressed=false;
     private SymbolChecker SymbolChecker;
     // Start is called before the first frame update
@@ -33,10 +33,18 @@ public class SymbolButton1 : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        collision = true;
+        if (other.tag == "Player")
+        {
+            other.GetComponent<Instructions>().symbol.SetActive(true);
+            collision = true;
+        }
     }
     void OnTriggerExit(Collider other)
     {
-        collision = false;
+        if (other.tag == "Player")
+        {
+            other.GetComponent<Instructions>().symbol.SetActive(false);
+            collision = false;
+        }
     }
 }

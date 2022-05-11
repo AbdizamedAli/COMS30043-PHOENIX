@@ -37,6 +37,7 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     public GameObject SymbolSelectFour;
 
     public Material Invisible;
+    public Material strart_room_colour;
     public GameObject SymbolSelectOneBack;
     public GameObject SymbolSelectTwoBack;
     public GameObject SymbolSelectThreeBack;
@@ -47,12 +48,12 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     private List<int> randoms;
 
 
-    public int LastPressed;
+    public int LastPressed = -1;
     int SymbolSelectOneLoc;
     int SymbolSelectTwoLoc;
     int SymbolSelectThreeLoc;
     int SymbolSelectFourLoc;
-    int CorrectSymbols;
+    int CorrectSymbols = 0;
 
     private FloorManagerOne FloorManagerOne;
 
@@ -61,9 +62,10 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
 
 
     void Awake(){
-        LastPressed=-1;
-        CorrectSymbols=0;
-
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            return;
+        }
 
         var rnd = new System.Random();
 
@@ -78,9 +80,25 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
         SymbolSelectTwoLoc   = randoms[1] - 1;
         SymbolSelectThreeLoc = randoms[2] - 1;
         SymbolSelectFourLoc  = randoms[3] - 1;
-        FloorManagerOne=GameObject.FindObjectOfType<FloorManagerOne>();
+
+        this.photonView.RPC(nameof(setSelectLocSymbol), RpcTarget.All, randoms[0] - 1, randoms[1] - 1, randoms[2] - 1, randoms[3] - 1);
+        this.photonView.RPC(nameof(setFloorManager), RpcTarget.All);
     }
 
+    [PunRPC]
+    void setSelectLocSymbol(int x, int y, int z, int q)
+    {
+        SymbolSelectOneLoc = x;
+        SymbolSelectTwoLoc = y;
+        SymbolSelectThreeLoc = z;
+        SymbolSelectFourLoc = q;
+    }
+
+    [PunRPC]
+    void setFloorManager()
+    {
+        FloorManagerOne = GameObject.FindObjectOfType<FloorManagerOne>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -102,26 +120,26 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     {
         if(LastPressed==SymbolSelectOneLoc&&CorrectSymbols==0){
             CorrectSymbols=1;
-            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 1);
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 1, SymbolList[randoms[0] - 1].name);
             print(CorrectSymbols);
         }
         else if(LastPressed==SymbolSelectTwoLoc && CorrectSymbols==1){
             CorrectSymbols=2;
-            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 2);
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 2, SymbolList[randoms[1] - 1].name);
 
             print(CorrectSymbols);
         
         }
         else if(LastPressed==SymbolSelectThreeLoc && CorrectSymbols==2){
             CorrectSymbols=3;
-            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 3);
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 3, SymbolList[randoms[2] - 1].name);
 
             print(CorrectSymbols);
 
         }
         else if(LastPressed==SymbolSelectFourLoc && CorrectSymbols==3){
             CorrectSymbols=4;
-            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 4);
+            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 4, SymbolList[randoms[3] - 1].name);
 
             print("success");
             this.photonView.RPC("activateExit", RpcTarget.All);
@@ -132,12 +150,17 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
 
 
         }
-        
-        else if(LastPressed>=0 && (LastPressed!=SymbolSelectOneLoc&&LastPressed!=SymbolSelectTwoLoc&&LastPressed!=SymbolSelectThreeLoc&&LastPressed!=SymbolSelectFourLoc)){
-            CorrectSymbols=0;
-            this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 0);
 
-            Debug.Log("try again");
+        else if (LastPressed >= 0 && (LastPressed != SymbolSelectOneLoc && LastPressed != SymbolSelectTwoLoc && LastPressed != SymbolSelectThreeLoc && LastPressed != SymbolSelectFourLoc))
+        {
+            if(CorrectSymbols != 0)
+            {
+                CorrectSymbols = 0;
+                this.photonView.RPC("setCorrectSymbol", RpcTarget.All, 0, "Empty");
+
+                Debug.Log("try again");
+            }
+
         }
     }
     [PunRPC]
@@ -151,129 +174,140 @@ public class SymbolChecker : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    private void setCorrectSymbol(int i)
+    private void setCorrectSymbol(int i,string name)
     {
-        CorrectSymbols = i;
+        if (i == 0)
+        {
+            foreach (var item in SymbolList)
+            {
+                item.GetComponent<Renderer>().material = strart_room_colour;
+            }
+        }
+        else if(i == 4)
+        {
+            foreach (var item in SymbolList)
+            {
+                item.GetComponent<Renderer>().material = Invisible;
+            }
+        }
+        else
+        {
+
+            GameObject.Find(name).GetComponent<Renderer>().material.color = Color.green;
+            CorrectSymbols = i;
+        }
     }
 
     public void SymbolOnePressed(bool pressed){
         if (pressed==true){
-            LastPressed=0;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 0);
+
         }
 
     }
     public void SymbolTwoPressed(bool pressed){
         if (pressed==true){
-            LastPressed=1;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 1);
         }
 
 
     }
     public void SymbolThreePressed(bool pressed){
         if (pressed==true){
-            LastPressed=2;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 2);
         }
 
 
     }
     public void SymbolFourPressed(bool pressed){
         if (pressed==true){
-            LastPressed=3;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 3);
         }
 
 
     }
     public void SymbolFivePressed(bool pressed){
         if (pressed==true){
-            LastPressed=4;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 4);
         }
 
 
     }
     public void SymbolSixPressed(bool pressed){
         if (pressed==true){
-            LastPressed=5;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 5);
         }
 
 
     }
     public void SymbolSevenPressed(bool pressed){
         if (pressed==true){
-            LastPressed=6;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 6);
         }
 
 
     }
     public void SymbolEightPressed(bool pressed){
         if (pressed==true){
-            LastPressed=7;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 7);
         }
 
 
     }
     public void SymbolNinePressed(bool pressed){
         if (pressed==true){
-            LastPressed=8;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 8);
         }
 
 
     }
     public void SymbolTenPressed(bool pressed){
         if (pressed==true){
-            LastPressed=9;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 9);
         }
 
 
     }
     public void SymbolElevenPressed(bool pressed){
         if (pressed==true){
-            LastPressed=10;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 10);
         }
 
 
     }
     public void SymbolTwelvePressed(bool pressed){
         if (pressed==true){
-            LastPressed=11;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 11);
         }
 
 
     }
     public void SymbolThirteenPressed(bool pressed){
         if (pressed==true){
-            LastPressed=12;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 12);
         }
 
 
     }
     public void SymbolFourteenPressed(bool pressed){
         if (pressed==true){
-            LastPressed=13;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 13);
         }
 
 
     }
     public void SymbolFifteenPressed(bool pressed){
         if (pressed==true){
-            LastPressed=14;
-            
+            this.photonView.RPC(nameof(setSymbolLastPressed), RpcTarget.All, 14);
         }
 
 
+    }
+
+    [PunRPC]
+    private void setSymbolLastPressed(int pressed)
+    {
+        LastPressed = pressed;
     }
     
 }

@@ -44,7 +44,7 @@ public class FloorManagerTwo : MonoBehaviourPunCallbacks
     [PunRPC]
     void CompleteRoom(){
         AiSoundSecond.Play();
-        complete=true;
+        complete =true;
         stairWall.transform.position=stairWallNewPos.transform.position;
         redDoor.transform.position=stairWallNewPos.transform.position;
         print("yessss");
@@ -68,7 +68,7 @@ public class FloorManagerTwo : MonoBehaviourPunCallbacks
         }
         if(onePuzzleCompleted==false){
             AiSound.Play();
-            onePuzzleCompleted=true;
+            onePuzzleCompleted =true;
         }
         
     }
