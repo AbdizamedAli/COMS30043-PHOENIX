@@ -23,8 +23,7 @@ public class FloorManagerThree : MonoBehaviourPunCallbacks
     void Update()
     {
         if (numOfPuzzles==0&&complete==false){
-            //CompleteRoom();//
-            //print("iuiuiuiu");
+            
             this.photonView.RPC("CompleteRoom",RpcTarget.All);
             
 
@@ -36,7 +35,7 @@ public class FloorManagerThree : MonoBehaviourPunCallbacks
     [PunRPC]
     void CompleteRoom(){
         complete=true;
-        //exitWall.transform.position=exitWallNewPos.transform.position; Not assigned
+        
         print("iuiuiuiu");
     }
 

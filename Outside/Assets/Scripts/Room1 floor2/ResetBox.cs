@@ -36,7 +36,7 @@ public class ResetBox :  MonoBehaviourPunCallbacks
             {
                 if(collision){
                     this.photonView.RPC(nameof(WhyDoesThisBreak),RpcTarget.All);
-                    //ResetBoxPos(box,boxSpawnPosition);      
+                        
                 }
             }
         }
