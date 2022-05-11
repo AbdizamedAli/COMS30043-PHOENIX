@@ -16,7 +16,7 @@ public class addforce : MonoBehaviourPunCallbacks
 
     private FristionlessBoxPuzzleManager FristionlessBoxPuzzleManager;
     
-    //public GameObject barrier;
+   
 
     void Awake(){
         collided=true;
@@ -36,19 +36,19 @@ public class addforce : MonoBehaviourPunCallbacks
     {
 
         if(pushDirection=="Forward"){
-            //PushForward(box);//
+            
             this.photonView.RPC("PushForward",RpcTarget.All);
         }
         if(pushDirection=="Right"){
-            //PushRight(box);//
+            
             this.photonView.RPC("PushRight",RpcTarget.All);
         }
         if(pushDirection=="Down"){
-            //PushDown(box);//
+            
             this.photonView.RPC("PushDown",RpcTarget.All);
         }
         if(pushDirection=="Left"){
-            //PushLeft(box);//
+            
             this.photonView.RPC("PushLeft",RpcTarget.All);
         }
     }
@@ -56,7 +56,7 @@ public class addforce : MonoBehaviourPunCallbacks
     public void Push(string Direction)
     {
         
-        //SetPushDirection(Direction);//
+        
         this.photonView.RPC("SetPushDirection",RpcTarget.All,Direction);
         
         
@@ -91,7 +91,7 @@ public class addforce : MonoBehaviourPunCallbacks
     void SetPushDirection(string Direction)
     {
         if(moving==false&&Direction!="nil"){
-            //FlipMoving(true);//
+            
             this.photonView.RPC("FlipMoving",RpcTarget.All,true);
             pushDirection=Direction;
             print(pushDirection);
@@ -105,23 +105,23 @@ public class addforce : MonoBehaviourPunCallbacks
 
     void OnTriggerEnter(Collider other){
         if(other.name=="collisionbox"){
-            //SetVelocityZero();//
+            
             this.photonView.RPC("SetVelocityZero",RpcTarget.All);
-            //FlipCollided(true);//
+            
             this.photonView.RPC("FlipCollided",RpcTarget.All,true);
-            //FlipMoving(false);//
+            
             this.photonView.RPC("FlipMoving",RpcTarget.All,false);
             print(other.name);
 
         }
         if(other.name=="Win"){
-            //RoomCompleted();//
+            
             this.photonView.RPC("RoomCompleted",RpcTarget.All);
         }
     }
     void OnTriggerExit(Collider other){
         if(other.name=="collisionbox"){
-            //FlipCollided(false);//
+            
             this.photonView.RPC("FlipCollided",RpcTarget.All,false);
         }
 
@@ -149,20 +149,20 @@ public class addforce : MonoBehaviourPunCallbacks
         box.velocity=Vector3.zero;
     }
     public void Reset(){
-        //ResetBoxPos();//
+        
         this.photonView.RPC("ResetBoxPos",RpcTarget.All);
     }
     [PunRPC]
     void ResetBoxPos(){
-        //SetPushDirection("nil");//
+        
         this.photonView.RPC("SetPushDirection",RpcTarget.All,"nil");
-        //no direction
+        
     }
     [PunRPC]
     void RoomCompleted(){
-        //SetVelocityZero();//
+        
         this.photonView.RPC("SetVelocityZero",RpcTarget.All);
-        //FlipMoving(true);//
+        
         this.photonView.RPC("FlipMoving",RpcTarget.All,true);
         FristionlessBoxPuzzleManager.RoomComplete();
         

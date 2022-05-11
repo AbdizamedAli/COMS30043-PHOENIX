@@ -38,7 +38,7 @@ public class RoomCompleteManager : MonoBehaviourPunCallbacks
     void Update()
     {
         if(leftCompleted==true && rightCompleted==true&&done==false){
-            //add code to spawn exit doors here
+            
             print("room completed");
             this.photonView.RPC("SpawnExitDoors",RpcTarget.All);
             

@@ -33,14 +33,14 @@ public class FristionlessBoxPuzzleManager : MonoBehaviourPunCallbacks
     }
     public void RoomComplete(){
         print("win correct");
-        //CompleteRoom();//
+        
         this.photonView.RPC("CompleteRoom",RpcTarget.All);
     }
     [PunRPC]
     void CompleteRoom(){
         print("complete");
         FloorManagerTwo.PuzzleComplete();
-        //SpawnExitDoors();//
+        
         this.photonView.RPC("SpawnExitDoors",RpcTarget.All);
 
     }

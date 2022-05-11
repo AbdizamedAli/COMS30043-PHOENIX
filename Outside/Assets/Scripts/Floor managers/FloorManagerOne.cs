@@ -25,9 +25,9 @@ public class FloorManagerOne : MonoBehaviourPunCallbacks
     void Update()
     {
         if (numOfPuzzles==0&&complete==false){
-            //CompleteRoom();//
+            
             this.photonView.RPC("CompleteRoom",RpcTarget.All);
-            print("yessss");
+            
 
         }
     }

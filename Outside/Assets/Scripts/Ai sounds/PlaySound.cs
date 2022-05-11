@@ -6,7 +6,7 @@ public class PlaySound : MonoBehaviour
 {
     [SerializeField]
     private AudioSource AiSound;
-    //private AudioSource oldMusicTrack;
+    
     private bool collided;
 
 
@@ -28,7 +28,7 @@ public class PlaySound : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if( collided == false && !AiSound.isPlaying&&other.tag == "Player"){
             collided=true;
-            //oldMusicTrack.Stop();
+            
             AiSound.Play();
         }
     }
