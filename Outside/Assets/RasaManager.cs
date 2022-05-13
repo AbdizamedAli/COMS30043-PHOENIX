@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 
 namespace SparkyControl
 {
-
+    //Code taken from https://medium.com/analytics-vidhya/integrating-rasa-open-source-chatbot-into-unity-part-1-the-connection-9ba582c804cd
 
     /// <summary>
     /// This class handles all the network requests and serialization/deserialization of data
