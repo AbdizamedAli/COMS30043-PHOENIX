@@ -9,11 +9,7 @@ public class Timer : MonoBehaviourPunCallbacks
     public double startTime;
     [SerializeField] double timer = 600;
     ExitGames.Client.Photon.Hashtable CustomeValue;
-
-    private void Awake()
-    {
-        
-    }
+    bool called = false;
 
     void Start()
     {
@@ -50,12 +46,11 @@ public class Timer : MonoBehaviourPunCallbacks
         {
             gameObject.GetComponent<TextMeshProUGUI>().text = string.Format("{0:00}:{1:00}", 10, 0);
         }
-        if (timerIncrementValue >= timer)
+        if (minutes <= 0 && seconds <= 0 && !called)
         {
-            //Timer Completed
-            //Do What Ever You What to Do Here
 
-            gameObject.GetComponent<TextMeshProUGUI>().text = "Test Over";
+            PhotonNetwork.LoadLevel(2);
+            called = true;
 
         }
         else

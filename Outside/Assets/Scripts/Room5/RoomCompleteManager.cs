@@ -21,9 +21,11 @@ public class RoomCompleteManager : MonoBehaviourPunCallbacks
     private bool rightCompleted;
 
     private FloorManagerOne FloorManagerOne;
+    private bool done;
 
     void Awake(){
         FloorManagerOne=GameObject.FindObjectOfType<FloorManagerOne>();
+        done=false;
     }
     // Start is called before the first frame update
     void Start()
@@ -35,11 +37,11 @@ public class RoomCompleteManager : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if(leftCompleted==true && rightCompleted==true){
-            //add code to spawn exit doors here
+        if(leftCompleted==true && rightCompleted==true&&done==false){
+            
             print("room completed");
             this.photonView.RPC("SpawnExitDoors",RpcTarget.All);
-            FloorManagerOne.PuzzleComplete();
+            
         }
     }
     public void LeftComplete(){
@@ -51,6 +53,8 @@ public class RoomCompleteManager : MonoBehaviourPunCallbacks
 
     [PunRPC]
     public void SpawnExitDoors(){
+        done=true;
+        FloorManagerOne.PuzzleComplete();
         leftExitDoor.transform.position=leftExitDoorPosition.transform.position;
         rightExitDoor.transform.position=rightExitDoorPosition.transform.position;
 

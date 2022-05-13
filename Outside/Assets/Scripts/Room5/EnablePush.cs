@@ -15,7 +15,7 @@ public class EnablePush : MonoBehaviourPunCallbacks
         
         
         
-        //sizeOfForce=200;
+        
     }
 
     // Update is called once per frame
@@ -29,13 +29,7 @@ public class EnablePush : MonoBehaviourPunCallbacks
             Rigidbody rigidbody;
             rigidbody=hitObject.collider.attachedRigidbody; 
             push(hitObject, rigidbody);
-            //if (hitObject.collider.gameObject.GetComponent<PhotonView>().Owner.ActorNumber == PhotonNetwork.LocalPlayer.ActorNumber){
-            //    this.photonView.RPC("push",RpcTarget.All,hitObject,rigidbody);
-            //}
-            //else{
-            //    hitObject.collider.gameObject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer.ActorNumber);
-            //    this.photonView.RPC("push",RpcTarget.All,hitObject,rigidbody);
-            //}
+            
             
 
         }
@@ -44,9 +38,9 @@ public class EnablePush : MonoBehaviourPunCallbacks
     }
         
     
-    //[PunRPC]
+    
     private void push(ControllerColliderHit hitObject,Rigidbody rigidbody){
-        print("yes");
+        
         if(rigidbody != null){
             
             Vector3 forceVector = hitObject.gameObject.transform.position-transform.position;

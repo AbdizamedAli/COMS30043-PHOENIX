@@ -38,7 +38,7 @@ public class RoomManagerRight : MonoBehaviour
 
             RoomCompleteManager.RightComplete();
             completed=true;
-            //print("right yes");
+            
         }
     }
 

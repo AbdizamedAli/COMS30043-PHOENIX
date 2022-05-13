@@ -35,8 +35,8 @@ public class ResetBox :  MonoBehaviourPunCallbacks
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if(collision){
-                    this.photonView.RPC("ResetBox",RpcTarget.All);       
-                    //ResetBoxPos(box,boxSpawnPosition);      
+                    this.photonView.RPC(nameof(WhyDoesThisBreak),RpcTarget.All);
+                        
                 }
             }
         }
@@ -44,17 +44,26 @@ public class ResetBox :  MonoBehaviourPunCallbacks
     }
     void OnTriggerEnter(Collider other)
     {
-        collision = true;
+        if (other.tag == "Player")
+        {
+
+            collision = true;
+        }
     }
     void OnTriggerExit(Collider other)
     {
-        collision = false;
+        if (other.tag == "Player")
+        {
+
+            collision = false;
+        }
     }
     [PunRPC]
-    void ResetBoxPos(){
-        boxRigidBody.velocity=Vector3.zero;
+    private void WhyDoesThisBreak()
+    {
+        boxRigidBody.velocity = Vector3.zero;
         addforce.Reset();
-        box.transform.position=boxSpawnPosition.transform.position;
-        
+        box.transform.position = boxSpawnPosition.transform.position;
+
     }
 }

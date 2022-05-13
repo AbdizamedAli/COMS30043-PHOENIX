@@ -7,9 +7,11 @@ using SimpleJSON;
 using MiniJSON;
 using System.Linq;
 
+//Based on: https://thomassimonini.medium.com/building-a-smart-robot-ai-using-hugging-face-and-unity-a78724810545
+
 /// <summary>
 /// This script handles:
-///     - HFRankOrders_(string source_sentence): the post request to the API: given an user input score each action in the robot list.
+///     - HFRankOrders_(string source_sentence): the post request to the API: given an user input score each action in the emotion list.
 ///     - ProcessResult(string result): given a string result, convert it to an array of floats and find the max score and max score index.
 ///     - Start(): to build the JSON correctly, we need to make a string array of all robot sentences;
 /// </summary>
@@ -28,42 +30,25 @@ public class HuggingFaceAPI : MonoBehaviour
     public List<string> sentences; // Robot list of sentences (actions)
 
     [HideInInspector]
-    public float maxScore; // Value of the action with the highest score
+    public float maxScore; // Value of the emotion with the highest score
 
     [HideInInspector]
-    public int maxScoreIndex; // Index of the action with the highest score
+    public int maxScoreIndex; // Index of the emotion with the highest score
 
     [Header("Jammo Behavior")]
-    public AI_Behaviour jammo; // A reference to Jammo Behavior Script
-
-    //public bool roomEnter;
+    public AI_Behaviour jammo; // A reference to AI_Behavior Script
 
     void Start()
     {
-        // To prepare the JSON, we take all the sentences candidates
+        // To prepare the JSON, we take all the emotions candidates
         foreach (AI_Behaviour.PlayerEmotions emotions in jammo.playerEmotionsList)
         {
             sentences.Add(emotions.emotion);
         }
-
-        //roomEnter = false;
-        //Cursor.lockState = CursorLockMode.Confined;
     }
 
     /// <summary>
-    /// Given a user input text and a set of sentences candidates, call HF model to score each of them.
-    /// The JSON looks like this:
-    /// 
-    /// {
-    /// "inputs": {
-    ///     "source_sentence": "That is a happy person",
-    ///     "sentences": [
-    ///         "That is a happy dog",
-    ///         "That is a very happy person",
-    ///         "Today is a sunny day"
-    ///         ]
-    ///         },
-    /// }
+    /// Given a user input text and a set of emotion candidates, call HF model to score each of them.
     /// </summary>
     /// <param name="source_sentence">user input sentence</param>
     public void HFRankOrders_(string source_sentence)
@@ -73,15 +58,6 @@ public class HuggingFaceAPI : MonoBehaviour
 
     public IEnumerator HFScore(string prompt)
     {
-        // Form the JSON
-        //var form = new Dictionary<string, object>();
-        //var attributes = new Dictionary<string, object>();
-        //attributes["source_sentence"] = prompt;
-        //attributes["sentences"] = sentences;
-        //form["inputs"] = attributes;
-        //form["inputs"] = prompt;
-
-        //var json = Json.Serialize(prompt);
         byte[] bytes = System.Text.Encoding.UTF8.GetBytes(prompt);
 
         // Make the web request
@@ -89,32 +65,6 @@ public class HuggingFaceAPI : MonoBehaviour
         request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bytes);
         request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
         request.SetRequestHeader("Content-Type", "application/json");
-        //request.SetRequestHeader("Authorization", "Bearer " + hf_api_key);
-        //request.method = "POST"; // Hack to send POST to server instead of PUT
-
-        //var request = UnityWebRequest.Post(model_url, bytes);
-        //request.SetRequestHeader("Content-Type", "application/json");
-        //request.SetRequestHeader("Authorization", "Bearer " + hf_api_key);
-
-        //WWWForm form = new WWWForm();
-        //form.AddField("inputs", bytes);
-
-        /*using (UnityWebRequest request = UnityWebRequest.Put(model_url, bytes))
-        {
-            request.SetRequestHeader("Content-Type", "application/json");
-            request.method = "POST";
-            yield return request.SendWebRequest();
-
-            if (request.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(request.error);
-            }
-            else
-            {
-                Debug.Log("Form upload complete!");
-                Debug.Log(request.downloadHandler.text);
-            }
-        }*/
 
         yield return request.Send();
 
@@ -138,15 +88,11 @@ public class HuggingFaceAPI : MonoBehaviour
     }
 
     /// <summary>
-    /// We receive a string like "[0.7777, 0.19, 0.01]", we need to process this data to transform it to an array of floats
-    /// [0.77, 0.19, 0.01] to be able to perform operations on it.
+    /// We receive a string, we need to process this data to transform it to an array of floats
     /// </summary>
     /// <param name="result">json return from API call</param>
     private IEnumerator ProcessResult(string result)
     {
-        // The data is a score for each possible sentence candidate
-        // But, it looks something like this "[0.7777, 0.19, 0.01]"
-        // First, we need to remove [ and ]
         string cleanedResult = result.Replace("[", "");
         cleanedResult = cleanedResult.Replace("]", "");
         cleanedResult = cleanedResult.Replace("{", "");

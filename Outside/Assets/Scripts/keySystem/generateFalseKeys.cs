@@ -32,29 +32,10 @@ namespace keySystem
         [PunRPC]
         public void spawnKeys(Vector3 position)
         {
-            GameObject new_key = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "actual_key_false"), position, Quaternion.identity);
-            new_key.GetComponent<keyitemController>().key = false;
-            new_key.GetComponent<keyitemController>().key_inventory = key_inv;
-            new_key.GetComponent<keyitemController>().clue = clue;
-
-        }
-
-        private Color randomColour()
-        {
-            return new Color(Random.Range(0f, 1f),
-                             Random.Range(0f, 1f),
-                             Random.Range(0f, 1f)
-                             );
-        }
-
-        private Color getRandomColour()
-        {
-            Color new_colour = randomColour(); 
-            while (new_colour.Equals(actual_key.GetComponent<keyitemController>().key_colour))
-            {
-                new_colour = randomColour();
-            }
-            return new_colour;
+            GameObject new_key = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Key Variant"), position, Quaternion.identity);
+            new_key.GetComponentInChildren<keyitemController>().key = false;
+            new_key.GetComponentInChildren<keyitemController>().key_inventory = key_inv;
+            new_key.GetComponentInChildren<keyitemController>().clue = clue;
 
         }
 

@@ -13,14 +13,9 @@ namespace keySystem
         public Vector3 actual_key_location;
 
         [SerializeField] bool actual = false;
-
-        void Awake()
-        {
-
-        }
         void Start()
         {
-            key_colour = Random.ColorHSV();
+            key_colour = GetColor(Random.Range(0,2));
             if (PhotonNetwork.IsMasterClient && actual)
             {
 
@@ -53,6 +48,16 @@ namespace keySystem
         {
             gameObject.SetActive(false);
 
+        }
+
+        private Color GetColor(int c)
+        {
+            switch (c)
+            {
+                case 0: return Color.red;
+                case 1: return Color.yellow;
+            }
+            return Color.blue;
         }
     }
 }

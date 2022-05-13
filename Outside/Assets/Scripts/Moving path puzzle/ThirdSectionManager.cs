@@ -101,7 +101,6 @@ public class ThirdSectionManager : MonoBehaviourPunCallbacks
     void Update()
     {
         time=time+1f*Time.deltaTime;
-        //timeSecond=timeSecond+1f*Time.deltaTime;
         if(time>=delay&&PhotonNetwork.IsMasterClient){
             this.photonView.RPC("MovePaths",RpcTarget.All);
         }

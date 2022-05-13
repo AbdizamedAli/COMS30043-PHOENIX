@@ -15,7 +15,11 @@ public class FristionlessBoxPuzzleManager : MonoBehaviourPunCallbacks
     [SerializeField]
 
     private Transform doorTwoSpawn;
+    private FloorManagerTwo FloorManagerTwo;
     
+    void awake(){
+        FloorManagerTwo=GameObject.FindObjectOfType<FloorManagerTwo>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +33,14 @@ public class FristionlessBoxPuzzleManager : MonoBehaviourPunCallbacks
     }
     public void RoomComplete(){
         print("win correct");
-        //CompleteRoom();//
+        
         this.photonView.RPC("CompleteRoom",RpcTarget.All);
     }
     [PunRPC]
     void CompleteRoom(){
         print("complete");
-        //SpawnExitDoors();//
+        FloorManagerTwo.PuzzleComplete();
+        
         this.photonView.RPC("SpawnExitDoors",RpcTarget.All);
 
     }

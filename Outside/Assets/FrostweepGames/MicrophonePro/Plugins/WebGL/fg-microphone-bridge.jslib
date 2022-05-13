@@ -94,7 +94,7 @@ var FGMicrophoneLibrary = {
       }
 
       document.connection = conn;
-      document.setupConnection();
+      document.connect();
     });
 
     document.peer.on("call", (call) => {
@@ -125,9 +125,9 @@ var FGMicrophoneLibrary = {
     });
   },
 
-  startConnection: function (receiverIdPointer) {
+  createConnection: function (receiverIdPointer) {
     if (document.peer == null) {
-      console.log("Start Connection called without a Peer existing");
+      console.log("You're not connected to the server");
       return;
     }
 
@@ -139,22 +139,15 @@ var FGMicrophoneLibrary = {
     }
 
     if (document.hasId) {
-      console.log("calling peer with id: " + receiverId);
+      console.log("calling client with id: " + receiverId);
       document.connection = document.peer.connect(receiverId);
-      document.setupConnection();
-    } else {
-      console.log("wait for own id");
-      document.peer.on("open", function (id) {
-        console.log("calling peer with id: " + receiverId);
-        document.connection = document.peer.connect(receiverId);
-        document.setupConnection();
-      });
+      document.connect();
     }
   },
 
-  startCall: function (receiverIdPointer) {
+  createCall: function (receiverIdPointer) {
     if (document.peer == null) {
-      console.log("Start Connection called without a Peer existing");
+      console.log("You're not connected to the server!");
       return;
     }
 
@@ -167,13 +160,7 @@ var FGMicrophoneLibrary = {
 
     if (document.hasId) {
       console.log("calling peer with id: " + receiverId);
-      document.setupCall(receiverId);
-    } else {
-      console.log("wait for own id");
-      document.peer.on("open", function (id) {
-        console.log("calling peer with id: " + receiverId);
-        document.setupCall(receiverId);
-      });
+      document.clientCall(receiverId);
     }
   },
 
@@ -181,7 +168,7 @@ var FGMicrophoneLibrary = {
     if (document.getElementById(UTF8ToString(audio_id)) != null) {
       var audio = document.getElementById(UTF8ToString(audio_id));
       console.log(
-        "New volume: " + newVolume + " for id: " + UTF8ToString(audio_id)
+        // "New volume: " + newVolume + " for id: " + UTF8ToString(audio_id)
       );
       audio.volume = newVolume;
     } else {
@@ -193,15 +180,12 @@ var FGMicrophoneLibrary = {
     if (document.FGUnityMicrophone != undefined) return 0;
     document.FGUnityMicrophone = new UnityMicrophone(version, worklet);
 
-    function setupConnection() {
+    function connect() {
       if (document.connection == null) {
-        console.log("Setup Connection called without a connection existing");
+        console.log("You're not connected");
         return;
       }
-
-      console.log("Setting up a new connection");
       document.connection.on("open", function () {
-        console.log("Connected to receiver");
         SendMessage("Voice_Audio_PeerJS", "updateCode", 0);
       });
 
@@ -220,7 +204,7 @@ var FGMicrophoneLibrary = {
       });
     }
 
-    function setupCall(receiverId) {
+    function call(receiverId) {
       var callerID = receiverId;
       navigator.mediaDevices
         .getUserMedia({ audio: true, video: false })
@@ -309,8 +293,8 @@ var FGMicrophoneLibrary = {
     document.hasId = false;
     document.connection = null;
     document.call = null;
-    document.setupConnection = setupConnection;
-    document.setupCall = setupCall;
+    document.connect = connect;
+    document.clientCall = call;
     document.peers = [];
 
     return 1;

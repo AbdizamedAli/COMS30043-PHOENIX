@@ -13,17 +13,26 @@ public class FloorManagerTwo : MonoBehaviourPunCallbacks
     GameObject stairWall;
     [SerializeField]
     Transform stairWallNewPos;
+    [SerializeField]
+    private AudioSource AiSound;
+    [SerializeField]
+    private AudioSource AiSoundSecond;
+    bool onePuzzleCompleted;
+    [SerializeField]
+    GameObject redDoor;
     // Start is called before the first frame update
     void Start()
     {
         complete=false;
+        onePuzzleCompleted=false;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         if (numOfPuzzles==0&&complete==false){
-            //CompleteRoom();//
+            
             this.photonView.RPC("CompleteRoom",RpcTarget.All);
             
 
@@ -34,13 +43,19 @@ public class FloorManagerTwo : MonoBehaviourPunCallbacks
 
     [PunRPC]
     void CompleteRoom(){
-        complete=true;
+        AiSoundSecond.Play();
+        complete =true;
         stairWall.transform.position=stairWallNewPos.transform.position;
+        redDoor.transform.position=stairWallNewPos.transform.position;
         print("yessss");
     }
 
     public void PuzzleComplete(){
-        this.photonView.RPC("DecreasePuzzleCount",RpcTarget.All);
+        if(PhotonNetwork.IsMasterClient){
+            this.photonView.RPC("DecreasePuzzleCount",RpcTarget.All);
+            
+
+        }
     }
 
     [PunRPC]
@@ -50,6 +65,10 @@ public class FloorManagerTwo : MonoBehaviourPunCallbacks
         }
         else{
             numOfPuzzles=numOfPuzzles-1;
+        }
+        if(onePuzzleCompleted==false){
+            AiSound.Play();
+            onePuzzleCompleted =true;
         }
         
     }
