@@ -5,13 +5,15 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using Photon.Pun;
 
+//Based on: https://thomassimonini.medium.com/building-a-smart-robot-ai-using-hugging-face-and-unity-a78724810545
+
 /// <summary>
-/// This class is used to control the behavior of our Robot by calling the HuggingFaceAPI instance.
+/// This class is used to control the behavior of our 'AI' by calling the HuggingFaceAPI instance.
 /// </summary>
 public class AI_Behaviour : MonoBehaviourPunCallbacks
 {
     /// <summary>
-    /// The Robot Action List
+    /// The player emotions list
     /// </summary>
     [System.Serializable]
     public struct PlayerEmotions
@@ -20,12 +22,11 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
     }
 
     /// <summary>
-    /// Enum of the different possible states of our Robot
+    /// Enum of the different possible emotions presented by player.
     /// </summary>
     private enum State
     {
         Idle,
-        //TODO: Define the other states
         sadness,
         joy,
         love,
@@ -45,7 +46,7 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
     [Header("Input UI")]
     public InputField inputField;     // Our Input Field UI
     
-    [SerializeField] CursorControl cursorControl;
+    [SerializeField] CursorControl cursorControl;   //object containing script that controls whether cursor is visible.
 
     private State state;
 
@@ -53,9 +54,9 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
 
     private string target;
     private int riddleNumber = 0;
-    private string mode;
+    private string mode;    //keeps track of which player should be currently interacting with the puzzle - the one solving riddles ("riddle"), or the one talking to the AI ("emotion")
 
-    public FloorManagerTwo floorManagerTwo;
+    public FloorManagerTwo floorManagerTwo; //object containing script that keeps track of which rooms are completed.
 
     [SerializeField] GameObject exit1;
     [SerializeField] GameObject exit2;
@@ -63,16 +64,26 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        // Set the State to Idle
         floorManagerTwo = GameObject.FindObjectOfType<FloorManagerTwo>();
-        state = State.Idle;
-        mode = "emotion";
+        
+        //call RPC hideExit, to hide the exit doors.
         this.photonView.RPC("hideExit", RpcTarget.All);
+
+        // Set the State to Idle
+        state = State.Idle;
+
+        //Set the initial game mode to 'emotion' - players must elicit AI emotion first, to receive first riddle.
+        mode = "emotion";
+
+        //Send initial introduction messages from 'AI' to player. Introduce the puzzle.
         botUI.UpdateDisplay("bot", "Hello. Welcome to the emotional intelligence test.");
         botUI.UpdateDisplay("bot", "I suggest you have a chat with your friend and figure out what to do.");
+
+        //Call MakeMe() function to start the puzzle.
         MakeMe();
     }
 
+    //Sends a message to the player telling them to make the 'AI' happy or sad. Sets the 'target' emotion to either 'happy' or 'sad'.
     void MakeMe()
     {
         switch (riddleNumber)
@@ -88,15 +99,19 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
                 target = "happy";
                 break;
         }
-        //var rnd = Random.Range(0, 1);
-        //string[] targets = { "happy", "sad" };
-        //target = targets[rnd];
+
+
+        //Call botUI.UpdateDisplay to diplay "make me + emotion" message on UI.
         var message = "make me " + target;
         botUI.UpdateDisplay("bot", message);
     }
 
+    //Checks whether the emotion that the player elicited in the 'AI' is equal to the target emotion.
+    //If the correct emotion was elicited, mode is changed to "riddle", and GiveRiddle is called to start the riddle portion of the puzzle.
+    //If the wrong emotion is elicited, the 'AI' asks the players to try again.
     void CorrectEmotion(string emotion)
     {
+        //Checks whether the player is supposed to be messaging the AI at this point in the puzzle.
         if (mode == "emotion")
         {
             if (emotion == target)
@@ -114,6 +129,7 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
         }       
     }
 
+    //Calls botUI.UpdateDisplay to display the next riddle on the UI, depending on the current riddleNumber.
     void GiveRiddle()
     {
         switch (riddleNumber)
@@ -136,6 +152,7 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
         }
     }
 
+    //Calls the RPC checkRiddle to check whether the answer selected by the second player was the correct answer to the current riddle.
     public void CheckRiddle(string answer)
     {
         this.photonView.RPC("checkRiddle", RpcTarget.All, answer);
@@ -148,16 +165,13 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
     /// <param name="maxIndex">Index of the option with the highest score</param>
     private void Utility(float maxScore, int maxScoreIndex)
     {
-        // TODO: Define the Utilitary function
-        //goalObject = GameObject.Find(actionsList[maxScoreIndex].noun);
-
         string emotion = playerEmotionsList[maxScoreIndex].emotion;
 
         state = (State)System.Enum.Parse(typeof(State), emotion, true);
     }
 
     /// <summary>
-    /// When the user finished to type the order
+    /// When the user finished to type
     /// </summary>
     /// <param name="prompt"></param>
     public void UISend(string prompt)
@@ -181,6 +195,7 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
         yield return null;
     }
 
+    //Translates the detected player input emotion, to the emotion elicited in the 'AI'.
     public void AIStateFromState()
     {
         switch (state)
@@ -223,6 +238,8 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
         }
     }
 
+    //defines how the 'AI' will behave dependin on whether the player has made it happy or sad.
+    //response is chosen randomly from a list of phrases to create more natural dialogue.
     public void Behaviour()
     {
         var rnd = Random.Range(0, 3);
@@ -230,6 +247,8 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
         string[] sadChat = { "Well, that's not a very nice thing to say", "That makes me sad", "How could you say such a thing?", "How rude. Mother didn't raise you to say such things." };
         string chosenPhrase;
 
+        //If the player made the AI happy, then it responds with a phrase from the list of happy responses. It then checks whether happy was the correct target emotion.
+        //If the player made the AI sad, then it repsonds with a phrase from the list of sad responses. It then checks whether sad was the correct target emotion.
         switch (AIState)
         {
             default:
@@ -252,6 +271,7 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
 
     }
 
+    //hides the exit doors.
     [PunRPC]
     private void hideExit()
     {
@@ -259,6 +279,8 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
         exit2.SetActive(false);
     }
 
+    //reveals the exit doors to players, so they can leave the puzzle room.
+    //tells floorManagerTwo that the puzzle has been completed.
     [PunRPC]
     private void showExit()
     {
@@ -268,6 +290,9 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
         floorManagerTwo.PuzzleComplete();
     }
 
+    //checks whether the answer selected by the player is the correct answer to the current riddle.
+    //If the correct answer was selected, then the AI lets the players know, and the game mode is switched back to 'emotion', before MakeMe() is called to request another message from the player.
+    //If the answer is incorrect, then the AI tells the players to select another answer.
     [PunRPC]
     private void checkRiddle(string answer)
     {
@@ -289,7 +314,7 @@ public class AI_Behaviour : MonoBehaviourPunCallbacks
             }
             if (riddleNumber == 3)
             {
-                //finish puzzle
+                //finish puzzle and call RPC showExit, to reveal the exit doors and let players out.
                 this.photonView.RPC("showExit", RpcTarget.All);
                 cursorControl.showCursor = false;
             }
