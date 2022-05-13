@@ -11,7 +11,7 @@ namespace SparkyControl
         public GameObject bot;
         public GameObject user;
 
-        public Canvas canvas;
+        public Canvas canvas;   //the Canvas containing the UI for interacting with Sparky
 
         // Start is called before the first frame update
         void Start()
@@ -25,6 +25,7 @@ namespace SparkyControl
         // Update is called once per frame
         void Update()
         {
+            //Check whether player is looking at 'Sparky'/whether they are hovering over 'Sparky' with their crosshair.
             RaycastHit hit;
             var ray = Camera.main.ViewportPointToRay (new Vector3(0.5f, 0.5f, 0f));
 
@@ -33,13 +34,10 @@ namespace SparkyControl
                 var selection = hit.transform;
                 var selectionRenderer = selection.GetComponent<Renderer>();
                 isObjectSelected = true;
-                objectSelected = selectionRenderer.gameObject;
-                //if (objectSelected.tag == "AI")
-                //{
-                //    Debug.Log("Sparky Selected");
-                //}   
+                objectSelected = selectionRenderer.gameObject;  
             }
 
+            //if the player presses 'E' while hovering over 'Sparky' with their crosshair, show the canvas containing UI, unlock the cursor, and start the puzzle.
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (isObjectSelected)
