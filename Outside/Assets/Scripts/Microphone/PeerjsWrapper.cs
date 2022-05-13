@@ -20,10 +20,10 @@ namespace Peer
         private static extern void connectToPeer();
 
         [DllImport("__Internal")]
-        private static extern void startConnection(string foreignID);
+        private static extern void createConnection(string foreignID);
 
         [DllImport("__Internal")]
-        private static extern void startCall(string foreignID);
+        private static extern void createCall(string foreignID);
 
         [DllImport("__Internal")]
         private static extern void updateVolume(float newVolume, string ID);
@@ -88,7 +88,7 @@ namespace Peer
 #if UNITY_WEBGL && !UNITY_EDITOR
             if (peer_ID != "")
             {
-                startConnection(client_ID);
+                createConnection(client_ID);
             }
 #endif
         }
@@ -100,7 +100,7 @@ namespace Peer
 #if UNITY_WEBGL && !UNITY_EDITOR
             if (peer_ID != "")
             {
-                startCall(client_ID);
+                createCall(client_ID);
             }
 #endif
         }
@@ -129,10 +129,10 @@ namespace Peer
             if(client_ID != "")
             {
                 if(connected)
-                    startConnection(client_ID);
+                    createConnection(client_ID);
 
                 if(called)
-                    startCall(client_ID);
+                    createCall(client_ID);
             }
 #endif
         }
